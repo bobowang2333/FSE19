@@ -1,0 +1,3 @@
+KEY x
+RAND R
+RAND rx
