@@ -1,0 +1,4 @@
+RAND r1
+RAND r2
+RAND r3
+KEY k

@@ -1,0 +1,9 @@
+sat
+(or (= (:var 0) #x04) (= (:var 0) #x0f))
+(:max-memory   8.61
+ :memory       8.39
+ :mk-bool-var  1
+ :num-allocs   4471257
+ :rlimit-count 3635037
+ :time         1.12
+ :total-time   1.12)

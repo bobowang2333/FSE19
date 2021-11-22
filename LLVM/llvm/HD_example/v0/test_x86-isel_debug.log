@@ -1,0 +1,340 @@
+Selecting: 0x7f99408398c0: ch = X86ISD::RET_FLAG 0x7f99408397b0, 0x7f9940839590, 0x7f99408396a0, 0x7f99408397b0:1 [ORD=27] [ID=37]
+
+=> 0x7f99408398c0: ch = RETQ 0x7f99408396a0, 0x7f99408397b0, 0x7f99408397b0:1 [ORD=27]
+
+Selecting: 0x7f99408397b0: ch,glue = CopyToReg 0x7f9940839370, 0x7f99408396a0, 0x7f9940839040 [ORD=27] [ID=36]
+
+=> 0x7f99408397b0: ch,glue = CopyToReg 0x7f9940839370, 0x7f99408396a0, 0x7f9940839040 [ORD=27]
+
+Selecting: 0x7f9940839370: ch = store 0x7f9940838f30:1, 0x7f9940839040, 0x7f9940839150, 0x7f99408374a0<ST4[%n3]> [ORD=25] [ID=35]
+
+MatchAddress: X86ISelAddressMode 0x7fff58e40bb0
+Base_Reg nul Base.FrameIndex 0
+ Scale1
+IndexReg nul Disp 0
+GV nul CP nul
+ES nul JT-1 Align0
+=> 0x7f9940839370: ch = MOV32mr 0x7f9940837390, 0x7f9940838c00, 0x7f9940839590, 0x7f994100b190, 0x7f994100b3b0, 0x7f9940839040, 0x7f9940838f30:1<Mem:ST4[%n3]> [ORD=25]
+
+Selecting: 0x7f9940839040: i32 = and 0x7f9940838e20, 0x7f9940838f30 [ORD=24] [ID=34]
+
+MatchAddress: X86ISelAddressMode 0x7fff58e40bb0
+Base_Reg nul Base.FrameIndex 0
+ Scale1
+IndexReg nul Disp 0
+GV nul CP nul
+ES nul JT-1 Align0
+=> 0x7f9940839040: i32,i32,ch = AND32rm 0x7f9940838e20, 0x7f9940839150, 0x7f9940838c00, 0x7f9940839590, 0x7f994100b190, 0x7f994100b3b0, 0x7f9940838d10<Mem:LD4[%i3.addr]> [ORD=24]
+
+Selecting: 0x7f9940838d10: ch = store 0x7f994100b4c0:1, 0x7f9940838e20, 0x7f994100b6e0, 0x7f99408374a0<ST4[%n2]> [ORD=21] [ID=32]
+
+MatchAddress: X86ISelAddressMode 0x7fff58e40bb0
+Base_Reg nul Base.FrameIndex 0
+ Scale1
+IndexReg nul Disp 0
+GV nul CP nul
+ES nul JT-1 Align0
+=> 0x7f9940838d10: ch = MOV32mr 0x7f9940838f30, 0x7f9940838c00, 0x7f9940839590, 0x7f994100b190, 0x7f994100b3b0, 0x7f9940838e20, 0x7f994100b4c0:1<Mem:ST4[%n2]> [ORD=21]
+
+Selecting: 0x7f9940838e20: i32 = xor 0x7f9940839260, 0x7f994100b2a0 [ORD=20] [ID=31]
+
+=> 0x7f9940838e20: i32,i32 = XOR32ri8 0x7f9940839260, 0x7f994100b6e0 [ORD=20]
+
+Selecting: 0x7f9940839260: i32 = xor 0x7f994100ad50, 0x7f994100b4c0 [ORD=18] [ID=30]
+
+MatchAddress: X86ISelAddressMode 0x7fff58e40bb0
+Base_Reg nul Base.FrameIndex 0
+ Scale1
+IndexReg nul Disp 0
+GV nul CP nul
+ES nul JT-1 Align0
+=> 0x7f9940839260: i32,i32,ch = XOR32rm 0x7f994100ad50, 0x7f994100b2a0, 0x7f9940838c00, 0x7f9940839590, 0x7f994100b190, 0x7f994100b3b0, 0x7f994100b080<Mem:LD4[%key.addr]> [ORD=18]
+
+Selecting: 0x7f994100b080: ch = store 0x7f994100af70, 0x7f994100ad50, 0x7f994100ae60, 0x7f99408374a0<ST4[%n1]> [ORD=16] [ID=28]
+
+MatchAddress: X86ISelAddressMode 0x7fff58e40bb0
+Base_Reg nul Base.FrameIndex 0
+ Scale1
+IndexReg nul Disp 0
+GV nul CP nul
+ES nul JT-1 Align0
+=> 0x7f994100b080: ch = MOV32mr 0x7f994100b4c0, 0x7f9940838c00, 0x7f9940839590, 0x7f994100b190, 0x7f994100b3b0, 0x7f994100ad50, 0x7f994100af70<Mem:ST4[%n1]> [ORD=16]
+
+Selecting: 0x7f994100ad50: i32 = xor 0x7f994100ab30, 0x7f994100ac40 [ORD=15] [ID=27]
+
+MatchAddress: X86ISelAddressMode 0x7fff58e40bb0
+Base_Reg nul Base.FrameIndex 0
+ Scale1
+IndexReg nul Disp 0
+GV nul CP nul
+ES nul JT-1 Align0
+=> 0x7f994100ad50: i32,i32,ch = XOR32rm 0x7f994100ab30, 0x7f994100ae60, 0x7f9940838c00, 0x7f9940839590, 0x7f994100b190, 0x7f994100b3b0, 0x7f994100aa20<Mem:LD4[%i2.addr]> [ORD=15]
+
+Selecting: 0x7f994100af70: ch = TokenFactor 0x7f994100ab30:1, 0x7f994100ad50:2 [ORD=16] [ID=26]
+
+=> 0x7f994100af70: ch = TokenFactor 0x7f994100ab30:1, 0x7f994100ad50:2 [ORD=16]
+
+Selecting: 0x7f994100ab30: i32,ch = load 0x7f994100aa20, 0x7f9940837280, 0x7f99408374a0<LD4[%i1.addr]> [ORD=13] [ID=25]
+
+MatchAddress: X86ISelAddressMode 0x7fff58e40bb0
+Base_Reg nul Base.FrameIndex 0
+ Scale1
+IndexReg nul Disp 0
+GV nul CP nul
+ES nul JT-1 Align0
+=> 0x7f994100ab30: i32,ch = MOV32rm 0x7f994100ac40, 0x7f9940838c00, 0x7f9940839590, 0x7f994100b190, 0x7f994100b3b0, 0x7f994100aa20<Mem:LD4[%i1.addr]> [ORD=13]
+
+Selecting: 0x7f994100aa20: ch = store 0x7f994100a800, 0x7f9940837170, 0x7f994100a910, 0x7f99408374a0<ST4[%i3.addr]> [ORD=12] [ID=23]
+
+MatchAddress: X86ISelAddressMode 0x7fff58e40bb0
+Base_Reg nul Base.FrameIndex 0
+ Scale1
+IndexReg nul Disp 0
+GV nul CP nul
+ES nul JT-1 Align0
+=> 0x7f994100aa20: ch = MOV32mr 0x7f9940839150, 0x7f9940838c00, 0x7f9940839590, 0x7f994100b190, 0x7f994100b3b0, 0x7f9940837170, 0x7f994100a800<Mem:ST4[%i3.addr]> [ORD=12]
+
+Selecting: 0x7f994100a800: ch = store 0x7f99408377d0, 0x7f9940836f50, 0x7f99408378e0, 0x7f99408374a0<ST4[%key.addr]> [ORD=11] [ID=22]
+
+MatchAddress: X86ISelAddressMode 0x7fff58e40bb0
+Base_Reg nul Base.FrameIndex 0
+ Scale1
+IndexReg nul Disp 0
+GV nul CP nul
+ES nul JT-1 Align0
+=> 0x7f994100a800: ch = MOV32mr 0x7f994100b2a0, 0x7f9940838c00, 0x7f9940839590, 0x7f994100b190, 0x7f994100b3b0, 0x7f9940836f50, 0x7f99408377d0<Mem:ST4[%key.addr]> [ORD=11]
+
+Selecting: 0x7f99408377d0: ch = store 0x7f99408375b0, 0x7f9940836d30, 0x7f99408376c0, 0x7f99408374a0<ST4[%i2.addr]> [ORD=10] [ID=21]
+
+MatchAddress: X86ISelAddressMode 0x7fff58e40bb0
+Base_Reg nul Base.FrameIndex 0
+ Scale1
+IndexReg nul Disp 0
+GV nul CP nul
+ES nul JT-1 Align0
+=> 0x7f99408377d0: ch = MOV32mr 0x7f994100ae60, 0x7f9940838c00, 0x7f9940839590, 0x7f994100b190, 0x7f994100b3b0, 0x7f9940836d30, 0x7f99408375b0<Mem:ST4[%i2.addr]> [ORD=10]
+
+Selecting: 0x7f99408375b0: ch = store 0x7f994040ff00, 0x7f9940836b10, 0x7f9940837280, 0x7f99408374a0<ST4[%i1.addr]> [ORD=9] [ID=20]
+
+MatchAddress: X86ISelAddressMode 0x7fff58e40bb0
+Base_Reg nul Base.FrameIndex 0
+ Scale1
+IndexReg nul Disp 0
+GV nul CP nul
+ES nul JT-1 Align0
+=> 0x7f99408375b0: ch = MOV32mr 0x7f994100ac40, 0x7f9940838c00, 0x7f9940839590, 0x7f994100b190, 0x7f994100b3b0, 0x7f9940836b10, 0x7f994040ff00<Mem:ST4[%i1.addr]> [ORD=9]
+
+Selecting: 0x7f9940837170: i32,ch = CopyFromReg 0x7f994040ff00, 0x7f9940837060 [ORD=1] [ID=19]
+
+=> 0x7f9940837170: i32,ch = CopyFromReg 0x7f994040ff00, 0x7f9940837060 [ORD=1]
+
+Selecting: 0x7f9940836f50: i32,ch = CopyFromReg 0x7f994040ff00, 0x7f9940836e40 [ORD=1] [ID=18]
+
+=> 0x7f9940836f50: i32,ch = CopyFromReg 0x7f994040ff00, 0x7f9940836e40 [ORD=1]
+
+Selecting: 0x7f9940836d30: i32,ch = CopyFromReg 0x7f994040ff00, 0x7f9940836c20 [ORD=1] [ID=17]
+
+=> 0x7f9940836d30: i32,ch = CopyFromReg 0x7f994040ff00, 0x7f9940836c20 [ORD=1]
+
+Selecting: 0x7f9940836b10: i32,ch = CopyFromReg 0x7f994040ff00, 0x7f9940836a00 [ORD=1] [ID=16]
+
+=> 0x7f9940836b10: i32,ch = CopyFromReg 0x7f994040ff00, 0x7f9940836a00 [ORD=1]
+
+Selecting: 0x7f99408396a0: i32 = Register %EAX [ID=15]
+
+=> 0x7f99408396a0: i32 = Register %EAX
+
+Selecting: 0x7f9940837060: i32 = Register %vreg3 [ID=4]
+
+=> 0x7f9940837060: i32 = Register %vreg3
+
+Selecting: 0x7f9940836e40: i32 = Register %vreg2 [ID=3]
+
+=> 0x7f9940836e40: i32 = Register %vreg2
+
+Selecting: 0x7f9940836c20: i32 = Register %vreg1 [ID=2]
+
+=> 0x7f9940836c20: i32 = Register %vreg1
+
+Selecting: 0x7f9940836a00: i32 = Register %vreg0 [ID=1]
+
+=> 0x7f9940836a00: i32 = Register %vreg0
+
+Selecting: 0x7f994040ff00: ch = EntryToken [ID=0]
+
+=> 0x7f994040ff00: ch = EntryToken
+
+Selecting: 0x7f994100b5d0: ch = X86ISD::RET_FLAG 0x7f994100a910, 0x7f99408378e0, 0x7f9940836c20, 0x7f994100a910:1 [ORD=20] [ID=38]
+
+=> 0x7f994100b5d0: ch = RETQ 0x7f9940836c20, 0x7f994100a910, 0x7f994100a910:1 [ORD=20]
+
+Selecting: 0x7f994100a910: ch,glue = CopyToReg 0x7f99408374a0, 0x7f9940836c20, 0x7f9940836a00 [ORD=20] [ID=37]
+
+=> 0x7f994100a910: ch,glue = CopyToReg 0x7f99408374a0, 0x7f9940836c20, 0x7f9940836a00 [ORD=20]
+
+Selecting: 0x7f99408374a0: ch = store 0x7f9940836a00:1, 0x7f9940836a00, 0x7f9940837280, 0x7f994100b2a0<ST4[%res]> [ORD=18] [ID=36]
+
+MatchAddress: X86ISelAddressMode 0x7fff58e40bb0
+Base_Reg nul Base.FrameIndex 0
+ Scale1
+IndexReg nul Disp 0
+GV nul CP nul
+ES nul JT-1 Align0
+=> 0x7f99408374a0: ch = MOV32mr 0x7f994100b4c0, 0x7f9940838e20, 0x7f99408378e0, 0x7f9940839260, 0x7f99408376c0, 0x7f9940836a00, 0x7f9940836a00:1<Mem:ST4[%res]> [ORD=18]
+
+Selecting: 0x7f9940836a00: i32,ch,glue = CopyFromReg 0x7f9940836e40, 0x7f9940836c20, 0x7f9940836e40:1 [ORD=17] [ID=35]
+
+=> 0x7f9940836a00: i32,ch,glue = CopyFromReg 0x7f9940836e40, 0x7f9940836c20, 0x7f9940836e40:1 [ORD=17]
+
+Selecting: 0x7f9940836e40: ch,glue = callseq_end 0x7f9940837060, 0x7f994100ad50, 0x7f994100ad50, 0x7f9940837060:1 [ORD=17] [ID=34]
+
+=> 0x7f9940836e40: i64,ch,glue = ADJCALLSTACKUP64 0x7f994100ad50, 0x7f994100ad50, 0x7f9940837060, 0x7f9940837060:1 [ORD=17]
+
+Selecting: 0x7f9940837060: ch,glue = X86ISD::CALL 0x7f9940836d30, 0x7f9940836b10, 0x7f994100ab30, 0x7f994100a800, 0x7f99408375b0, 0x7f9940836f50, 0x7f99408396a0, 0x7f9940836d30:1 [ORD=17] [ID=33]
+
+=> 0x7f9940837060: ch,glue = CALL64pcrel32 0x7f9940836b10, 0x7f994100ab30, 0x7f994100a800, 0x7f99408375b0, 0x7f9940836f50, 0x7f99408396a0, 0x7f9940836d30, 0x7f9940836d30:1 [ORD=17]
+
+Selecting: 0x7f9940836d30: ch,glue = CopyToReg 0x7f9940837170, 0x7f9940836f50, 0x7f9940838f30, 0x7f9940837170:1 [ORD=17] [ID=32]
+
+=> 0x7f9940836d30: ch,glue = CopyToReg 0x7f9940837170, 0x7f9940836f50, 0x7f9940838f30, 0x7f9940837170:1 [ORD=17]
+
+Selecting: 0x7f9940837170: ch,glue = CopyToReg 0x7f99408377d0, 0x7f99408375b0, 0x7f9940838d10, 0x7f99408377d0:1 [ORD=17] [ID=31]
+
+=> 0x7f9940837170: ch,glue = CopyToReg 0x7f99408377d0, 0x7f99408375b0, 0x7f9940838d10, 0x7f99408377d0:1 [ORD=17]
+
+Selecting: 0x7f99408377d0: ch,glue = CopyToReg 0x7f994100aa20, 0x7f994100a800, 0x7f9940839040, 0x7f994100aa20:1 [ORD=17] [ID=30]
+
+=> 0x7f99408377d0: ch,glue = CopyToReg 0x7f994100aa20, 0x7f994100a800, 0x7f9940839040, 0x7f994100aa20:1 [ORD=17]
+
+Selecting: 0x7f994100aa20: ch,glue = CopyToReg 0x7f994100af70, 0x7f994100ab30, 0x7f9940839370 [ORD=17] [ID=29]
+
+=> 0x7f994100aa20: ch,glue = CopyToReg 0x7f994100af70, 0x7f994100ab30, 0x7f9940839370 [ORD=17]
+
+Selecting: 0x7f994100af70: ch,glue = callseq_start 0x7f994100b080, 0x7f994100ad50 [ORD=17] [ID=28]
+
+=> 0x7f994100af70: i64,ch,glue = ADJCALLSTACKDOWN64 0x7f994100ad50, 0x7f994100b080 [ORD=17]
+
+Selecting: 0x7f994100b080: ch = TokenFactor 0x7f9940839370:1, 0x7f9940839040:1, 0x7f9940838d10:1, 0x7f99408397b0 [ORD=17] [ID=27]
+
+=> 0x7f994100b080: ch = TokenFactor 0x7f9940839370:1, 0x7f9940839040:1, 0x7f9940838d10:1, 0x7f99408397b0 [ORD=17]
+
+Selecting: 0x7f9940839370: i32,ch = load 0x7f99408397b0, 0x7f9940839150, 0x7f994100b2a0<LD4[%i1]> [ORD=13] [ID=26]
+
+MatchAddress: X86ISelAddressMode 0x7fff58e40bb0
+Base_Reg nul Base.FrameIndex 0
+ Scale1
+IndexReg nul Disp 0
+GV nul CP nul
+ES nul JT-1 Align0
+=> 0x7f9940839370: i32,ch = MOV32rm 0x7f9940837280, 0x7f9940838e20, 0x7f99408378e0, 0x7f9940839260, 0x7f99408376c0, 0x7f99408397b0<Mem:LD4[%i1]> [ORD=13]
+
+Selecting: 0x7f9940839040: i32,ch = load 0x7f99408397b0, 0x7f994100b190, 0x7f994100b2a0<LD4[%i2]> [ORD=14] [ID=25]
+
+MatchAddress: X86ISelAddressMode 0x7fff58e40bb0
+Base_Reg nul Base.FrameIndex 0
+ Scale1
+IndexReg nul Disp 0
+GV nul CP nul
+ES nul JT-1 Align0
+=> 0x7f9940839040: i32,ch = MOV32rm 0x7f9940839480, 0x7f9940838e20, 0x7f99408378e0, 0x7f9940839260, 0x7f99408376c0, 0x7f99408397b0<Mem:LD4[%i2]> [ORD=14]
+
+Selecting: 0x7f9940838d10: i32,ch = load 0x7f99408397b0, 0x7f9940837390, 0x7f994100b2a0<LD4[%i3]> [ORD=15] [ID=24]
+
+MatchAddress: X86ISelAddressMode 0x7fff58e40bb0
+Base_Reg nul Base.FrameIndex 0
+ Scale1
+IndexReg nul Disp 0
+GV nul CP nul
+ES nul JT-1 Align0
+=> 0x7f9940838d10: i32,ch = MOV32rm 0x7f99408399d0, 0x7f9940838e20, 0x7f99408378e0, 0x7f9940839260, 0x7f99408376c0, 0x7f99408397b0<Mem:LD4[%i3]> [ORD=15]
+
+Selecting: 0x7f99408397b0: ch = store 0x7f9940839590, 0x7f9940838f30, 0x7f99408398c0, 0x7f994100b2a0<ST4[%i4]> [ORD=12] [ID=23]
+
+MatchAddress: X86ISelAddressMode 0x7fff58e40bb0
+Base_Reg nul Base.FrameIndex 0
+ Scale1
+IndexReg nul Disp 0
+GV nul CP nul
+ES nul JT-1 Align0
+=> 0x7f99408397b0: ch = MOV32mi 0x7f9940839ae0, 0x7f9940838e20, 0x7f99408378e0, 0x7f9940839260, 0x7f99408376c0, 0x7f9941013200, 0x7f9940839590<Mem:ST4[%i4]> [ORD=12]
+
+Selecting: 0x7f9940839590: ch = store 0x7f9940838c00, 0x7f994100ac40, 0x7f9940837390, 0x7f994100b2a0<ST4[%i3]> [ORD=11] [ID=22]
+
+MatchAddress: X86ISelAddressMode 0x7fff58e40bb0
+Base_Reg nul Base.FrameIndex 0
+ Scale1
+IndexReg nul Disp 0
+GV nul CP nul
+ES nul JT-1 Align0
+=> 0x7f9940839590: ch = MOV32mi 0x7f99408399d0, 0x7f9940838e20, 0x7f99408378e0, 0x7f9940839260, 0x7f99408376c0, 0x7f9940839260, 0x7f9940838c00<Mem:ST4[%i3]> [ORD=11]
+
+Selecting: 0x7f9940838c00: ch = store 0x7f994100b3b0, 0x7f994100ac40, 0x7f994100b190, 0x7f994100b2a0<ST4[%i2]> [ORD=10] [ID=21]
+
+MatchAddress: X86ISelAddressMode 0x7fff58e40bb0
+Base_Reg nul Base.FrameIndex 0
+ Scale1
+IndexReg nul Disp 0
+GV nul CP nul
+ES nul JT-1 Align0
+=> 0x7f9940838c00: ch = MOV32mi 0x7f9940839480, 0x7f9940838e20, 0x7f99408378e0, 0x7f9940839260, 0x7f99408376c0, 0x7f9940839260, 0x7f994100b3b0<Mem:ST4[%i2]> [ORD=10]
+
+Selecting: 0x7f994100b3b0: ch = store 0x7f994100b6e0, 0x7f9940838f30, 0x7f9940839150, 0x7f994100b2a0<ST4[%i1]> [ORD=9] [ID=20]
+
+MatchAddress: X86ISelAddressMode 0x7fff58e40bb0
+Base_Reg nul Base.FrameIndex 0
+ Scale1
+IndexReg nul Disp 0
+GV nul CP nul
+ES nul JT-1 Align0
+=> 0x7f994100b3b0: ch = MOV32mi 0x7f9940837280, 0x7f9940838e20, 0x7f99408378e0, 0x7f9940839260, 0x7f99408376c0, 0x7f9941013200, 0x7f994100b6e0<Mem:ST4[%i1]> [ORD=9]
+
+Selecting: 0x7f994100b6e0: ch = store 0x7f994040ff00, 0x7f994100ac40, 0x7f994100ae60, 0x7f994100b2a0<ST4[%retval]> [ORD=8] [ID=19]
+
+MatchAddress: X86ISelAddressMode 0x7fff58e40bb0
+Base_Reg nul Base.FrameIndex 0
+ Scale1
+IndexReg nul Disp 0
+GV nul CP nul
+ES nul JT-1 Align0
+=> 0x7f994100b6e0: ch = MOV32mi 0x7f9940839150, 0x7f9940838e20, 0x7f99408378e0, 0x7f9940839260, 0x7f99408376c0, 0x7f9940839260, 0x7f994040ff00<Mem:ST4[%retval]> [ORD=8]
+
+Selecting: 0x7f9940836c20: i32 = Register %EAX [ID=16]
+
+=> 0x7f9940836c20: i32 = Register %EAX
+
+Selecting: 0x7f99408396a0: Untyped = RegisterMask [ID=15]
+
+=> 0x7f99408396a0: Untyped = RegisterMask
+
+Selecting: 0x7f9940836b10: i64 = TargetGlobalAddress<i32 (i32, i32, i32, i32)* @leak> 0 [ORD=17] [ID=14]
+
+=> 0x7f9940836b10: i64 = TargetGlobalAddress<i32 (i32, i32, i32, i32)* @leak> 0 [ORD=17]
+
+Selecting: 0x7f9940836f50: i32 = Register %ECX [ID=13]
+
+=> 0x7f9940836f50: i32 = Register %ECX
+
+Selecting: 0x7f99408375b0: i32 = Register %EDX [ID=12]
+
+=> 0x7f99408375b0: i32 = Register %EDX
+
+Selecting: 0x7f994100a800: i32 = Register %ESI [ID=11]
+
+=> 0x7f994100a800: i32 = Register %ESI
+
+Selecting: 0x7f994100ab30: i32 = Register %EDI [ID=10]
+
+=> 0x7f994100ab30: i32 = Register %EDI
+
+Selecting: 0x7f994100ad50: i64 = TargetConstant<0> [ID=9]
+
+=> 0x7f994100ad50: i64 = TargetConstant<0>
+
+Selecting: 0x7f9940838f30: i32 = Constant<1> [ID=4]
+
+=> 0x7f9940838f30: i32 = MOV32ri 0x7f9941013200
+
+Selecting: 0x7f994040ff00: ch = EntryToken [ID=0]
+
+=> 0x7f994040ff00: ch = EntryToken
+

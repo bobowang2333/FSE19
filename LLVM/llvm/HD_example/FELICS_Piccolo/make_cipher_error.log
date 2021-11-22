@@ -1,0 +1,77 @@
+make -f ./../../../common/cipher.mk COMPILER_OPTIONS='-O3' DEBUG=7 SCENARIO=0
+Building for PC ...
+Building with DEBUG flag set to 7 ...
+Building with SCENARIO flag set to 0 ...
+Building with MEASURE_CYCLE_COUNT flag NOT set ...
+Building with COMPILER_OPTIONS flag set to -O3 ...
+---------- Start building Piccolo_64_80_v01 ----------
+gcc -c -g -fdata-sections -ffunction-sections -Wcast-align -Wsign-compare -Waggregate-return -Wunused -Wfatal-errors -Wl,--gc-sections -Wl,--relax -I../../../../../common/source/pc/include -D PC -D DEBUG=7 -D SCENARIO=0 -O3 decrypt.c -I./../source -I./../../../common -I./../../../../../common/source/rotations -o ./../build/decrypt.o
+clang: warning: -Wl,--gc-sections: 'linker' input unused
+clang: warning: -Wl,--relax: 'linker' input unused
+decrypt.c:43:24: warning: cast from 'uint8_t *' (aka 'unsigned char *') to 'uint16_t *' (aka 'unsigned short *') increases required alignment from 1 to 2 [-Wcast-align]
+        uint16_t *x3 = (uint16_t *)block;
+                       ^~~~~~~~~~~~~~~~~
+decrypt.c:47:24: warning: cast from 'uint8_t *' (aka 'unsigned char *') to 'uint16_t *' (aka 'unsigned short *') increases required alignment from 1 to 2 [-Wcast-align]
+        uint16_t *rk = (uint16_t *)roundKeys;
+                       ^~~~~~~~~~~~~~~~~~~~~
+2 warnings generated.
+gcc -c -g -fdata-sections -ffunction-sections -Wcast-align -Wsign-compare -Waggregate-return -Wunused -Wfatal-errors -Wl,--gc-sections -Wl,--relax -I../../../../../common/source/pc/include -D PC -D DEBUG=7 -D SCENARIO=0 -O3 decryption_key_schedule.c -I./../source -I./../../../common -I./../../../../../common/source/rotations -o ./../build/decryption_key_schedule.o
+clang: warning: -Wl,--gc-sections: 'linker' input unused
+clang: warning: -Wl,--relax: 'linker' input unused
+gcc -c -g -fdata-sections -ffunction-sections -Wcast-align -Wsign-compare -Waggregate-return -Wunused -Wfatal-errors -Wl,--gc-sections -Wl,--relax -I../../../../../common/source/pc/include -D PC -D DEBUG=7 -D SCENARIO=0 -O3 ed_constants.c -I./../source -I./../../../common -I./../../../../../common/source/rotations -o ./../build/ed_constants.o
+clang: warning: -Wl,--gc-sections: 'linker' input unused
+clang: warning: -Wl,--relax: 'linker' input unused
+gcc -c -g -fdata-sections -ffunction-sections -Wcast-align -Wsign-compare -Waggregate-return -Wunused -Wfatal-errors -Wl,--gc-sections -Wl,--relax -I../../../../../common/source/pc/include -D PC -D DEBUG=7 -D SCENARIO=0 -O3 eks_constants.c -I./../source -I./../../../common -I./../../../../../common/source/rotations -o ./../build/eks_constants.o
+clang: warning: -Wl,--gc-sections: 'linker' input unused
+clang: warning: -Wl,--relax: 'linker' input unused
+gcc -c -g -fdata-sections -ffunction-sections -Wcast-align -Wsign-compare -Waggregate-return -Wunused -Wfatal-errors -Wl,--gc-sections -Wl,--relax -I../../../../../common/source/pc/include -D PC -D DEBUG=7 -D SCENARIO=0 -O3 encrypt.c -I./../source -I./../../../common -I./../../../../../common/source/rotations -o ./../build/encrypt.o
+clang: warning: -Wl,--gc-sections: 'linker' input unused
+clang: warning: -Wl,--relax: 'linker' input unused
+encrypt.c:43:17: warning: cast from 'uint8_t *' (aka 'unsigned char *') to 'uint16_t *' (aka 'unsigned short *') increases required alignment from 1 to 2 [-Wcast-align]
+        uint16_t *x3 = (uint16_t *)block;
+                       ^~~~~~~~~~~~~~~~~
+encrypt.c:47:17: warning: cast from 'uint8_t *' (aka 'unsigned char *') to 'uint16_t *' (aka 'unsigned short *') increases required alignment from 1 to 2 [-Wcast-align]
+        uint16_t *rk = (uint16_t *)roundKeys;
+                       ^~~~~~~~~~~~~~~~~~~~~
+2 warnings generated.
+gcc -c -g -fdata-sections -ffunction-sections -Wcast-align -Wsign-compare -Waggregate-return -Wunused -Wfatal-errors -Wl,--gc-sections -Wl,--relax -I../../../../../common/source/pc/include -D PC -D DEBUG=7 -D SCENARIO=0 -O3 encryption_key_schedule.c -I./../source -I./../../../common -I./../../../../../common/source/rotations -o ./../build/encryption_key_schedule.o
+clang: warning: -Wl,--gc-sections: 'linker' input unused
+clang: warning: -Wl,--relax: 'linker' input unused
+encryption_key_schedule.c:38:17: warning: cast from 'uint8_t *' (aka 'unsigned char *') to 'uint16_t *' (aka 'unsigned short *') increases required alignment from 1 to 2 [-Wcast-align]
+        uint16_t *mk = (uint16_t *)key;
+                       ^~~~~~~~~~~~~~~
+encryption_key_schedule.c:40:17: warning: cast from 'uint8_t *' (aka 'unsigned char *') to 'uint16_t *' (aka 'unsigned short *') increases required alignment from 1 to 2 [-Wcast-align]
+        uint16_t *rk = (uint16_t *)roundKeys;
+                       ^~~~~~~~~~~~~~~~~~~~~
+encryption_key_schedule.c:41:17: warning: cast from 'uint8_t *' (aka 'unsigned char *') to 'uint16_t *' (aka 'unsigned short *') increases required alignment from 1 to 2 [-Wcast-align]
+        uint16_t *wk = (uint16_t *)(&roundKeys[100]);
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+encryption_key_schedule.c:56:25: warning: cast from 'uint16_t *' (aka 'unsigned short *') to 'uint32_t *' (aka 'unsigned int *') increases required alignment from 2 to 4 [-Wcast-align]
+                _rk ^= *(uint32_t *)(&mk[2]);
+                        ^~~~~~~~~~~~~~~~~~~~
+encryption_key_schedule.c:63:25: warning: cast from 'uint16_t *' (aka 'unsigned short *') to 'uint32_t *' (aka 'unsigned int *') increases required alignment from 2 to 4 [-Wcast-align]
+                _rk ^= *(uint32_t *)(&mk[0]);
+                        ^~~~~~~~~~~~~~~~~~~~
+encryption_key_schedule.c:66:10: warning: cast from 'uint16_t *' (aka 'unsigned short *') to 'uint32_t *' (aka 'unsigned int *') increases required alignment from 2 to 4 [-Wcast-align]
+        *(uint32_t *)&rk[2*i] = _rk;
+         ^~~~~~~~~~~~~~~~~~~~
+6 warnings generated.
+gcc -c -g -fdata-sections -ffunction-sections -Wcast-align -Wsign-compare -Waggregate-return -Wunused -Wfatal-errors -Wl,--gc-sections -Wl,--relax -I../../../../../common/source/pc/include -D PC -D DEBUG=7 -D SCENARIO=0 -O3 primitives.c -I./../source -I./../../../common -I./../../../../../common/source/rotations -o ./../build/primitives.o
+clang: warning: -Wl,--gc-sections: 'linker' input unused
+clang: warning: -Wl,--relax: 'linker' input unused
+gcc -c -g -fdata-sections -ffunction-sections -Wcast-align -Wsign-compare -Waggregate-return -Wunused -Wfatal-errors -Wl,--gc-sections -Wl,--relax -I../../../../../common/source/pc/include -D PC -D DEBUG=7 -D SCENARIO=0 -O3 test_vectors.c -I./../source -I./../../../common -I./../../../../../common/source/rotations -o ./../build/test_vectors.o
+clang: warning: -Wl,--gc-sections: 'linker' input unused
+clang: warning: -Wl,--relax: 'linker' input unused
+gcc -c -g -fdata-sections -ffunction-sections -Wcast-align -Wsign-compare -Waggregate-return -Wunused -Wfatal-errors -Wl,--gc-sections -Wl,--relax -I../../../../../common/source/pc/include -D PC -D DEBUG=7 -D SCENARIO=0 -O3 ../../../common/main.c -I./../source -I./../../../common -I./../../../../../common/source/rotations -o ./../build/main.o
+clang: warning: -Wl,--gc-sections: 'linker' input unused
+clang: warning: -Wl,--relax: 'linker' input unused
+gcc -c -g -fdata-sections -ffunction-sections -Wcast-align -Wsign-compare -Waggregate-return -Wunused -Wfatal-errors -Wl,--gc-sections -Wl,--relax -I../../../../../common/source/pc/include -D PC -D DEBUG=7 -D SCENARIO=0 -O3 ../../../common/common.c -I./../source -I./../../../common -I./../../../../../common/source/rotations -o ./../build/common.o
+clang: warning: -Wl,--gc-sections: 'linker' input unused
+clang: warning: -Wl,--relax: 'linker' input unused
+gcc -g -fdata-sections -ffunction-sections -Wcast-align -Wsign-compare -Waggregate-return -Wunused -Wfatal-errors -Wl,--gc-sections -Wl,--relax -I../../../../../common/source/pc/include ./../build/decrypt.o ./../build/decryption_key_schedule.o ./../build/ed_constants.o ./../build/eks_constants.o ./../build/encrypt.o ./../build/encryption_key_schedule.o ./../build/primitives.o ./../build/test_vectors.o \
+		./../build/main.o ./../build/common.o \
+		 -o ./../build/cipher.elf
+ld: unknown option: --gc-sections
+clang: fatal error: linker command failed with exit code 1 (use -v to see invocation)
+make[1]: *** [cipher.elf] Error 1
+make: *** [cipher] Error 2

@@ -1,0 +1,106 @@
+/*** simple assignment facts generation ***/
+/*** output: z3 fix-point datalog file ***/
+/*** author: Jingbo Wang ***/
+
+#include "llvm/Pass.h"
+#include "llvm/IR/Instruction.h"
+#include "llvm/IR/Module.h"
+#include "llvm/IR/Instructions.h"
+#include "llvm/Support/raw_ostream.h"
+#include "llvm/Support/CommandLine.h"
+#include "llvm/Support/FileSystem.h"
+#include "genFact.h"
+#include <string>
+
+using namespace llvm;
+// #define ASSIGNMENT_DEBUG
+
+    struct assignFact : public FunctionPass {
+        static char ID;
+        assignFact() : FunctionPass(ID) {}
+
+        void printSpec(raw_fd_ostream &f) {
+            //Using SMT-LIB
+            std::string unsigned_size_bits = std::to_string(sizeof(unsigned) * 8);
+            f << "(set-option :fixedpoint.engine datalog)\n"
+              << "; this sort is used to define all the relations\n"
+              << "(define-sort s () (_ BitVec " << unsigned_size_bits << "))\n"
+              << "\n"
+              << "; assignment (assign from to)\n"
+              << "(declare-rel assign(s, s))\n"
+              << "; DEP relation: (DEP xxx, xxx)\n"
+              << "(declare-rel DEP (s, s))\n"
+              << "\n"
+              << "(declare-var var s)\n"
+              << "(declare-var prev s)\n"
+              << "(declare-var to s)\n"
+              << "(declare-var from s)\n"
+              << "\n";
+            // define the DEP relation
+            f << "; the DEP relation defines what it depends on\n"
+             << "(rule (=> (assign to from) (DEP to from)))\n"
+             << "\n"
+             << "; transitive closure of its assignments"
+             << "(rule (=> (and (assign to from) (DEP from prev)) (DEP to prev)))\n"
+            << "\n";
+        }
+
+        std::map<Instruction*, int> getIDMap(Function &F){
+            std::map<Instruction*, int> inst_map;
+            Function::iterator f_it;
+            BasicBlock::iterator bb_it;
+            static int inst_num = 1;
+            for(f_it = F.begin(); f_it != F.end(); f_it++)
+            {
+                BasicBlock *bb = &*f_it;
+                for(bb_it = bb->begin(); bb_it != bb->end(); bb_it++)
+                {
+                    Instruction *inst = &*bb_it;
+                    inst_map.insert(std::pair<Instruction*, int>(inst, inst_num));
+                    inst_num++;
+                }
+            }
+            return inst_map;
+        }
+
+        virtual bool runOnFunction(Function &F) {
+            /** generate the ID map: instrs => ID **/
+            std::map<Instruction*, int> ID_map;
+            ID_map = getIDMap(F);
+
+            std::string funcName = F.getName().str();
+            std::string path;
+            path = funcName + ".smt2";
+            assert(path.size() && "empty output file path");
+
+            /** attempt to open a stream to the passed path, crash a failure **/
+            std::error_code ec;
+            raw_fd_ostream *outFile = new raw_fd_ostream(path.c_str(), ec, sys::fs::OpenFlags::F_Text);
+            /** error code with a value of 0 indicates no error **/
+            if(ec.value())
+            {
+                errs() << "[ERROR] Unable to open file " << path << ": " << ec.message() << '\n';
+                exit(EXIT_FAILURE);
+            }
+
+            /** add the prepared specification to the output datalog file **/
+            printSpec(*outFile);
+
+            /** TODO: add more facts **/
+            /** genFact **/
+            assign::genFact fact(outFile, ID_map);
+            fact.visit(F);
+
+            (*outFile) << ";###### End Facts\n";
+            outFile->close();
+            delete outFile;
+            
+            /** IR was not modified **/
+            return false;
+        }
+    };  /** struct assign **/
+    char assignFact::ID = 0;
+    static RegisterPass<assignFact> X("assignFact", "datalog based front-end for simple assignment analysis",
+            false, /** unmodified CFG **/ 
+            true); /** analysis pass **/
+

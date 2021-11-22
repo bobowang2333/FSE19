@@ -1,0 +1,13 @@
+CC=gcc
+CFLAGS=-I .
+DEPS= cipher.h data_types.h constants.h primitives.h test_vectors.h
+OBJ= encrypt.o ed_constants.o eks_constants.o encryption_key_schedule.o primitives.o test_vectors.o
+
+%.o: %.c $(DEPS)
+	$(CC) -c -o $@ $< $(CFLAGS)
+
+test: $(OBJ)
+	$(CC) -o $@ $^ $(CFLAGS)
+
+clean:
+	rm *.o test

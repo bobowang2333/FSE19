@@ -1,0 +1,5 @@
+RAND r1
+RAND r2
+KEY k1
+KEY k2
+CONSTANT p1

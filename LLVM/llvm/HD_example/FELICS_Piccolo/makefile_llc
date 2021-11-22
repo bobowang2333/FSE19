@@ -1,0 +1,26 @@
+front=clang -emit-llvm -S
+back=llc
+link=llvm-link
+asm=gcc
+LL= ed_constants.ll eks_constants.ll encrypt.ll encryption_key_schedule.ll primitives.ll test_vectors.ll
+OBJ= ed_constants.o eks_constants.o encrypt.o encryption_key_schedule.o primitives.o test_vectors.o
+m_name=merge.ll
+
+merge: merge.o
+	$(asm) -o $@ $^
+
+merge.o: merge.s
+	$(asm) -o $@ -c $^
+
+merge.s: merge.ll
+	$(back) -o $@ $^
+
+merge.ll: $(LL)
+	$(link) -o $@ $^
+
+%.ll: %.c
+	$(front) -o $@ $<
+
+clean:
+	rm *.o *.ll merge
+

@@ -1,0 +1,2538 @@
+
+
+
+=== leak
+Initial selection DAG: BB#0 'leak:entry'
+SelectionDAG has 42 nodes:
+  0x7f80c05078a0: ch = EntryToken
+
+  0x7f80c0832c80: i64 = FrameIndex<0>
+
+  0x7f80c0832d90: i64 = Constant<0>
+
+  0x7f80c0832ea0: i64 = undef
+
+  0x7f80c08330c0: i64 = FrameIndex<1>
+
+  0x7f80c08332e0: i64 = FrameIndex<2>
+
+  0x7f80c2012310: i64 = FrameIndex<3>
+
+          0x7f80c05078a0: <multiple use>
+            0x7f80c05078a0: <multiple use>
+            0x7f80c0832400: i32 = Register %vreg0
+
+          0x7f80c0832510: i32,ch = CopyFromReg 0x7f80c05078a0, 0x7f80c0832400 [ORD=1]
+
+          0x7f80c0832c80: <multiple use>
+          0x7f80c0832ea0: <multiple use>
+        0x7f80c0832fb0: ch = store 0x7f80c05078a0, 0x7f80c0832510, 0x7f80c0832c80, 0x7f80c0832ea0<ST4[%i1.addr]> [ORD=9]
+
+          0x7f80c05078a0: <multiple use>
+          0x7f80c0832620: i32 = Register %vreg1
+
+        0x7f80c0832730: i32,ch = CopyFromReg 0x7f80c05078a0, 0x7f80c0832620 [ORD=1]
+
+        0x7f80c08330c0: <multiple use>
+        0x7f80c0832ea0: <multiple use>
+      0x7f80c08331d0: ch = store 0x7f80c0832fb0, 0x7f80c0832730, 0x7f80c08330c0, 0x7f80c0832ea0<ST4[%i2.addr]> [ORD=10]
+
+        0x7f80c05078a0: <multiple use>
+        0x7f80c0832840: i32 = Register %vreg2
+
+      0x7f80c0832950: i32,ch = CopyFromReg 0x7f80c05078a0, 0x7f80c0832840 [ORD=1]
+
+      0x7f80c08332e0: <multiple use>
+      0x7f80c0832ea0: <multiple use>
+    0x7f80c2012200: ch = store 0x7f80c08331d0, 0x7f80c0832950, 0x7f80c08332e0, 0x7f80c0832ea0<ST4[%key.addr]> [ORD=11]
+
+      0x7f80c05078a0: <multiple use>
+      0x7f80c0832a60: i32 = Register %vreg3
+
+    0x7f80c0832b70: i32,ch = CopyFromReg 0x7f80c05078a0, 0x7f80c0832a60 [ORD=1]
+
+    0x7f80c2012310: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2012420: ch = store 0x7f80c2012200, 0x7f80c0832b70, 0x7f80c2012310, 0x7f80c0832ea0<ST4[%i3.addr]> [ORD=12]
+
+    0x7f80c2012420: <multiple use>
+    0x7f80c0832c80: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2012530: i32,ch = load 0x7f80c2012420, 0x7f80c0832c80, 0x7f80c0832ea0<LD4[%i1.addr]> [ORD=13]
+
+    0x7f80c2012420: <multiple use>
+    0x7f80c08330c0: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2012640: i32,ch = load 0x7f80c2012420, 0x7f80c08330c0, 0x7f80c0832ea0<LD4[%i2.addr]> [ORD=14]
+
+  0x7f80c2012860: i64 = FrameIndex<4>
+
+      0x7f80c2012530: <multiple use>
+      0x7f80c2012640: <multiple use>
+    0x7f80c2012970: ch = TokenFactor 0x7f80c2012530:1, 0x7f80c2012640:1 [ORD=16]
+
+      0x7f80c2012530: <multiple use>
+      0x7f80c2012640: <multiple use>
+    0x7f80c2012750: i32 = xor 0x7f80c2012530, 0x7f80c2012640 [ORD=15]
+
+    0x7f80c2012860: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2012a80: ch = store 0x7f80c2012970, 0x7f80c2012750, 0x7f80c2012860, 0x7f80c0832ea0<ST4[%n1]> [ORD=16]
+
+    0x7f80c2012a80: <multiple use>
+    0x7f80c08332e0: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2012b90: i32,ch = load 0x7f80c2012a80, 0x7f80c08332e0, 0x7f80c0832ea0<LD4[%key.addr]> [ORD=17]
+
+    0x7f80c2012a80: <multiple use>
+    0x7f80c2012310: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2012ca0: i32,ch = load 0x7f80c2012a80, 0x7f80c2012310, 0x7f80c0832ea0<LD4[%i3.addr]> [ORD=18]
+
+  0x7f80c2012ec0: i64 = FrameIndex<5>
+
+      0x7f80c2012b90: <multiple use>
+      0x7f80c2012ca0: <multiple use>
+    0x7f80c2012fd0: ch = TokenFactor 0x7f80c2012b90:1, 0x7f80c2012ca0:1 [ORD=20]
+
+      0x7f80c2012b90: <multiple use>
+      0x7f80c2012ca0: <multiple use>
+    0x7f80c2012db0: i32 = and 0x7f80c2012b90, 0x7f80c2012ca0 [ORD=19]
+
+    0x7f80c2012ec0: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c20130e0: ch = store 0x7f80c2012fd0, 0x7f80c2012db0, 0x7f80c2012ec0, 0x7f80c0832ea0<ST4[%n2]> [ORD=20]
+
+    0x7f80c20130e0: <multiple use>
+    0x7f80c2012860: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2013200: i32,ch = load 0x7f80c20130e0, 0x7f80c2012860, 0x7f80c0832ea0<LD4[%n1]> [ORD=21]
+
+    0x7f80c20130e0: <multiple use>
+    0x7f80c2012ec0: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2013310: i32,ch = load 0x7f80c20130e0, 0x7f80c2012ec0, 0x7f80c0832ea0<LD4[%n2]> [ORD=22]
+
+  0x7f80c2013530: i64 = FrameIndex<6>
+
+      0x7f80c2013200: <multiple use>
+      0x7f80c2013310: <multiple use>
+    0x7f80c2013640: ch = TokenFactor 0x7f80c2013200:1, 0x7f80c2013310:1 [ORD=24]
+
+      0x7f80c2013200: <multiple use>
+      0x7f80c2013310: <multiple use>
+    0x7f80c2013420: i32 = or 0x7f80c2013200, 0x7f80c2013310 [ORD=23]
+
+    0x7f80c2013530: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2013750: ch = store 0x7f80c2013640, 0x7f80c2013420, 0x7f80c2013530, 0x7f80c0832ea0<ST4[%n3]> [ORD=24]
+
+  0x7f80c2013a80: i32 = Register %EAX
+
+    0x7f80c2013750: <multiple use>
+    0x7f80c2013a80: <multiple use>
+      0x7f80c2013750: <multiple use>
+      0x7f80c2013530: <multiple use>
+      0x7f80c0832ea0: <multiple use>
+    0x7f80c2013860: i32,ch = load 0x7f80c2013750, 0x7f80c2013530, 0x7f80c0832ea0<LD4[%n3]> [ORD=25]
+
+  0x7f80c2013b90: ch,glue = CopyToReg 0x7f80c2013750, 0x7f80c2013a80, 0x7f80c2013860 [ORD=26]
+
+    0x7f80c2013b90: <multiple use>
+    0x7f80c2013970: i16 = TargetConstant<0>
+
+    0x7f80c2013a80: <multiple use>
+    0x7f80c2013b90: <multiple use>
+  0x7f80c2013ca0: ch = X86ISD::RET_FLAG 0x7f80c2013b90, 0x7f80c2013970, 0x7f80c2013a80, 0x7f80c2013b90:1 [ORD=26]
+
+
+Optimized lowered selection DAG: BB#0 'leak:entry'
+SelectionDAG has 38 nodes:
+  0x7f80c05078a0: ch = EntryToken
+
+  0x7f80c0832c80: i64 = FrameIndex<0>
+
+  0x7f80c0832ea0: i64 = undef
+
+  0x7f80c08330c0: i64 = FrameIndex<1>
+
+  0x7f80c08332e0: i64 = FrameIndex<2>
+
+  0x7f80c2012310: i64 = FrameIndex<3>
+
+          0x7f80c05078a0: <multiple use>
+            0x7f80c05078a0: <multiple use>
+            0x7f80c0832400: i32 = Register %vreg0
+
+          0x7f80c0832510: i32,ch = CopyFromReg 0x7f80c05078a0, 0x7f80c0832400 [ORD=1]
+
+          0x7f80c0832c80: <multiple use>
+          0x7f80c0832ea0: <multiple use>
+        0x7f80c0832fb0: ch = store 0x7f80c05078a0, 0x7f80c0832510, 0x7f80c0832c80, 0x7f80c0832ea0<ST4[%i1.addr]> [ORD=9]
+
+          0x7f80c05078a0: <multiple use>
+          0x7f80c0832620: i32 = Register %vreg1
+
+        0x7f80c0832730: i32,ch = CopyFromReg 0x7f80c05078a0, 0x7f80c0832620 [ORD=1]
+
+        0x7f80c08330c0: <multiple use>
+        0x7f80c0832ea0: <multiple use>
+      0x7f80c08331d0: ch = store 0x7f80c0832fb0, 0x7f80c0832730, 0x7f80c08330c0, 0x7f80c0832ea0<ST4[%i2.addr]> [ORD=10]
+
+        0x7f80c05078a0: <multiple use>
+        0x7f80c0832840: i32 = Register %vreg2
+
+      0x7f80c0832950: i32,ch = CopyFromReg 0x7f80c05078a0, 0x7f80c0832840 [ORD=1]
+
+      0x7f80c08332e0: <multiple use>
+      0x7f80c0832ea0: <multiple use>
+    0x7f80c2012200: ch = store 0x7f80c08331d0, 0x7f80c0832950, 0x7f80c08332e0, 0x7f80c0832ea0<ST4[%key.addr]> [ORD=11]
+
+      0x7f80c05078a0: <multiple use>
+      0x7f80c0832a60: i32 = Register %vreg3
+
+    0x7f80c0832b70: i32,ch = CopyFromReg 0x7f80c05078a0, 0x7f80c0832a60 [ORD=1]
+
+    0x7f80c2012310: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2012420: ch = store 0x7f80c2012200, 0x7f80c0832b70, 0x7f80c2012310, 0x7f80c0832ea0<ST4[%i3.addr]> [ORD=12]
+
+    0x7f80c2012420: <multiple use>
+    0x7f80c0832c80: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2012530: i32,ch = load 0x7f80c2012420, 0x7f80c0832c80, 0x7f80c0832ea0<LD4[%i1.addr]> [ORD=13]
+
+    0x7f80c2012420: <multiple use>
+    0x7f80c08330c0: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2012640: i32,ch = load 0x7f80c2012420, 0x7f80c08330c0, 0x7f80c0832ea0<LD4[%i2.addr]> [ORD=14]
+
+  0x7f80c2012860: i64 = FrameIndex<4>
+
+      0x7f80c2012530: <multiple use>
+      0x7f80c2012640: <multiple use>
+    0x7f80c2012970: ch = TokenFactor 0x7f80c2012530:1, 0x7f80c2012640:1 [ORD=16]
+
+      0x7f80c2012530: <multiple use>
+      0x7f80c2012640: <multiple use>
+    0x7f80c2012750: i32 = xor 0x7f80c2012530, 0x7f80c2012640 [ORD=15]
+
+    0x7f80c2012860: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2012a80: ch = store 0x7f80c2012970, 0x7f80c2012750, 0x7f80c2012860, 0x7f80c0832ea0<ST4[%n1]> [ORD=16]
+
+    0x7f80c2012a80: <multiple use>
+    0x7f80c08332e0: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2012b90: i32,ch = load 0x7f80c2012a80, 0x7f80c08332e0, 0x7f80c0832ea0<LD4[%key.addr]> [ORD=17]
+
+    0x7f80c2012a80: <multiple use>
+    0x7f80c2012310: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2012ca0: i32,ch = load 0x7f80c2012a80, 0x7f80c2012310, 0x7f80c0832ea0<LD4[%i3.addr]> [ORD=18]
+
+    0x7f80c2012b90: <multiple use>
+    0x7f80c2012ca0: <multiple use>
+  0x7f80c2012db0: i32 = and 0x7f80c2012b90, 0x7f80c2012ca0 [ORD=19]
+
+        0x7f80c2012b90: <multiple use>
+        0x7f80c2012ca0: <multiple use>
+      0x7f80c2012fd0: ch = TokenFactor 0x7f80c2012b90:1, 0x7f80c2012ca0:1 [ORD=20]
+
+      0x7f80c2012db0: <multiple use>
+      0x7f80c2012ec0: i64 = FrameIndex<5>
+
+      0x7f80c0832ea0: <multiple use>
+    0x7f80c20130e0: ch = store 0x7f80c2012fd0, 0x7f80c2012db0, 0x7f80c2012ec0, 0x7f80c0832ea0<ST4[%n2]> [ORD=20]
+
+    0x7f80c2012860: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2013200: i32,ch = load 0x7f80c20130e0, 0x7f80c2012860, 0x7f80c0832ea0<LD4[%n1]> [ORD=21]
+
+    0x7f80c2013200: <multiple use>
+    0x7f80c2012db0: <multiple use>
+  0x7f80c2013420: i32 = or 0x7f80c2013200, 0x7f80c2012db0 [ORD=23]
+
+  0x7f80c2013a80: i32 = Register %EAX
+
+      0x7f80c2013200: <multiple use>
+      0x7f80c2013420: <multiple use>
+      0x7f80c2013530: i64 = FrameIndex<6>
+
+      0x7f80c0832ea0: <multiple use>
+    0x7f80c2013750: ch = store 0x7f80c2013200:1, 0x7f80c2013420, 0x7f80c2013530, 0x7f80c0832ea0<ST4[%n3]> [ORD=24]
+
+    0x7f80c2013a80: <multiple use>
+    0x7f80c2013420: <multiple use>
+  0x7f80c2013b90: ch,glue = CopyToReg 0x7f80c2013750, 0x7f80c2013a80, 0x7f80c2013420 [ORD=26]
+
+    0x7f80c2013b90: <multiple use>
+    0x7f80c2013970: i16 = TargetConstant<0>
+
+    0x7f80c2013a80: <multiple use>
+    0x7f80c2013b90: <multiple use>
+  0x7f80c2013ca0: ch = X86ISD::RET_FLAG 0x7f80c2013b90, 0x7f80c2013970, 0x7f80c2013a80, 0x7f80c2013b90:1 [ORD=26]
+
+
+Type-legalized selection DAG: BB#0 'leak:entry'
+SelectionDAG has 38 nodes:
+  0x7f80c05078a0: ch = EntryToken [ID=-3]
+
+  0x7f80c0832c80: i64 = FrameIndex<0> [ID=-3]
+
+  0x7f80c0832ea0: i64 = undef [ID=-3]
+
+  0x7f80c08330c0: i64 = FrameIndex<1> [ID=-3]
+
+  0x7f80c08332e0: i64 = FrameIndex<2> [ID=-3]
+
+  0x7f80c2012310: i64 = FrameIndex<3> [ID=-3]
+
+          0x7f80c05078a0: <multiple use>
+            0x7f80c05078a0: <multiple use>
+            0x7f80c0832400: i32 = Register %vreg0 [ID=-3]
+
+          0x7f80c0832510: i32,ch = CopyFromReg 0x7f80c05078a0, 0x7f80c0832400 [ORD=1] [ID=-3]
+
+          0x7f80c0832c80: <multiple use>
+          0x7f80c0832ea0: <multiple use>
+        0x7f80c0832fb0: ch = store 0x7f80c05078a0, 0x7f80c0832510, 0x7f80c0832c80, 0x7f80c0832ea0<ST4[%i1.addr]> [ORD=9] [ID=-3]
+
+          0x7f80c05078a0: <multiple use>
+          0x7f80c0832620: i32 = Register %vreg1 [ID=-3]
+
+        0x7f80c0832730: i32,ch = CopyFromReg 0x7f80c05078a0, 0x7f80c0832620 [ORD=1] [ID=-3]
+
+        0x7f80c08330c0: <multiple use>
+        0x7f80c0832ea0: <multiple use>
+      0x7f80c08331d0: ch = store 0x7f80c0832fb0, 0x7f80c0832730, 0x7f80c08330c0, 0x7f80c0832ea0<ST4[%i2.addr]> [ORD=10] [ID=-3]
+
+        0x7f80c05078a0: <multiple use>
+        0x7f80c0832840: i32 = Register %vreg2 [ID=-3]
+
+      0x7f80c0832950: i32,ch = CopyFromReg 0x7f80c05078a0, 0x7f80c0832840 [ORD=1] [ID=-3]
+
+      0x7f80c08332e0: <multiple use>
+      0x7f80c0832ea0: <multiple use>
+    0x7f80c2012200: ch = store 0x7f80c08331d0, 0x7f80c0832950, 0x7f80c08332e0, 0x7f80c0832ea0<ST4[%key.addr]> [ORD=11] [ID=-3]
+
+      0x7f80c05078a0: <multiple use>
+      0x7f80c0832a60: i32 = Register %vreg3 [ID=-3]
+
+    0x7f80c0832b70: i32,ch = CopyFromReg 0x7f80c05078a0, 0x7f80c0832a60 [ORD=1] [ID=-3]
+
+    0x7f80c2012310: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2012420: ch = store 0x7f80c2012200, 0x7f80c0832b70, 0x7f80c2012310, 0x7f80c0832ea0<ST4[%i3.addr]> [ORD=12] [ID=-3]
+
+    0x7f80c2012420: <multiple use>
+    0x7f80c0832c80: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2012530: i32,ch = load 0x7f80c2012420, 0x7f80c0832c80, 0x7f80c0832ea0<LD4[%i1.addr]> [ORD=13] [ID=-3]
+
+    0x7f80c2012420: <multiple use>
+    0x7f80c08330c0: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2012640: i32,ch = load 0x7f80c2012420, 0x7f80c08330c0, 0x7f80c0832ea0<LD4[%i2.addr]> [ORD=14] [ID=-3]
+
+  0x7f80c2012860: i64 = FrameIndex<4> [ID=-3]
+
+      0x7f80c2012530: <multiple use>
+      0x7f80c2012640: <multiple use>
+    0x7f80c2012970: ch = TokenFactor 0x7f80c2012530:1, 0x7f80c2012640:1 [ORD=16] [ID=-3]
+
+      0x7f80c2012530: <multiple use>
+      0x7f80c2012640: <multiple use>
+    0x7f80c2012750: i32 = xor 0x7f80c2012530, 0x7f80c2012640 [ORD=15] [ID=-3]
+
+    0x7f80c2012860: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2012a80: ch = store 0x7f80c2012970, 0x7f80c2012750, 0x7f80c2012860, 0x7f80c0832ea0<ST4[%n1]> [ORD=16] [ID=-3]
+
+    0x7f80c2012a80: <multiple use>
+    0x7f80c08332e0: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2012b90: i32,ch = load 0x7f80c2012a80, 0x7f80c08332e0, 0x7f80c0832ea0<LD4[%key.addr]> [ORD=17] [ID=-3]
+
+    0x7f80c2012a80: <multiple use>
+    0x7f80c2012310: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2012ca0: i32,ch = load 0x7f80c2012a80, 0x7f80c2012310, 0x7f80c0832ea0<LD4[%i3.addr]> [ORD=18] [ID=-3]
+
+    0x7f80c2012b90: <multiple use>
+    0x7f80c2012ca0: <multiple use>
+  0x7f80c2012db0: i32 = and 0x7f80c2012b90, 0x7f80c2012ca0 [ORD=19] [ID=-3]
+
+        0x7f80c2012b90: <multiple use>
+        0x7f80c2012ca0: <multiple use>
+      0x7f80c2012fd0: ch = TokenFactor 0x7f80c2012b90:1, 0x7f80c2012ca0:1 [ORD=20] [ID=-3]
+
+      0x7f80c2012db0: <multiple use>
+      0x7f80c2012ec0: i64 = FrameIndex<5> [ID=-3]
+
+      0x7f80c0832ea0: <multiple use>
+    0x7f80c20130e0: ch = store 0x7f80c2012fd0, 0x7f80c2012db0, 0x7f80c2012ec0, 0x7f80c0832ea0<ST4[%n2]> [ORD=20] [ID=-3]
+
+    0x7f80c2012860: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2013200: i32,ch = load 0x7f80c20130e0, 0x7f80c2012860, 0x7f80c0832ea0<LD4[%n1]> [ORD=21] [ID=-3]
+
+    0x7f80c2013200: <multiple use>
+    0x7f80c2012db0: <multiple use>
+  0x7f80c2013420: i32 = or 0x7f80c2013200, 0x7f80c2012db0 [ORD=23] [ID=-3]
+
+  0x7f80c2013a80: i32 = Register %EAX [ID=-3]
+
+      0x7f80c2013200: <multiple use>
+      0x7f80c2013420: <multiple use>
+      0x7f80c2013530: i64 = FrameIndex<6> [ID=-3]
+
+      0x7f80c0832ea0: <multiple use>
+    0x7f80c2013750: ch = store 0x7f80c2013200:1, 0x7f80c2013420, 0x7f80c2013530, 0x7f80c0832ea0<ST4[%n3]> [ORD=24] [ID=-3]
+
+    0x7f80c2013a80: <multiple use>
+    0x7f80c2013420: <multiple use>
+  0x7f80c2013b90: ch,glue = CopyToReg 0x7f80c2013750, 0x7f80c2013a80, 0x7f80c2013420 [ORD=26] [ID=-3]
+
+    0x7f80c2013b90: <multiple use>
+    0x7f80c2013970: i16 = TargetConstant<0> [ID=-3]
+
+    0x7f80c2013a80: <multiple use>
+    0x7f80c2013b90: <multiple use>
+  0x7f80c2013ca0: ch = X86ISD::RET_FLAG 0x7f80c2013b90, 0x7f80c2013970, 0x7f80c2013a80, 0x7f80c2013b90:1 [ORD=26] [ID=-3]
+
+
+Legalized selection DAG: BB#0 'leak:entry'
+SelectionDAG has 38 nodes:
+  0x7f80c05078a0: ch = EntryToken [ID=0]
+
+  0x7f80c0832c80: i64 = FrameIndex<0> [ID=5]
+
+  0x7f80c0832ea0: i64 = undef [ID=6]
+
+  0x7f80c08330c0: i64 = FrameIndex<1> [ID=7]
+
+  0x7f80c08332e0: i64 = FrameIndex<2> [ID=8]
+
+  0x7f80c2012310: i64 = FrameIndex<3> [ID=9]
+
+  0x7f80c2012860: i64 = FrameIndex<4> [ID=10]
+
+  0x7f80c2013a80: i32 = Register %EAX [ID=14]
+
+          0x7f80c05078a0: <multiple use>
+            0x7f80c05078a0: <multiple use>
+            0x7f80c0832400: i32 = Register %vreg0 [ID=1]
+
+          0x7f80c0832510: i32,ch = CopyFromReg 0x7f80c05078a0, 0x7f80c0832400 [ORD=1] [ID=15]
+
+          0x7f80c0832c80: <multiple use>
+          0x7f80c0832ea0: <multiple use>
+        0x7f80c0832fb0: ch = store 0x7f80c05078a0, 0x7f80c0832510, 0x7f80c0832c80, 0x7f80c0832ea0<ST4[%i1.addr]> [ORD=9] [ID=19]
+
+          0x7f80c05078a0: <multiple use>
+          0x7f80c0832620: i32 = Register %vreg1 [ID=2]
+
+        0x7f80c0832730: i32,ch = CopyFromReg 0x7f80c05078a0, 0x7f80c0832620 [ORD=1] [ID=16]
+
+        0x7f80c08330c0: <multiple use>
+        0x7f80c0832ea0: <multiple use>
+      0x7f80c08331d0: ch = store 0x7f80c0832fb0, 0x7f80c0832730, 0x7f80c08330c0, 0x7f80c0832ea0<ST4[%i2.addr]> [ORD=10] [ID=20]
+
+        0x7f80c05078a0: <multiple use>
+        0x7f80c0832840: i32 = Register %vreg2 [ID=3]
+
+      0x7f80c0832950: i32,ch = CopyFromReg 0x7f80c05078a0, 0x7f80c0832840 [ORD=1] [ID=17]
+
+      0x7f80c08332e0: <multiple use>
+      0x7f80c0832ea0: <multiple use>
+    0x7f80c2012200: ch = store 0x7f80c08331d0, 0x7f80c0832950, 0x7f80c08332e0, 0x7f80c0832ea0<ST4[%key.addr]> [ORD=11] [ID=21]
+
+      0x7f80c05078a0: <multiple use>
+      0x7f80c0832a60: i32 = Register %vreg3 [ID=4]
+
+    0x7f80c0832b70: i32,ch = CopyFromReg 0x7f80c05078a0, 0x7f80c0832a60 [ORD=1] [ID=18]
+
+    0x7f80c2012310: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2012420: ch = store 0x7f80c2012200, 0x7f80c0832b70, 0x7f80c2012310, 0x7f80c0832ea0<ST4[%i3.addr]> [ORD=12] [ID=22]
+
+    0x7f80c2012420: <multiple use>
+    0x7f80c08330c0: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2012640: i32,ch = load 0x7f80c2012420, 0x7f80c08330c0, 0x7f80c0832ea0<LD4[%i2.addr]> [ORD=14] [ID=23]
+
+    0x7f80c2012420: <multiple use>
+    0x7f80c0832c80: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2012530: i32,ch = load 0x7f80c2012420, 0x7f80c0832c80, 0x7f80c0832ea0<LD4[%i1.addr]> [ORD=13] [ID=24]
+
+      0x7f80c2012530: <multiple use>
+      0x7f80c2012640: <multiple use>
+    0x7f80c2012970: ch = TokenFactor 0x7f80c2012530:1, 0x7f80c2012640:1 [ORD=16] [ID=25]
+
+      0x7f80c2012530: <multiple use>
+      0x7f80c2012640: <multiple use>
+    0x7f80c2012750: i32 = xor 0x7f80c2012530, 0x7f80c2012640 [ORD=15] [ID=26]
+
+    0x7f80c2012860: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2012a80: ch = store 0x7f80c2012970, 0x7f80c2012750, 0x7f80c2012860, 0x7f80c0832ea0<ST4[%n1]> [ORD=16] [ID=27]
+
+    0x7f80c2012a80: <multiple use>
+    0x7f80c2012310: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2012ca0: i32,ch = load 0x7f80c2012a80, 0x7f80c2012310, 0x7f80c0832ea0<LD4[%i3.addr]> [ORD=18] [ID=28]
+
+    0x7f80c2012a80: <multiple use>
+    0x7f80c08332e0: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2012b90: i32,ch = load 0x7f80c2012a80, 0x7f80c08332e0, 0x7f80c0832ea0<LD4[%key.addr]> [ORD=17] [ID=29]
+
+    0x7f80c2012b90: <multiple use>
+    0x7f80c2012ca0: <multiple use>
+  0x7f80c2012db0: i32 = and 0x7f80c2012b90, 0x7f80c2012ca0 [ORD=19] [ID=31]
+
+        0x7f80c2012b90: <multiple use>
+        0x7f80c2012ca0: <multiple use>
+      0x7f80c2012fd0: ch = TokenFactor 0x7f80c2012b90:1, 0x7f80c2012ca0:1 [ORD=20] [ID=30]
+
+      0x7f80c2012db0: <multiple use>
+      0x7f80c2012ec0: i64 = FrameIndex<5> [ID=11]
+
+      0x7f80c0832ea0: <multiple use>
+    0x7f80c20130e0: ch = store 0x7f80c2012fd0, 0x7f80c2012db0, 0x7f80c2012ec0, 0x7f80c0832ea0<ST4[%n2]> [ORD=20] [ID=32]
+
+    0x7f80c2012860: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2013200: i32,ch = load 0x7f80c20130e0, 0x7f80c2012860, 0x7f80c0832ea0<LD4[%n1]> [ORD=21] [ID=33]
+
+    0x7f80c2013200: <multiple use>
+    0x7f80c2012db0: <multiple use>
+  0x7f80c2013420: i32 = or 0x7f80c2013200, 0x7f80c2012db0 [ORD=23] [ID=34]
+
+      0x7f80c2013200: <multiple use>
+      0x7f80c2013420: <multiple use>
+      0x7f80c2013530: i64 = FrameIndex<6> [ID=12]
+
+      0x7f80c0832ea0: <multiple use>
+    0x7f80c2013750: ch = store 0x7f80c2013200:1, 0x7f80c2013420, 0x7f80c2013530, 0x7f80c0832ea0<ST4[%n3]> [ORD=24] [ID=35]
+
+    0x7f80c2013a80: <multiple use>
+    0x7f80c2013420: <multiple use>
+  0x7f80c2013b90: ch,glue = CopyToReg 0x7f80c2013750, 0x7f80c2013a80, 0x7f80c2013420 [ORD=26] [ID=36]
+
+    0x7f80c2013b90: <multiple use>
+    0x7f80c2013970: i16 = TargetConstant<0> [ID=13]
+
+    0x7f80c2013a80: <multiple use>
+    0x7f80c2013b90: <multiple use>
+  0x7f80c2013ca0: ch = X86ISD::RET_FLAG 0x7f80c2013b90, 0x7f80c2013970, 0x7f80c2013a80, 0x7f80c2013b90:1 [ORD=26] [ID=37]
+
+
+Optimized legalized selection DAG: BB#0 'leak:entry'
+SelectionDAG has 38 nodes:
+  0x7f80c05078a0: ch = EntryToken [ID=0]
+
+  0x7f80c0832c80: i64 = FrameIndex<0> [ID=5]
+
+  0x7f80c0832ea0: i64 = undef [ID=6]
+
+  0x7f80c08330c0: i64 = FrameIndex<1> [ID=7]
+
+  0x7f80c08332e0: i64 = FrameIndex<2> [ID=8]
+
+  0x7f80c2012310: i64 = FrameIndex<3> [ID=9]
+
+  0x7f80c2012860: i64 = FrameIndex<4> [ID=10]
+
+  0x7f80c2013a80: i32 = Register %EAX [ID=14]
+
+          0x7f80c05078a0: <multiple use>
+            0x7f80c05078a0: <multiple use>
+            0x7f80c0832400: i32 = Register %vreg0 [ID=1]
+
+          0x7f80c0832510: i32,ch = CopyFromReg 0x7f80c05078a0, 0x7f80c0832400 [ORD=1] [ID=15]
+
+          0x7f80c0832c80: <multiple use>
+          0x7f80c0832ea0: <multiple use>
+        0x7f80c0832fb0: ch = store 0x7f80c05078a0, 0x7f80c0832510, 0x7f80c0832c80, 0x7f80c0832ea0<ST4[%i1.addr]> [ORD=9] [ID=19]
+
+          0x7f80c05078a0: <multiple use>
+          0x7f80c0832620: i32 = Register %vreg1 [ID=2]
+
+        0x7f80c0832730: i32,ch = CopyFromReg 0x7f80c05078a0, 0x7f80c0832620 [ORD=1] [ID=16]
+
+        0x7f80c08330c0: <multiple use>
+        0x7f80c0832ea0: <multiple use>
+      0x7f80c08331d0: ch = store 0x7f80c0832fb0, 0x7f80c0832730, 0x7f80c08330c0, 0x7f80c0832ea0<ST4[%i2.addr]> [ORD=10] [ID=20]
+
+        0x7f80c05078a0: <multiple use>
+        0x7f80c0832840: i32 = Register %vreg2 [ID=3]
+
+      0x7f80c0832950: i32,ch = CopyFromReg 0x7f80c05078a0, 0x7f80c0832840 [ORD=1] [ID=17]
+
+      0x7f80c08332e0: <multiple use>
+      0x7f80c0832ea0: <multiple use>
+    0x7f80c2012200: ch = store 0x7f80c08331d0, 0x7f80c0832950, 0x7f80c08332e0, 0x7f80c0832ea0<ST4[%key.addr]> [ORD=11] [ID=21]
+
+      0x7f80c05078a0: <multiple use>
+      0x7f80c0832a60: i32 = Register %vreg3 [ID=4]
+
+    0x7f80c0832b70: i32,ch = CopyFromReg 0x7f80c05078a0, 0x7f80c0832a60 [ORD=1] [ID=18]
+
+    0x7f80c2012310: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2012420: ch = store 0x7f80c2012200, 0x7f80c0832b70, 0x7f80c2012310, 0x7f80c0832ea0<ST4[%i3.addr]> [ORD=12] [ID=22]
+
+    0x7f80c2012420: <multiple use>
+    0x7f80c08330c0: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2012640: i32,ch = load 0x7f80c2012420, 0x7f80c08330c0, 0x7f80c0832ea0<LD4[%i2.addr]> [ORD=14] [ID=23]
+
+    0x7f80c2012420: <multiple use>
+    0x7f80c0832c80: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2012530: i32,ch = load 0x7f80c2012420, 0x7f80c0832c80, 0x7f80c0832ea0<LD4[%i1.addr]> [ORD=13] [ID=24]
+
+      0x7f80c2012530: <multiple use>
+      0x7f80c2012640: <multiple use>
+    0x7f80c2012970: ch = TokenFactor 0x7f80c2012530:1, 0x7f80c2012640:1 [ORD=16] [ID=25]
+
+      0x7f80c2012530: <multiple use>
+      0x7f80c2012640: <multiple use>
+    0x7f80c2012750: i32 = xor 0x7f80c2012530, 0x7f80c2012640 [ORD=15] [ID=26]
+
+    0x7f80c2012860: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2012a80: ch = store 0x7f80c2012970, 0x7f80c2012750, 0x7f80c2012860, 0x7f80c0832ea0<ST4[%n1]> [ORD=16] [ID=27]
+
+    0x7f80c2012a80: <multiple use>
+    0x7f80c2012310: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2012ca0: i32,ch = load 0x7f80c2012a80, 0x7f80c2012310, 0x7f80c0832ea0<LD4[%i3.addr]> [ORD=18] [ID=28]
+
+    0x7f80c2012a80: <multiple use>
+    0x7f80c08332e0: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2012b90: i32,ch = load 0x7f80c2012a80, 0x7f80c08332e0, 0x7f80c0832ea0<LD4[%key.addr]> [ORD=17] [ID=29]
+
+    0x7f80c2012b90: <multiple use>
+    0x7f80c2012ca0: <multiple use>
+  0x7f80c2012db0: i32 = and 0x7f80c2012b90, 0x7f80c2012ca0 [ORD=19] [ID=31]
+
+        0x7f80c2012b90: <multiple use>
+        0x7f80c2012ca0: <multiple use>
+      0x7f80c2012fd0: ch = TokenFactor 0x7f80c2012b90:1, 0x7f80c2012ca0:1 [ORD=20] [ID=30]
+
+      0x7f80c2012db0: <multiple use>
+      0x7f80c2012ec0: i64 = FrameIndex<5> [ID=11]
+
+      0x7f80c0832ea0: <multiple use>
+    0x7f80c20130e0: ch = store 0x7f80c2012fd0, 0x7f80c2012db0, 0x7f80c2012ec0, 0x7f80c0832ea0<ST4[%n2]> [ORD=20] [ID=32]
+
+    0x7f80c2012860: <multiple use>
+    0x7f80c0832ea0: <multiple use>
+  0x7f80c2013200: i32,ch = load 0x7f80c20130e0, 0x7f80c2012860, 0x7f80c0832ea0<LD4[%n1]> [ORD=21] [ID=33]
+
+    0x7f80c2013200: <multiple use>
+    0x7f80c2012db0: <multiple use>
+  0x7f80c2013420: i32 = or 0x7f80c2013200, 0x7f80c2012db0 [ORD=23] [ID=34]
+
+      0x7f80c2013200: <multiple use>
+      0x7f80c2013420: <multiple use>
+      0x7f80c2013530: i64 = FrameIndex<6> [ID=12]
+
+      0x7f80c0832ea0: <multiple use>
+    0x7f80c2013750: ch = store 0x7f80c2013200:1, 0x7f80c2013420, 0x7f80c2013530, 0x7f80c0832ea0<ST4[%n3]> [ORD=24] [ID=35]
+
+    0x7f80c2013a80: <multiple use>
+    0x7f80c2013420: <multiple use>
+  0x7f80c2013b90: ch,glue = CopyToReg 0x7f80c2013750, 0x7f80c2013a80, 0x7f80c2013420 [ORD=26] [ID=36]
+
+    0x7f80c2013b90: <multiple use>
+    0x7f80c2013970: i16 = TargetConstant<0> [ID=13]
+
+    0x7f80c2013a80: <multiple use>
+    0x7f80c2013b90: <multiple use>
+  0x7f80c2013ca0: ch = X86ISD::RET_FLAG 0x7f80c2013b90, 0x7f80c2013970, 0x7f80c2013a80, 0x7f80c2013b90:1 [ORD=26] [ID=37]
+
+
+===== Instruction selection begins: BB#0 'entry'
+ISEL: Starting pattern match on root node: 0x7f80c2013ca0: ch = X86ISD::RET_FLAG 0x7f80c2013b90, 0x7f80c2013970, 0x7f80c2013a80, 0x7f80c2013b90:1 [ORD=26] [ID=37]
+
+  Skipped scope entry (due to false predicate) at index 111672, continuing at 111681
+  Morphed node: 0x7f80c2013ca0: ch = RETQ 0x7f80c2013a80, 0x7f80c2013b90, 0x7f80c2013b90:1 [ORD=26]
+
+ISEL: Match complete!
+ISEL: Starting pattern match on root node: 0x7f80c2013750: ch = store 0x7f80c2013200:1, 0x7f80c2013420, 0x7f80c2013530, 0x7f80c0832ea0<ST4[%n3]> [ORD=24] [ID=35]
+
+  Initial Opcode index to 5
+  Skipped scope entry (due to false predicate) at index 13, continuing at 77
+  Skipped scope entry (due to false predicate) at index 78, continuing at 142
+  Skipped scope entry (due to false predicate) at index 143, continuing at 207
+  Skipped scope entry (due to false predicate) at index 208, continuing at 253
+  Skipped scope entry (due to false predicate) at index 254, continuing at 299
+  Skipped scope entry (due to false predicate) at index 300, continuing at 345
+  Match failed at index 349
+  Continuing at 369
+  Match failed at index 370
+  Continuing at 393
+  Match failed at index 394
+  Continuing at 437
+  Match failed at index 438
+  Continuing at 461
+  Match failed at index 462
+  Continuing at 485
+  Match failed at index 486
+  Continuing at 509
+  Continuing at 510
+  OpcodeSwitch from 514 to 6735
+  Match failed at index 6745
+  Continuing at 7121
+  Match failed at index 7126
+  Continuing at 7256
+  Continuing at 11101
+  Match failed at index 11106
+  Continuing at 11482
+  Match failed at index 11486
+  Continuing at 12239
+  Match failed at index 12240
+  Continuing at 12277
+  Match failed at index 12278
+  Continuing at 12306
+  Match failed at index 12307
+  Continuing at 12335
+  Match failed at index 12339
+  Continuing at 12450
+  Match failed at index 12454
+  Continuing at 12835
+  Skipped scope entry (due to false predicate) at index 12840, continuing at 12926
+  Skipped scope entry (due to false predicate) at index 12927, continuing at 13040
+  Skipped scope entry (due to false predicate) at index 13041, continuing at 13113
+  Skipped scope entry (due to false predicate) at index 13114, continuing at 13161
+  Skipped scope entry (due to false predicate) at index 13162, continuing at 13185
+  Morphed node: 0x7f80c2013750: ch = MOV32mr 0x7f80c0832d90, 0x7f80c2013640, 0x7f80c2013970, 0x7f80c2013310, 0x7f80c2013860, 0x7f80c2013420, 0x7f80c2013200:1<Mem:ST4[%n3]> [ORD=24]
+
+ISEL: Match complete!
+ISEL: Starting pattern match on root node: 0x7f80c2013420: i32 = or 0x7f80c2013200, 0x7f80c2012db0 [ORD=23] [ID=34]
+
+  Initial Opcode index to 91736
+  Match failed at index 91741
+  Continuing at 91848
+  Match failed at index 91866
+  Continuing at 91886
+  Match failed at index 91891
+  Continuing at 91911
+  Morphed node: 0x7f80c2013420: i32,i32,ch = OR32rm 0x7f80c2012db0, 0x7f80c2013530, 0x7f80c2013640, 0x7f80c2013970, 0x7f80c2013310, 0x7f80c2013860, 0x7f80c20130e0<Mem:LD4[%n1]> [ORD=23]
+
+ISEL: Match complete!
+ISEL: Starting pattern match on root node: 0x7f80c20130e0: ch = store 0x7f80c2012fd0, 0x7f80c2012db0, 0x7f80c2012ec0, 0x7f80c0832ea0<ST4[%n2]> [ORD=20] [ID=32]
+
+  Initial Opcode index to 5
+  Skipped scope entry (due to false predicate) at index 13, continuing at 77
+  Skipped scope entry (due to false predicate) at index 78, continuing at 142
+  Skipped scope entry (due to false predicate) at index 143, continuing at 207
+  Skipped scope entry (due to false predicate) at index 208, continuing at 253
+  Skipped scope entry (due to false predicate) at index 254, continuing at 299
+  Skipped scope entry (due to false predicate) at index 300, continuing at 345
+  Match failed at index 349
+  Continuing at 369
+  Match failed at index 370
+  Continuing at 393
+  Match failed at index 394
+  Continuing at 437
+  Match failed at index 438
+  Continuing at 461
+  Match failed at index 462
+  Continuing at 485
+  Match failed at index 486
+  Continuing at 509
+  Continuing at 510
+  OpcodeSwitch from 514 to 6209
+  Match failed at index 6219
+  Continuing at 6595
+  Match failed at index 6605
+  Continuing at 6730
+  Continuing at 11101
+  Match failed at index 11106
+  Continuing at 11482
+  Match failed at index 11486
+  Continuing at 12239
+  Match failed at index 12240
+  Continuing at 12277
+  Match failed at index 12278
+  Continuing at 12306
+  Match failed at index 12307
+  Continuing at 12335
+  Match failed at index 12339
+  Continuing at 12450
+  Match failed at index 12454
+  Continuing at 12835
+  Skipped scope entry (due to false predicate) at index 12840, continuing at 12926
+  Skipped scope entry (due to false predicate) at index 12927, continuing at 13040
+  Skipped scope entry (due to false predicate) at index 13041, continuing at 13113
+  Skipped scope entry (due to false predicate) at index 13114, continuing at 13161
+  Skipped scope entry (due to false predicate) at index 13162, continuing at 13185
+  Morphed node: 0x7f80c20130e0: ch = MOV32mr 0x7f80c2013200, 0x7f80c2013640, 0x7f80c2013970, 0x7f80c2013310, 0x7f80c2013860, 0x7f80c2012db0, 0x7f80c2012fd0<Mem:ST4[%n2]> [ORD=20]
+
+ISEL: Match complete!
+ISEL: Starting pattern match on root node: 0x7f80c2012db0: i32 = and 0x7f80c2012b90, 0x7f80c2012ca0 [ORD=19] [ID=31]
+
+  Initial Opcode index to 24650
+  OpcodeSwitch from 24655 to 24660
+  Match failed at index 24673
+  Continuing at 24741
+  Match failed at index 24747
+  Continuing at 24815
+  Match failed at index 24821
+  Continuing at 24859
+  Match failed at index 24865
+  Continuing at 24903
+  Continuing at 25118
+  Match failed at index 25136
+  Continuing at 25156
+  Match failed at index 25160
+  Continuing at 25180
+  Morphed node: 0x7f80c2012db0: i32,i32,ch = AND32rm 0x7f80c2012b90, 0x7f80c2012ec0, 0x7f80c2013640, 0x7f80c2013970, 0x7f80c2013310, 0x7f80c2013860, 0x7f80c2012a80<Mem:LD4[%i3.addr]> [ORD=19]
+
+ISEL: Match complete!
+ISEL: Starting pattern match on root node: 0x7f80c2012b90: i32,ch = load 0x7f80c2012a80, 0x7f80c08332e0, 0x7f80c0832ea0<LD4[%key.addr]> [ORD=17] [ID=29]
+
+  Initial Opcode index to 100179
+  Match failed at index 100188
+  Continuing at 100206
+  Match failed at index 100209
+  Continuing at 100227
+  Morphed node: 0x7f80c2012b90: i32,ch = MOV32rm 0x7f80c2012ca0, 0x7f80c2013640, 0x7f80c2013970, 0x7f80c2013310, 0x7f80c2013860, 0x7f80c2012a80<Mem:LD4[%key.addr]> [ORD=17]
+
+ISEL: Match complete!
+ISEL: Starting pattern match on root node: 0x7f80c2012a80: ch = store 0x7f80c2012970, 0x7f80c2012750, 0x7f80c2012860, 0x7f80c0832ea0<ST4[%n1]> [ORD=16] [ID=27]
+
+  Initial Opcode index to 5
+  Skipped scope entry (due to false predicate) at index 13, continuing at 77
+  Skipped scope entry (due to false predicate) at index 78, continuing at 142
+  Skipped scope entry (due to false predicate) at index 143, continuing at 207
+  Skipped scope entry (due to false predicate) at index 208, continuing at 253
+  Skipped scope entry (due to false predicate) at index 254, continuing at 299
+  Skipped scope entry (due to false predicate) at index 300, continuing at 345
+  Match failed at index 349
+  Continuing at 369
+  Match failed at index 370
+  Continuing at 393
+  Match failed at index 394
+  Continuing at 437
+  Match failed at index 438
+  Continuing at 461
+  Match failed at index 462
+  Continuing at 485
+  Match failed at index 486
+  Continuing at 509
+  Continuing at 510
+  OpcodeSwitch from 514 to 4480
+  Match failed at index 4499
+  Continuing at 4537
+  Match failed at index 4541
+  Continuing at 4579
+  Match failed at index 4583
+  Continuing at 4621
+  Skipped scope entry (due to false predicate) at index 4628, continuing at 4666
+  Match failed at index 4674
+  Continuing at 4916
+  Match failed at index 4917
+  Continuing at 4946
+  Match failed at index 4947
+  Continuing at 4976
+  Match failed at index 4980
+  Continuing at 5006
+  Match failed at index 5007
+  Continuing at 5036
+  Continuing at 5037
+  Continuing at 5038
+  Continuing at 5039
+  TypeSwitch[i32] from 5056 to 5117
+  Match failed at index 5118
+  Continuing at 5174
+  Continuing at 11101
+  Match failed at index 11106
+  Continuing at 11482
+  Match failed at index 11486
+  Continuing at 12239
+  Match failed at index 12240
+  Continuing at 12277
+  Match failed at index 12278
+  Continuing at 12306
+  Match failed at index 12307
+  Continuing at 12335
+  Match failed at index 12339
+  Continuing at 12450
+  Match failed at index 12454
+  Continuing at 12835
+  Skipped scope entry (due to false predicate) at index 12840, continuing at 12926
+  Skipped scope entry (due to false predicate) at index 12927, continuing at 13040
+  Skipped scope entry (due to false predicate) at index 13041, continuing at 13113
+  Skipped scope entry (due to false predicate) at index 13114, continuing at 13161
+  Skipped scope entry (due to false predicate) at index 13162, continuing at 13185
+  Morphed node: 0x7f80c2012a80: ch = MOV32mr 0x7f80c2013530, 0x7f80c2013640, 0x7f80c2013970, 0x7f80c2013310, 0x7f80c2013860, 0x7f80c2012750, 0x7f80c2012970<Mem:ST4[%n1]> [ORD=16]
+
+ISEL: Match complete!
+ISEL: Starting pattern match on root node: 0x7f80c2012750: i32 = xor 0x7f80c2012530, 0x7f80c2012640 [ORD=15] [ID=26]
+
+  Initial Opcode index to 94593
+  Match failed at index 94612
+  Continuing at 94632
+  Match failed at index 94636
+  Continuing at 94656
+  Morphed node: 0x7f80c2012750: i32,i32,ch = XOR32rm 0x7f80c2012530, 0x7f80c2012860, 0x7f80c2013640, 0x7f80c2013970, 0x7f80c2013310, 0x7f80c2013860, 0x7f80c2012420<Mem:LD4[%i2.addr]> [ORD=15]
+
+ISEL: Match complete!
+ISEL: Starting pattern match on root node: 0x7f80c2012530: i32,ch = load 0x7f80c2012420, 0x7f80c0832c80, 0x7f80c0832ea0<LD4[%i1.addr]> [ORD=13] [ID=24]
+
+  Initial Opcode index to 100179
+  Match failed at index 100188
+  Continuing at 100206
+  Match failed at index 100209
+  Continuing at 100227
+  Morphed node: 0x7f80c2012530: i32,ch = MOV32rm 0x7f80c2012640, 0x7f80c2013640, 0x7f80c2013970, 0x7f80c2013310, 0x7f80c2013860, 0x7f80c2012420<Mem:LD4[%i1.addr]> [ORD=13]
+
+ISEL: Match complete!
+ISEL: Starting pattern match on root node: 0x7f80c2012420: ch = store 0x7f80c2012200, 0x7f80c0832b70, 0x7f80c2012310, 0x7f80c0832ea0<ST4[%i3.addr]> [ORD=12] [ID=22]
+
+  Initial Opcode index to 5
+  Skipped scope entry (due to false predicate) at index 13, continuing at 77
+  Skipped scope entry (due to false predicate) at index 78, continuing at 142
+  Skipped scope entry (due to false predicate) at index 143, continuing at 207
+  Skipped scope entry (due to false predicate) at index 208, continuing at 253
+  Skipped scope entry (due to false predicate) at index 254, continuing at 299
+  Skipped scope entry (due to false predicate) at index 300, continuing at 345
+  Match failed at index 349
+  Continuing at 369
+  Match failed at index 370
+  Continuing at 393
+  Match failed at index 394
+  Continuing at 437
+  Match failed at index 438
+  Continuing at 461
+  Match failed at index 462
+  Continuing at 485
+  Match failed at index 486
+  Continuing at 509
+  Continuing at 510
+  Match failed at index 514
+  Continuing at 11101
+  Match failed at index 11106
+  Continuing at 11482
+  Match failed at index 11486
+  Continuing at 12239
+  Match failed at index 12240
+  Continuing at 12277
+  Match failed at index 12278
+  Continuing at 12306
+  Match failed at index 12307
+  Continuing at 12335
+  Match failed at index 12339
+  Continuing at 12450
+  Match failed at index 12454
+  Continuing at 12835
+  Skipped scope entry (due to false predicate) at index 12840, continuing at 12926
+  Skipped scope entry (due to false predicate) at index 12927, continuing at 13040
+  Skipped scope entry (due to false predicate) at index 13041, continuing at 13113
+  Skipped scope entry (due to false predicate) at index 13114, continuing at 13161
+  Skipped scope entry (due to false predicate) at index 13162, continuing at 13185
+  Morphed node: 0x7f80c2012420: ch = MOV32mr 0x7f80c2012ec0, 0x7f80c2013640, 0x7f80c2013970, 0x7f80c2013310, 0x7f80c2013860, 0x7f80c0832b70, 0x7f80c2012200<Mem:ST4[%i3.addr]> [ORD=12]
+
+ISEL: Match complete!
+ISEL: Starting pattern match on root node: 0x7f80c2012200: ch = store 0x7f80c08331d0, 0x7f80c0832950, 0x7f80c08332e0, 0x7f80c0832ea0<ST4[%key.addr]> [ORD=11] [ID=21]
+
+  Initial Opcode index to 5
+  Skipped scope entry (due to false predicate) at index 13, continuing at 77
+  Skipped scope entry (due to false predicate) at index 78, continuing at 142
+  Skipped scope entry (due to false predicate) at index 143, continuing at 207
+  Skipped scope entry (due to false predicate) at index 208, continuing at 253
+  Skipped scope entry (due to false predicate) at index 254, continuing at 299
+  Skipped scope entry (due to false predicate) at index 300, continuing at 345
+  Match failed at index 349
+  Continuing at 369
+  Match failed at index 370
+  Continuing at 393
+  Match failed at index 394
+  Continuing at 437
+  Match failed at index 438
+  Continuing at 461
+  Match failed at index 462
+  Continuing at 485
+  Match failed at index 486
+  Continuing at 509
+  Continuing at 510
+  Match failed at index 514
+  Continuing at 11101
+  Match failed at index 11106
+  Continuing at 11482
+  Match failed at index 11486
+  Continuing at 12239
+  Match failed at index 12240
+  Continuing at 12277
+  Match failed at index 12278
+  Continuing at 12306
+  Match failed at index 12307
+  Continuing at 12335
+  Match failed at index 12339
+  Continuing at 12450
+  Match failed at index 12454
+  Continuing at 12835
+  Skipped scope entry (due to false predicate) at index 12840, continuing at 12926
+  Skipped scope entry (due to false predicate) at index 12927, continuing at 13040
+  Skipped scope entry (due to false predicate) at index 13041, continuing at 13113
+  Skipped scope entry (due to false predicate) at index 13114, continuing at 13161
+  Skipped scope entry (due to false predicate) at index 13162, continuing at 13185
+  Morphed node: 0x7f80c2012200: ch = MOV32mr 0x7f80c2012ca0, 0x7f80c2013640, 0x7f80c2013970, 0x7f80c2013310, 0x7f80c2013860, 0x7f80c0832950, 0x7f80c08331d0<Mem:ST4[%key.addr]> [ORD=11]
+
+ISEL: Match complete!
+ISEL: Starting pattern match on root node: 0x7f80c08331d0: ch = store 0x7f80c0832fb0, 0x7f80c0832730, 0x7f80c08330c0, 0x7f80c0832ea0<ST4[%i2.addr]> [ORD=10] [ID=20]
+
+  Initial Opcode index to 5
+  Skipped scope entry (due to false predicate) at index 13, continuing at 77
+  Skipped scope entry (due to false predicate) at index 78, continuing at 142
+  Skipped scope entry (due to false predicate) at index 143, continuing at 207
+  Skipped scope entry (due to false predicate) at index 208, continuing at 253
+  Skipped scope entry (due to false predicate) at index 254, continuing at 299
+  Skipped scope entry (due to false predicate) at index 300, continuing at 345
+  Match failed at index 349
+  Continuing at 369
+  Match failed at index 370
+  Continuing at 393
+  Match failed at index 394
+  Continuing at 437
+  Match failed at index 438
+  Continuing at 461
+  Match failed at index 462
+  Continuing at 485
+  Match failed at index 486
+  Continuing at 509
+  Continuing at 510
+  Match failed at index 514
+  Continuing at 11101
+  Match failed at index 11106
+  Continuing at 11482
+  Match failed at index 11486
+  Continuing at 12239
+  Match failed at index 12240
+  Continuing at 12277
+  Match failed at index 12278
+  Continuing at 12306
+  Match failed at index 12307
+  Continuing at 12335
+  Match failed at index 12339
+  Continuing at 12450
+  Match failed at index 12454
+  Continuing at 12835
+  Skipped scope entry (due to false predicate) at index 12840, continuing at 12926
+  Skipped scope entry (due to false predicate) at index 12927, continuing at 13040
+  Skipped scope entry (due to false predicate) at index 13041, continuing at 13113
+  Skipped scope entry (due to false predicate) at index 13114, continuing at 13161
+  Skipped scope entry (due to false predicate) at index 13162, continuing at 13185
+  Morphed node: 0x7f80c08331d0: ch = MOV32mr 0x7f80c2012860, 0x7f80c2013640, 0x7f80c2013970, 0x7f80c2013310, 0x7f80c2013860, 0x7f80c0832730, 0x7f80c0832fb0<Mem:ST4[%i2.addr]> [ORD=10]
+
+ISEL: Match complete!
+ISEL: Starting pattern match on root node: 0x7f80c0832fb0: ch = store 0x7f80c05078a0, 0x7f80c0832510, 0x7f80c0832c80, 0x7f80c0832ea0<ST4[%i1.addr]> [ORD=9] [ID=19]
+
+  Initial Opcode index to 5
+  Skipped scope entry (due to false predicate) at index 13, continuing at 77
+  Skipped scope entry (due to false predicate) at index 78, continuing at 142
+  Skipped scope entry (due to false predicate) at index 143, continuing at 207
+  Skipped scope entry (due to false predicate) at index 208, continuing at 253
+  Skipped scope entry (due to false predicate) at index 254, continuing at 299
+  Skipped scope entry (due to false predicate) at index 300, continuing at 345
+  Match failed at index 349
+  Continuing at 369
+  Match failed at index 370
+  Continuing at 393
+  Match failed at index 394
+  Continuing at 437
+  Match failed at index 438
+  Continuing at 461
+  Match failed at index 462
+  Continuing at 485
+  Match failed at index 486
+  Continuing at 509
+  Continuing at 510
+  Match failed at index 514
+  Continuing at 11101
+  Match failed at index 11106
+  Continuing at 11482
+  Match failed at index 11486
+  Continuing at 12239
+  Match failed at index 12240
+  Continuing at 12277
+  Match failed at index 12278
+  Continuing at 12306
+  Match failed at index 12307
+  Continuing at 12335
+  Match failed at index 12339
+  Continuing at 12450
+  Match failed at index 12454
+  Continuing at 12835
+  Skipped scope entry (due to false predicate) at index 12840, continuing at 12926
+  Skipped scope entry (due to false predicate) at index 12927, continuing at 13040
+  Skipped scope entry (due to false predicate) at index 13041, continuing at 13113
+  Skipped scope entry (due to false predicate) at index 13114, continuing at 13161
+  Skipped scope entry (due to false predicate) at index 13162, continuing at 13185
+  Morphed node: 0x7f80c0832fb0: ch = MOV32mr 0x7f80c2012640, 0x7f80c2013640, 0x7f80c2013970, 0x7f80c2013310, 0x7f80c2013860, 0x7f80c0832510, 0x7f80c05078a0<Mem:ST4[%i1.addr]> [ORD=9]
+
+ISEL: Match complete!
+===== Instruction selection ends:
+Selected selection DAG: BB#0 'leak:entry'
+SelectionDAG has 37 nodes:
+  0x7f80c05078a0: ch = EntryToken
+
+  0x7f80c2013a80: i32 = Register %EAX
+
+    0x7f80c2012ec0: <multiple use>
+    0x7f80c2013640: <multiple use>
+    0x7f80c2013970: <multiple use>
+    0x7f80c2013310: <multiple use>
+    0x7f80c2013860: <multiple use>
+      0x7f80c05078a0: <multiple use>
+      0x7f80c0832a60: i32 = Register %vreg3
+
+    0x7f80c0832b70: i32,ch = CopyFromReg 0x7f80c05078a0, 0x7f80c0832a60 [ORD=1]
+
+      0x7f80c2012ca0: <multiple use>
+      0x7f80c2013640: <multiple use>
+      0x7f80c2013970: <multiple use>
+      0x7f80c2013310: <multiple use>
+      0x7f80c2013860: <multiple use>
+        0x7f80c05078a0: <multiple use>
+        0x7f80c0832840: i32 = Register %vreg2
+
+      0x7f80c0832950: i32,ch = CopyFromReg 0x7f80c05078a0, 0x7f80c0832840 [ORD=1]
+
+        0x7f80c2012860: <multiple use>
+        0x7f80c2013640: <multiple use>
+        0x7f80c2013970: <multiple use>
+        0x7f80c2013310: <multiple use>
+        0x7f80c2013860: <multiple use>
+          0x7f80c05078a0: <multiple use>
+          0x7f80c0832620: i32 = Register %vreg1
+
+        0x7f80c0832730: i32,ch = CopyFromReg 0x7f80c05078a0, 0x7f80c0832620 [ORD=1]
+
+          0x7f80c2012640: <multiple use>
+          0x7f80c2013640: <multiple use>
+          0x7f80c2013970: <multiple use>
+          0x7f80c2013310: <multiple use>
+          0x7f80c2013860: <multiple use>
+            0x7f80c05078a0: <multiple use>
+            0x7f80c0832400: i32 = Register %vreg0
+
+          0x7f80c0832510: i32,ch = CopyFromReg 0x7f80c05078a0, 0x7f80c0832400 [ORD=1]
+
+          0x7f80c05078a0: <multiple use>
+        0x7f80c0832fb0: ch = MOV32mr 0x7f80c2012640, 0x7f80c2013640, 0x7f80c2013970, 0x7f80c2013310, 0x7f80c2013860, 0x7f80c0832510, 0x7f80c05078a0<Mem:ST4[%i1.addr]> [ORD=9]
+
+      0x7f80c08331d0: ch = MOV32mr 0x7f80c2012860, 0x7f80c2013640, 0x7f80c2013970, 0x7f80c2013310, 0x7f80c2013860, 0x7f80c0832730, 0x7f80c0832fb0<Mem:ST4[%i2.addr]> [ORD=10]
+
+    0x7f80c2012200: ch = MOV32mr 0x7f80c2012ca0, 0x7f80c2013640, 0x7f80c2013970, 0x7f80c2013310, 0x7f80c2013860, 0x7f80c0832950, 0x7f80c08331d0<Mem:ST4[%key.addr]> [ORD=11]
+
+  0x7f80c2012420: ch = MOV32mr 0x7f80c2012ec0, 0x7f80c2013640, 0x7f80c2013970, 0x7f80c2013310, 0x7f80c2013860, 0x7f80c0832b70, 0x7f80c2012200<Mem:ST4[%i3.addr]> [ORD=12]
+
+    0x7f80c2012640: <multiple use>
+    0x7f80c2013640: <multiple use>
+    0x7f80c2013970: <multiple use>
+    0x7f80c2013310: <multiple use>
+    0x7f80c2013860: <multiple use>
+    0x7f80c2012420: <multiple use>
+  0x7f80c2012530: i32,ch = MOV32rm 0x7f80c2012640, 0x7f80c2013640, 0x7f80c2013970, 0x7f80c2013310, 0x7f80c2013860, 0x7f80c2012420<Mem:LD4[%i1.addr]> [ORD=13]
+
+    0x7f80c2012530: <multiple use>
+    0x7f80c2012860: <multiple use>
+    0x7f80c2013640: <multiple use>
+    0x7f80c2013970: <multiple use>
+    0x7f80c2013310: <multiple use>
+    0x7f80c2013860: <multiple use>
+    0x7f80c2012420: <multiple use>
+  0x7f80c2012750: i32,i32,ch = XOR32rm 0x7f80c2012530, 0x7f80c2012860, 0x7f80c2013640, 0x7f80c2013970, 0x7f80c2013310, 0x7f80c2013860, 0x7f80c2012420<Mem:LD4[%i2.addr]> [ORD=15]
+
+    0x7f80c2013530: <multiple use>
+    0x7f80c2013640: <multiple use>
+    0x7f80c2013970: <multiple use>
+    0x7f80c2013310: <multiple use>
+    0x7f80c2013860: <multiple use>
+    0x7f80c2012750: <multiple use>
+      0x7f80c2012530: <multiple use>
+      0x7f80c2012750: <multiple use>
+    0x7f80c2012970: ch = TokenFactor 0x7f80c2012530:1, 0x7f80c2012750:2 [ORD=16]
+
+  0x7f80c2012a80: ch = MOV32mr 0x7f80c2013530, 0x7f80c2013640, 0x7f80c2013970, 0x7f80c2013310, 0x7f80c2013860, 0x7f80c2012750, 0x7f80c2012970<Mem:ST4[%n1]> [ORD=16]
+
+    0x7f80c2012ca0: <multiple use>
+    0x7f80c2013640: <multiple use>
+    0x7f80c2013970: <multiple use>
+    0x7f80c2013310: <multiple use>
+    0x7f80c2013860: <multiple use>
+    0x7f80c2012a80: <multiple use>
+  0x7f80c2012b90: i32,ch = MOV32rm 0x7f80c2012ca0, 0x7f80c2013640, 0x7f80c2013970, 0x7f80c2013310, 0x7f80c2013860, 0x7f80c2012a80<Mem:LD4[%key.addr]> [ORD=17]
+
+    0x7f80c2012b90: <multiple use>
+    0x7f80c2012ec0: <multiple use>
+    0x7f80c2013640: <multiple use>
+    0x7f80c2013970: <multiple use>
+    0x7f80c2013310: <multiple use>
+    0x7f80c2013860: <multiple use>
+    0x7f80c2012a80: <multiple use>
+  0x7f80c2012db0: i32,i32,ch = AND32rm 0x7f80c2012b90, 0x7f80c2012ec0, 0x7f80c2013640, 0x7f80c2013970, 0x7f80c2013310, 0x7f80c2013860, 0x7f80c2012a80<Mem:LD4[%i3.addr]> [ORD=19]
+
+    0x7f80c2012db0: <multiple use>
+    0x7f80c2013530: <multiple use>
+    0x7f80c2013640: <multiple use>
+    0x7f80c2013970: <multiple use>
+    0x7f80c2013310: <multiple use>
+    0x7f80c2013860: <multiple use>
+      0x7f80c2013200: i64 = TargetFrameIndex<5>
+
+      0x7f80c2013640: <multiple use>
+      0x7f80c2013970: <multiple use>
+      0x7f80c2013310: <multiple use>
+      0x7f80c2013860: <multiple use>
+      0x7f80c2012db0: <multiple use>
+        0x7f80c2012b90: <multiple use>
+        0x7f80c2012db0: <multiple use>
+      0x7f80c2012fd0: ch = TokenFactor 0x7f80c2012b90:1, 0x7f80c2012db0:2 [ORD=20]
+
+    0x7f80c20130e0: ch = MOV32mr 0x7f80c2013200, 0x7f80c2013640, 0x7f80c2013970, 0x7f80c2013310, 0x7f80c2013860, 0x7f80c2012db0, 0x7f80c2012fd0<Mem:ST4[%n2]> [ORD=20]
+
+  0x7f80c2013420: i32,i32,ch = OR32rm 0x7f80c2012db0, 0x7f80c2013530, 0x7f80c2013640, 0x7f80c2013970, 0x7f80c2013310, 0x7f80c2013860, 0x7f80c20130e0<Mem:LD4[%n1]> [ORD=23]
+
+      0x7f80c0832d90: i64 = TargetFrameIndex<6>
+
+      0x7f80c2013640: <multiple use>
+      0x7f80c2013970: <multiple use>
+      0x7f80c2013310: <multiple use>
+      0x7f80c2013860: <multiple use>
+      0x7f80c2013420: <multiple use>
+      0x7f80c2013420: <multiple use>
+    0x7f80c2013750: ch = MOV32mr 0x7f80c0832d90, 0x7f80c2013640, 0x7f80c2013970, 0x7f80c2013310, 0x7f80c2013860, 0x7f80c2013420, 0x7f80c2013420:2<Mem:ST4[%n3]> [ORD=24]
+
+    0x7f80c2013a80: <multiple use>
+    0x7f80c2013420: <multiple use>
+  0x7f80c2013b90: ch,glue = CopyToReg 0x7f80c2013750, 0x7f80c2013a80, 0x7f80c2013420 [ORD=26]
+
+  0x7f80c2013970: i64 = Register %noreg
+
+  0x7f80c2013640: i8 = TargetConstant<1>
+
+  0x7f80c2013310: i32 = TargetConstant<0>
+
+  0x7f80c2013860: i32 = Register %noreg
+
+  0x7f80c2013530: i64 = TargetFrameIndex<4>
+
+  0x7f80c2012ec0: i64 = TargetFrameIndex<3>
+
+  0x7f80c2012ca0: i64 = TargetFrameIndex<2>
+
+  0x7f80c2012860: i64 = TargetFrameIndex<1>
+
+  0x7f80c2012640: i64 = TargetFrameIndex<0>
+
+    0x7f80c2013a80: <multiple use>
+    0x7f80c2013b90: <multiple use>
+    0x7f80c2013b90: <multiple use>
+  0x7f80c2013ca0: ch = RETQ 0x7f80c2013a80, 0x7f80c2013b90, 0x7f80c2013b90:1 [ORD=26]
+
+
+Total amount of phi nodes to update: 0
+*** MachineFunction at end of ISel ***
+# Machine code for function leak: SSA
+Frame Objects:
+  fi#0: size=4, align=4, at location [SP+8]
+  fi#1: size=4, align=4, at location [SP+8]
+  fi#2: size=4, align=4, at location [SP+8]
+  fi#3: size=4, align=4, at location [SP+8]
+  fi#4: size=4, align=4, at location [SP+8]
+  fi#5: size=4, align=4, at location [SP+8]
+  fi#6: size=4, align=4, at location [SP+8]
+Function Live Ins: %EDI in %vreg0, %ESI in %vreg1, %EDX in %vreg2, %ECX in %vreg3
+
+BB#0: derived from LLVM BB %entry
+    Live Ins: %EDI %ESI %EDX %ECX
+	%vreg3<def> = COPY %ECX; GR32:%vreg3
+	%vreg2<def> = COPY %EDX; GR32:%vreg2
+	%vreg1<def> = COPY %ESI; GR32:%vreg1
+	%vreg0<def> = COPY %EDI; GR32:%vreg0
+	MOV32mr <fi#0>, 1, %noreg, 0, %noreg, %vreg0; mem:ST4[%i1.addr] GR32:%vreg0
+	MOV32mr <fi#1>, 1, %noreg, 0, %noreg, %vreg1; mem:ST4[%i2.addr] GR32:%vreg1
+	MOV32mr <fi#2>, 1, %noreg, 0, %noreg, %vreg2; mem:ST4[%key.addr] GR32:%vreg2
+	MOV32mr <fi#3>, 1, %noreg, 0, %noreg, %vreg3; mem:ST4[%i3.addr] GR32:%vreg3
+	%vreg4<def> = MOV32rm <fi#0>, 1, %noreg, 0, %noreg; mem:LD4[%i1.addr] GR32:%vreg4
+	%vreg5<def,tied1> = XOR32rm %vreg4<tied0>, <fi#1>, 1, %noreg, 0, %noreg, %EFLAGS<imp-def,dead>; mem:LD4[%i2.addr] GR32:%vreg5,%vreg4
+	MOV32mr <fi#4>, 1, %noreg, 0, %noreg, %vreg5<kill>; mem:ST4[%n1] GR32:%vreg5
+	%vreg6<def> = MOV32rm <fi#2>, 1, %noreg, 0, %noreg; mem:LD4[%key.addr] GR32:%vreg6
+	%vreg7<def,tied1> = AND32rm %vreg6<tied0>, <fi#3>, 1, %noreg, 0, %noreg, %EFLAGS<imp-def,dead>; mem:LD4[%i3.addr] GR32:%vreg7,%vreg6
+	MOV32mr <fi#5>, 1, %noreg, 0, %noreg, %vreg7; mem:ST4[%n2] GR32:%vreg7
+	%vreg8<def,tied1> = OR32rm %vreg7<tied0>, <fi#4>, 1, %noreg, 0, %noreg, %EFLAGS<imp-def,dead>; mem:LD4[%n1] GR32:%vreg8,%vreg7
+	MOV32mr <fi#6>, 1, %noreg, 0, %noreg, %vreg8; mem:ST4[%n3] GR32:%vreg8
+	%EAX<def> = COPY %vreg8; GR32:%vreg8
+	RETQ %EAX
+
+# End machine code for function leak.
+
+
+
+
+=== main
+Initial selection DAG: BB#0 'main:entry'
+SelectionDAG has 43 nodes:
+  0x7f80c2012640: i32 = Constant<0>
+
+  0x7f80c2012ca0: i64 = Constant<0>
+
+  0x7f80c2012ec0: i64 = undef
+
+  0x7f80c2013530: i32 = Constant<1>
+
+  0x7f80c2013860: i64 = FrameIndex<1>
+
+  0x7f80c2013640: i64 = FrameIndex<2>
+
+  0x7f80c2013970: i64 = FrameIndex<3>
+
+  0x7f80c2013b90: i64 = FrameIndex<4>
+
+            0x7f80c05078a0: ch = EntryToken
+
+            0x7f80c2012640: <multiple use>
+            0x7f80c2012860: i64 = FrameIndex<0>
+
+            0x7f80c2012ec0: <multiple use>
+          0x7f80c2013200: ch = store 0x7f80c05078a0, 0x7f80c2012640, 0x7f80c2012860, 0x7f80c2012ec0<ST4[%retval]> [ORD=8]
+
+          0x7f80c2013530: <multiple use>
+          0x7f80c2013860: <multiple use>
+          0x7f80c2012ec0: <multiple use>
+        0x7f80c2013310: ch = store 0x7f80c2013200, 0x7f80c2013530, 0x7f80c2013860, 0x7f80c2012ec0<ST4[%i1]> [ORD=9]
+
+        0x7f80c2012640: <multiple use>
+        0x7f80c2013640: <multiple use>
+        0x7f80c2012ec0: <multiple use>
+      0x7f80c0832d90: ch = store 0x7f80c2013310, 0x7f80c2012640, 0x7f80c2013640, 0x7f80c2012ec0<ST4[%i2]> [ORD=10]
+
+      0x7f80c2012640: <multiple use>
+      0x7f80c2013970: <multiple use>
+      0x7f80c2012ec0: <multiple use>
+    0x7f80c2013ca0: ch = store 0x7f80c0832d90, 0x7f80c2012640, 0x7f80c2013970, 0x7f80c2012ec0<ST4[%i3]> [ORD=11]
+
+    0x7f80c2013530: <multiple use>
+    0x7f80c2013b90: <multiple use>
+    0x7f80c2012ec0: <multiple use>
+  0x7f80c2013750: ch = store 0x7f80c2013ca0, 0x7f80c2013530, 0x7f80c2013b90, 0x7f80c2012ec0<ST4[%i4]> [ORD=12]
+
+    0x7f80c2013750: <multiple use>
+    0x7f80c2013860: <multiple use>
+    0x7f80c2012ec0: <multiple use>
+  0x7f80c2013420: i32,ch = load 0x7f80c2013750, 0x7f80c2013860, 0x7f80c2012ec0<LD4[%i1]> [ORD=13]
+
+    0x7f80c2013750: <multiple use>
+    0x7f80c2013640: <multiple use>
+    0x7f80c2012ec0: <multiple use>
+  0x7f80c20130e0: i32,ch = load 0x7f80c2013750, 0x7f80c2013640, 0x7f80c2012ec0<LD4[%i2]> [ORD=14]
+
+    0x7f80c2013750: <multiple use>
+    0x7f80c2013970: <multiple use>
+    0x7f80c2012ec0: <multiple use>
+  0x7f80c2012db0: i32,ch = load 0x7f80c2013750, 0x7f80c2013970, 0x7f80c2012ec0<LD4[%i3]> [ORD=15]
+
+    0x7f80c2013750: <multiple use>
+    0x7f80c2013b90: <multiple use>
+    0x7f80c2012ec0: <multiple use>
+  0x7f80c2012fd0: i32,ch = load 0x7f80c2013750, 0x7f80c2013b90, 0x7f80c2012ec0<LD4[%i4]> [ORD=16]
+
+  0x7f80c2012b90: i64 = GlobalAddress<i32 (i32, i32, i32, i32)* @leak> 0 [ORD=17]
+
+  0x7f80c2012750: i64 = TargetConstant<0>
+
+  0x7f80c2012530: i32 = Register %EDI
+
+        0x7f80c2013420: <multiple use>
+        0x7f80c20130e0: <multiple use>
+        0x7f80c2012db0: <multiple use>
+        0x7f80c2012fd0: <multiple use>
+      0x7f80c2012a80: ch = TokenFactor 0x7f80c2013420:1, 0x7f80c20130e0:1, 0x7f80c2012db0:1, 0x7f80c2012fd0:1 [ORD=17]
+
+      0x7f80c2012750: <multiple use>
+    0x7f80c2012970: ch,glue = callseq_start 0x7f80c2012a80, 0x7f80c2012750 [ORD=17]
+
+    0x7f80c2012530: <multiple use>
+    0x7f80c2013420: <multiple use>
+  0x7f80c2012420: ch,glue = CopyToReg 0x7f80c2012970, 0x7f80c2012530, 0x7f80c2013420 [ORD=17]
+
+  0x7f80c2012200: i32 = Register %ESI
+
+    0x7f80c2012420: <multiple use>
+    0x7f80c2012200: <multiple use>
+    0x7f80c20130e0: <multiple use>
+    0x7f80c2012420: <multiple use>
+  0x7f80c08331d0: ch,glue = CopyToReg 0x7f80c2012420, 0x7f80c2012200, 0x7f80c20130e0, 0x7f80c2012420:1 [ORD=17]
+
+  0x7f80c0832fb0: i32 = Register %EDX
+
+    0x7f80c08331d0: <multiple use>
+    0x7f80c0832fb0: <multiple use>
+    0x7f80c2012db0: <multiple use>
+    0x7f80c08331d0: <multiple use>
+  0x7f80c0832b70: ch,glue = CopyToReg 0x7f80c08331d0, 0x7f80c0832fb0, 0x7f80c2012db0, 0x7f80c08331d0:1 [ORD=17]
+
+  0x7f80c0832950: i32 = Register %ECX
+
+    0x7f80c0832b70: <multiple use>
+    0x7f80c0832950: <multiple use>
+    0x7f80c2012fd0: <multiple use>
+    0x7f80c0832b70: <multiple use>
+  0x7f80c0832730: ch,glue = CopyToReg 0x7f80c0832b70, 0x7f80c0832950, 0x7f80c2012fd0, 0x7f80c0832b70:1 [ORD=17]
+
+    0x7f80c0832730: <multiple use>
+    0x7f80c0832510: i64 = TargetGlobalAddress<i32 (i32, i32, i32, i32)* @leak> 0 [ORD=17]
+
+    0x7f80c2012530: <multiple use>
+    0x7f80c2012200: <multiple use>
+    0x7f80c0832fb0: <multiple use>
+    0x7f80c0832950: <multiple use>
+    0x7f80c2013a80: Untyped = RegisterMask
+
+    0x7f80c0832730: <multiple use>
+  0x7f80c0832a60: ch,glue = X86ISD::CALL 0x7f80c0832730, 0x7f80c0832510, 0x7f80c2012530, 0x7f80c2012200, 0x7f80c0832fb0, 0x7f80c0832950, 0x7f80c2013a80, 0x7f80c0832730:1 [ORD=17]
+
+    0x7f80c0832a60: <multiple use>
+    0x7f80c2012750: <multiple use>
+    0x7f80c2012750: <multiple use>
+    0x7f80c0832a60: <multiple use>
+  0x7f80c0832840: ch,glue = callseq_end 0x7f80c0832a60, 0x7f80c2012750, 0x7f80c2012750, 0x7f80c0832a60:1 [ORD=17]
+
+  0x7f80c0832620: i32 = Register %EAX
+
+    0x7f80c0832840: <multiple use>
+    0x7f80c0832620: <multiple use>
+    0x7f80c0832840: <multiple use>
+  0x7f80c0832400: i32,ch,glue = CopyFromReg 0x7f80c0832840, 0x7f80c0832620, 0x7f80c0832840:1 [ORD=17]
+
+  0x7f80c0832c80: i64 = FrameIndex<5>
+
+    0x7f80c0832400: <multiple use>
+    0x7f80c0832400: <multiple use>
+    0x7f80c0832c80: <multiple use>
+    0x7f80c2012ec0: <multiple use>
+  0x7f80c0832ea0: ch = store 0x7f80c0832400:1, 0x7f80c0832400, 0x7f80c0832c80, 0x7f80c2012ec0<ST4[%res]> [ORD=18]
+
+    0x7f80c0832ea0: <multiple use>
+    0x7f80c0832620: <multiple use>
+      0x7f80c0832ea0: <multiple use>
+      0x7f80c0832c80: <multiple use>
+      0x7f80c2012ec0: <multiple use>
+    0x7f80c08330c0: i32,ch = load 0x7f80c0832ea0, 0x7f80c0832c80, 0x7f80c2012ec0<LD4[%res]> [ORD=19]
+
+  0x7f80c2012310: ch,glue = CopyToReg 0x7f80c0832ea0, 0x7f80c0832620, 0x7f80c08330c0 [ORD=20]
+
+    0x7f80c2012310: <multiple use>
+    0x7f80c08332e0: i16 = TargetConstant<0>
+
+    0x7f80c0832620: <multiple use>
+    0x7f80c2012310: <multiple use>
+  0x7f80c2013db0: ch = X86ISD::RET_FLAG 0x7f80c2012310, 0x7f80c08332e0, 0x7f80c0832620, 0x7f80c2012310:1 [ORD=20]
+
+
+Optimized lowered selection DAG: BB#0 'main:entry'
+SelectionDAG has 39 nodes:
+  0x7f80c2012640: i32 = Constant<0>
+
+  0x7f80c2012ec0: i64 = undef
+
+  0x7f80c2013530: i32 = Constant<1>
+
+  0x7f80c2013860: i64 = FrameIndex<1>
+
+  0x7f80c2013640: i64 = FrameIndex<2>
+
+  0x7f80c2013970: i64 = FrameIndex<3>
+
+            0x7f80c05078a0: ch = EntryToken
+
+            0x7f80c2012640: <multiple use>
+            0x7f80c2012860: i64 = FrameIndex<0>
+
+            0x7f80c2012ec0: <multiple use>
+          0x7f80c2013200: ch = store 0x7f80c05078a0, 0x7f80c2012640, 0x7f80c2012860, 0x7f80c2012ec0<ST4[%retval]> [ORD=8]
+
+          0x7f80c2013530: <multiple use>
+          0x7f80c2013860: <multiple use>
+          0x7f80c2012ec0: <multiple use>
+        0x7f80c2013310: ch = store 0x7f80c2013200, 0x7f80c2013530, 0x7f80c2013860, 0x7f80c2012ec0<ST4[%i1]> [ORD=9]
+
+        0x7f80c2012640: <multiple use>
+        0x7f80c2013640: <multiple use>
+        0x7f80c2012ec0: <multiple use>
+      0x7f80c0832d90: ch = store 0x7f80c2013310, 0x7f80c2012640, 0x7f80c2013640, 0x7f80c2012ec0<ST4[%i2]> [ORD=10]
+
+      0x7f80c2012640: <multiple use>
+      0x7f80c2013970: <multiple use>
+      0x7f80c2012ec0: <multiple use>
+    0x7f80c2013ca0: ch = store 0x7f80c0832d90, 0x7f80c2012640, 0x7f80c2013970, 0x7f80c2012ec0<ST4[%i3]> [ORD=11]
+
+    0x7f80c2013530: <multiple use>
+    0x7f80c2013b90: i64 = FrameIndex<4>
+
+    0x7f80c2012ec0: <multiple use>
+  0x7f80c2013750: ch = store 0x7f80c2013ca0, 0x7f80c2013530, 0x7f80c2013b90, 0x7f80c2012ec0<ST4[%i4]> [ORD=12]
+
+    0x7f80c2013750: <multiple use>
+    0x7f80c2013860: <multiple use>
+    0x7f80c2012ec0: <multiple use>
+  0x7f80c2013420: i32,ch = load 0x7f80c2013750, 0x7f80c2013860, 0x7f80c2012ec0<LD4[%i1]> [ORD=13]
+
+    0x7f80c2013750: <multiple use>
+    0x7f80c2013640: <multiple use>
+    0x7f80c2012ec0: <multiple use>
+  0x7f80c20130e0: i32,ch = load 0x7f80c2013750, 0x7f80c2013640, 0x7f80c2012ec0<LD4[%i2]> [ORD=14]
+
+    0x7f80c2013750: <multiple use>
+    0x7f80c2013970: <multiple use>
+    0x7f80c2012ec0: <multiple use>
+  0x7f80c2012db0: i32,ch = load 0x7f80c2013750, 0x7f80c2013970, 0x7f80c2012ec0<LD4[%i3]> [ORD=15]
+
+  0x7f80c2012750: i64 = TargetConstant<0>
+
+  0x7f80c2012530: i32 = Register %EDI
+
+        0x7f80c2013420: <multiple use>
+        0x7f80c20130e0: <multiple use>
+        0x7f80c2012db0: <multiple use>
+        0x7f80c2013750: <multiple use>
+      0x7f80c2012a80: ch = TokenFactor 0x7f80c2013420:1, 0x7f80c20130e0:1, 0x7f80c2012db0:1, 0x7f80c2013750 [ORD=17]
+
+      0x7f80c2012750: <multiple use>
+    0x7f80c2012970: ch,glue = callseq_start 0x7f80c2012a80, 0x7f80c2012750 [ORD=17]
+
+    0x7f80c2012530: <multiple use>
+    0x7f80c2013420: <multiple use>
+  0x7f80c2012420: ch,glue = CopyToReg 0x7f80c2012970, 0x7f80c2012530, 0x7f80c2013420 [ORD=17]
+
+  0x7f80c2012200: i32 = Register %ESI
+
+    0x7f80c2012420: <multiple use>
+    0x7f80c2012200: <multiple use>
+    0x7f80c20130e0: <multiple use>
+    0x7f80c2012420: <multiple use>
+  0x7f80c08331d0: ch,glue = CopyToReg 0x7f80c2012420, 0x7f80c2012200, 0x7f80c20130e0, 0x7f80c2012420:1 [ORD=17]
+
+  0x7f80c0832fb0: i32 = Register %EDX
+
+    0x7f80c08331d0: <multiple use>
+    0x7f80c0832fb0: <multiple use>
+    0x7f80c2012db0: <multiple use>
+    0x7f80c08331d0: <multiple use>
+  0x7f80c0832b70: ch,glue = CopyToReg 0x7f80c08331d0, 0x7f80c0832fb0, 0x7f80c2012db0, 0x7f80c08331d0:1 [ORD=17]
+
+  0x7f80c0832950: i32 = Register %ECX
+
+    0x7f80c0832b70: <multiple use>
+    0x7f80c0832950: <multiple use>
+    0x7f80c2013530: <multiple use>
+    0x7f80c0832b70: <multiple use>
+  0x7f80c0832730: ch,glue = CopyToReg 0x7f80c0832b70, 0x7f80c0832950, 0x7f80c2013530, 0x7f80c0832b70:1 [ORD=17]
+
+    0x7f80c0832730: <multiple use>
+    0x7f80c0832510: i64 = TargetGlobalAddress<i32 (i32, i32, i32, i32)* @leak> 0 [ORD=17]
+
+    0x7f80c2012530: <multiple use>
+    0x7f80c2012200: <multiple use>
+    0x7f80c0832fb0: <multiple use>
+    0x7f80c0832950: <multiple use>
+    0x7f80c2013a80: Untyped = RegisterMask
+
+    0x7f80c0832730: <multiple use>
+  0x7f80c0832a60: ch,glue = X86ISD::CALL 0x7f80c0832730, 0x7f80c0832510, 0x7f80c2012530, 0x7f80c2012200, 0x7f80c0832fb0, 0x7f80c0832950, 0x7f80c2013a80, 0x7f80c0832730:1 [ORD=17]
+
+    0x7f80c0832a60: <multiple use>
+    0x7f80c2012750: <multiple use>
+    0x7f80c2012750: <multiple use>
+    0x7f80c0832a60: <multiple use>
+  0x7f80c0832840: ch,glue = callseq_end 0x7f80c0832a60, 0x7f80c2012750, 0x7f80c2012750, 0x7f80c0832a60:1 [ORD=17]
+
+  0x7f80c0832620: i32 = Register %EAX
+
+    0x7f80c0832840: <multiple use>
+    0x7f80c0832620: <multiple use>
+    0x7f80c0832840: <multiple use>
+  0x7f80c0832400: i32,ch,glue = CopyFromReg 0x7f80c0832840, 0x7f80c0832620, 0x7f80c0832840:1 [ORD=17]
+
+      0x7f80c0832400: <multiple use>
+      0x7f80c0832400: <multiple use>
+      0x7f80c0832c80: i64 = FrameIndex<5>
+
+      0x7f80c2012ec0: <multiple use>
+    0x7f80c0832ea0: ch = store 0x7f80c0832400:1, 0x7f80c0832400, 0x7f80c0832c80, 0x7f80c2012ec0<ST4[%res]> [ORD=18]
+
+    0x7f80c0832620: <multiple use>
+    0x7f80c0832400: <multiple use>
+  0x7f80c2012310: ch,glue = CopyToReg 0x7f80c0832ea0, 0x7f80c0832620, 0x7f80c0832400 [ORD=20]
+
+    0x7f80c2012310: <multiple use>
+    0x7f80c08332e0: i16 = TargetConstant<0>
+
+    0x7f80c0832620: <multiple use>
+    0x7f80c2012310: <multiple use>
+  0x7f80c2013db0: ch = X86ISD::RET_FLAG 0x7f80c2012310, 0x7f80c08332e0, 0x7f80c0832620, 0x7f80c2012310:1 [ORD=20]
+
+
+Type-legalized selection DAG: BB#0 'main:entry'
+SelectionDAG has 39 nodes:
+  0x7f80c2012640: i32 = Constant<0> [ID=-3]
+
+  0x7f80c2012ec0: i64 = undef [ID=-3]
+
+  0x7f80c2013530: i32 = Constant<1> [ID=-3]
+
+  0x7f80c2013860: i64 = FrameIndex<1> [ID=-3]
+
+  0x7f80c2013640: i64 = FrameIndex<2> [ID=-3]
+
+  0x7f80c2013970: i64 = FrameIndex<3> [ID=-3]
+
+            0x7f80c05078a0: ch = EntryToken [ID=-3]
+
+            0x7f80c2012640: <multiple use>
+            0x7f80c2012860: i64 = FrameIndex<0> [ID=-3]
+
+            0x7f80c2012ec0: <multiple use>
+          0x7f80c2013200: ch = store 0x7f80c05078a0, 0x7f80c2012640, 0x7f80c2012860, 0x7f80c2012ec0<ST4[%retval]> [ORD=8] [ID=-3]
+
+          0x7f80c2013530: <multiple use>
+          0x7f80c2013860: <multiple use>
+          0x7f80c2012ec0: <multiple use>
+        0x7f80c2013310: ch = store 0x7f80c2013200, 0x7f80c2013530, 0x7f80c2013860, 0x7f80c2012ec0<ST4[%i1]> [ORD=9] [ID=-3]
+
+        0x7f80c2012640: <multiple use>
+        0x7f80c2013640: <multiple use>
+        0x7f80c2012ec0: <multiple use>
+      0x7f80c0832d90: ch = store 0x7f80c2013310, 0x7f80c2012640, 0x7f80c2013640, 0x7f80c2012ec0<ST4[%i2]> [ORD=10] [ID=-3]
+
+      0x7f80c2012640: <multiple use>
+      0x7f80c2013970: <multiple use>
+      0x7f80c2012ec0: <multiple use>
+    0x7f80c2013ca0: ch = store 0x7f80c0832d90, 0x7f80c2012640, 0x7f80c2013970, 0x7f80c2012ec0<ST4[%i3]> [ORD=11] [ID=-3]
+
+    0x7f80c2013530: <multiple use>
+    0x7f80c2013b90: i64 = FrameIndex<4> [ID=-3]
+
+    0x7f80c2012ec0: <multiple use>
+  0x7f80c2013750: ch = store 0x7f80c2013ca0, 0x7f80c2013530, 0x7f80c2013b90, 0x7f80c2012ec0<ST4[%i4]> [ORD=12] [ID=-3]
+
+    0x7f80c2013750: <multiple use>
+    0x7f80c2013860: <multiple use>
+    0x7f80c2012ec0: <multiple use>
+  0x7f80c2013420: i32,ch = load 0x7f80c2013750, 0x7f80c2013860, 0x7f80c2012ec0<LD4[%i1]> [ORD=13] [ID=-3]
+
+    0x7f80c2013750: <multiple use>
+    0x7f80c2013640: <multiple use>
+    0x7f80c2012ec0: <multiple use>
+  0x7f80c20130e0: i32,ch = load 0x7f80c2013750, 0x7f80c2013640, 0x7f80c2012ec0<LD4[%i2]> [ORD=14] [ID=-3]
+
+    0x7f80c2013750: <multiple use>
+    0x7f80c2013970: <multiple use>
+    0x7f80c2012ec0: <multiple use>
+  0x7f80c2012db0: i32,ch = load 0x7f80c2013750, 0x7f80c2013970, 0x7f80c2012ec0<LD4[%i3]> [ORD=15] [ID=-3]
+
+  0x7f80c2012750: i64 = TargetConstant<0> [ID=-3]
+
+  0x7f80c2012530: i32 = Register %EDI [ID=-3]
+
+        0x7f80c2013420: <multiple use>
+        0x7f80c20130e0: <multiple use>
+        0x7f80c2012db0: <multiple use>
+        0x7f80c2013750: <multiple use>
+      0x7f80c2012a80: ch = TokenFactor 0x7f80c2013420:1, 0x7f80c20130e0:1, 0x7f80c2012db0:1, 0x7f80c2013750 [ORD=17] [ID=-3]
+
+      0x7f80c2012750: <multiple use>
+    0x7f80c2012970: ch,glue = callseq_start 0x7f80c2012a80, 0x7f80c2012750 [ORD=17] [ID=-3]
+
+    0x7f80c2012530: <multiple use>
+    0x7f80c2013420: <multiple use>
+  0x7f80c2012420: ch,glue = CopyToReg 0x7f80c2012970, 0x7f80c2012530, 0x7f80c2013420 [ORD=17] [ID=-3]
+
+  0x7f80c2012200: i32 = Register %ESI [ID=-3]
+
+    0x7f80c2012420: <multiple use>
+    0x7f80c2012200: <multiple use>
+    0x7f80c20130e0: <multiple use>
+    0x7f80c2012420: <multiple use>
+  0x7f80c08331d0: ch,glue = CopyToReg 0x7f80c2012420, 0x7f80c2012200, 0x7f80c20130e0, 0x7f80c2012420:1 [ORD=17] [ID=-3]
+
+  0x7f80c0832fb0: i32 = Register %EDX [ID=-3]
+
+    0x7f80c08331d0: <multiple use>
+    0x7f80c0832fb0: <multiple use>
+    0x7f80c2012db0: <multiple use>
+    0x7f80c08331d0: <multiple use>
+  0x7f80c0832b70: ch,glue = CopyToReg 0x7f80c08331d0, 0x7f80c0832fb0, 0x7f80c2012db0, 0x7f80c08331d0:1 [ORD=17] [ID=-3]
+
+  0x7f80c0832950: i32 = Register %ECX [ID=-3]
+
+    0x7f80c0832b70: <multiple use>
+    0x7f80c0832950: <multiple use>
+    0x7f80c2013530: <multiple use>
+    0x7f80c0832b70: <multiple use>
+  0x7f80c0832730: ch,glue = CopyToReg 0x7f80c0832b70, 0x7f80c0832950, 0x7f80c2013530, 0x7f80c0832b70:1 [ORD=17] [ID=-3]
+
+    0x7f80c0832730: <multiple use>
+    0x7f80c0832510: i64 = TargetGlobalAddress<i32 (i32, i32, i32, i32)* @leak> 0 [ORD=17] [ID=-3]
+
+    0x7f80c2012530: <multiple use>
+    0x7f80c2012200: <multiple use>
+    0x7f80c0832fb0: <multiple use>
+    0x7f80c0832950: <multiple use>
+    0x7f80c2013a80: Untyped = RegisterMask [ID=-3]
+
+    0x7f80c0832730: <multiple use>
+  0x7f80c0832a60: ch,glue = X86ISD::CALL 0x7f80c0832730, 0x7f80c0832510, 0x7f80c2012530, 0x7f80c2012200, 0x7f80c0832fb0, 0x7f80c0832950, 0x7f80c2013a80, 0x7f80c0832730:1 [ORD=17] [ID=-3]
+
+    0x7f80c0832a60: <multiple use>
+    0x7f80c2012750: <multiple use>
+    0x7f80c2012750: <multiple use>
+    0x7f80c0832a60: <multiple use>
+  0x7f80c0832840: ch,glue = callseq_end 0x7f80c0832a60, 0x7f80c2012750, 0x7f80c2012750, 0x7f80c0832a60:1 [ORD=17] [ID=-3]
+
+  0x7f80c0832620: i32 = Register %EAX [ID=-3]
+
+    0x7f80c0832840: <multiple use>
+    0x7f80c0832620: <multiple use>
+    0x7f80c0832840: <multiple use>
+  0x7f80c0832400: i32,ch,glue = CopyFromReg 0x7f80c0832840, 0x7f80c0832620, 0x7f80c0832840:1 [ORD=17] [ID=-3]
+
+      0x7f80c0832400: <multiple use>
+      0x7f80c0832400: <multiple use>
+      0x7f80c0832c80: i64 = FrameIndex<5> [ID=-3]
+
+      0x7f80c2012ec0: <multiple use>
+    0x7f80c0832ea0: ch = store 0x7f80c0832400:1, 0x7f80c0832400, 0x7f80c0832c80, 0x7f80c2012ec0<ST4[%res]> [ORD=18] [ID=-3]
+
+    0x7f80c0832620: <multiple use>
+    0x7f80c0832400: <multiple use>
+  0x7f80c2012310: ch,glue = CopyToReg 0x7f80c0832ea0, 0x7f80c0832620, 0x7f80c0832400 [ORD=20] [ID=-3]
+
+    0x7f80c2012310: <multiple use>
+    0x7f80c08332e0: i16 = TargetConstant<0> [ID=-3]
+
+    0x7f80c0832620: <multiple use>
+    0x7f80c2012310: <multiple use>
+  0x7f80c2013db0: ch = X86ISD::RET_FLAG 0x7f80c2012310, 0x7f80c08332e0, 0x7f80c0832620, 0x7f80c2012310:1 [ORD=20] [ID=-3]
+
+
+Legalized selection DAG: BB#0 'main:entry'
+SelectionDAG has 39 nodes:
+  0x7f80c2012640: i32 = Constant<0> [ID=1]
+
+  0x7f80c2012ec0: i64 = undef [ID=3]
+
+  0x7f80c2013530: i32 = Constant<1> [ID=4]
+
+  0x7f80c2013860: i64 = FrameIndex<1> [ID=5]
+
+  0x7f80c2013640: i64 = FrameIndex<2> [ID=6]
+
+  0x7f80c2013970: i64 = FrameIndex<3> [ID=7]
+
+  0x7f80c2012750: i64 = TargetConstant<0> [ID=9]
+
+  0x7f80c2012530: i32 = Register %EDI [ID=10]
+
+  0x7f80c2012200: i32 = Register %ESI [ID=11]
+
+  0x7f80c0832fb0: i32 = Register %EDX [ID=12]
+
+  0x7f80c0832950: i32 = Register %ECX [ID=13]
+
+  0x7f80c0832620: i32 = Register %EAX [ID=16]
+
+            0x7f80c05078a0: ch = EntryToken [ID=0]
+
+            0x7f80c2012640: <multiple use>
+            0x7f80c2012860: i64 = FrameIndex<0> [ID=2]
+
+            0x7f80c2012ec0: <multiple use>
+          0x7f80c2013200: ch = store 0x7f80c05078a0, 0x7f80c2012640, 0x7f80c2012860, 0x7f80c2012ec0<ST4[%retval]> [ORD=8] [ID=19]
+
+          0x7f80c2013530: <multiple use>
+          0x7f80c2013860: <multiple use>
+          0x7f80c2012ec0: <multiple use>
+        0x7f80c2013310: ch = store 0x7f80c2013200, 0x7f80c2013530, 0x7f80c2013860, 0x7f80c2012ec0<ST4[%i1]> [ORD=9] [ID=20]
+
+        0x7f80c2012640: <multiple use>
+        0x7f80c2013640: <multiple use>
+        0x7f80c2012ec0: <multiple use>
+      0x7f80c0832d90: ch = store 0x7f80c2013310, 0x7f80c2012640, 0x7f80c2013640, 0x7f80c2012ec0<ST4[%i2]> [ORD=10] [ID=21]
+
+      0x7f80c2012640: <multiple use>
+      0x7f80c2013970: <multiple use>
+      0x7f80c2012ec0: <multiple use>
+    0x7f80c2013ca0: ch = store 0x7f80c0832d90, 0x7f80c2012640, 0x7f80c2013970, 0x7f80c2012ec0<ST4[%i3]> [ORD=11] [ID=22]
+
+    0x7f80c2013530: <multiple use>
+    0x7f80c2013b90: i64 = FrameIndex<4> [ID=8]
+
+    0x7f80c2012ec0: <multiple use>
+  0x7f80c2013750: ch = store 0x7f80c2013ca0, 0x7f80c2013530, 0x7f80c2013b90, 0x7f80c2012ec0<ST4[%i4]> [ORD=12] [ID=23]
+
+    0x7f80c2013750: <multiple use>
+    0x7f80c2013970: <multiple use>
+    0x7f80c2012ec0: <multiple use>
+  0x7f80c2012db0: i32,ch = load 0x7f80c2013750, 0x7f80c2013970, 0x7f80c2012ec0<LD4[%i3]> [ORD=15] [ID=24]
+
+    0x7f80c2013750: <multiple use>
+    0x7f80c2013640: <multiple use>
+    0x7f80c2012ec0: <multiple use>
+  0x7f80c20130e0: i32,ch = load 0x7f80c2013750, 0x7f80c2013640, 0x7f80c2012ec0<LD4[%i2]> [ORD=14] [ID=25]
+
+    0x7f80c2013750: <multiple use>
+    0x7f80c2013860: <multiple use>
+    0x7f80c2012ec0: <multiple use>
+  0x7f80c2013420: i32,ch = load 0x7f80c2013750, 0x7f80c2013860, 0x7f80c2012ec0<LD4[%i1]> [ORD=13] [ID=26]
+
+        0x7f80c2013420: <multiple use>
+        0x7f80c20130e0: <multiple use>
+        0x7f80c2012db0: <multiple use>
+        0x7f80c2013750: <multiple use>
+      0x7f80c2012a80: ch = TokenFactor 0x7f80c2013420:1, 0x7f80c20130e0:1, 0x7f80c2012db0:1, 0x7f80c2013750 [ORD=17] [ID=27]
+
+      0x7f80c2012750: <multiple use>
+    0x7f80c2012970: ch,glue = callseq_start 0x7f80c2012a80, 0x7f80c2012750 [ORD=17] [ID=28]
+
+    0x7f80c2012530: <multiple use>
+    0x7f80c2013420: <multiple use>
+  0x7f80c2012420: ch,glue = CopyToReg 0x7f80c2012970, 0x7f80c2012530, 0x7f80c2013420 [ORD=17] [ID=29]
+
+    0x7f80c2012420: <multiple use>
+    0x7f80c2012200: <multiple use>
+    0x7f80c20130e0: <multiple use>
+    0x7f80c2012420: <multiple use>
+  0x7f80c08331d0: ch,glue = CopyToReg 0x7f80c2012420, 0x7f80c2012200, 0x7f80c20130e0, 0x7f80c2012420:1 [ORD=17] [ID=30]
+
+    0x7f80c08331d0: <multiple use>
+    0x7f80c0832fb0: <multiple use>
+    0x7f80c2012db0: <multiple use>
+    0x7f80c08331d0: <multiple use>
+  0x7f80c0832b70: ch,glue = CopyToReg 0x7f80c08331d0, 0x7f80c0832fb0, 0x7f80c2012db0, 0x7f80c08331d0:1 [ORD=17] [ID=31]
+
+    0x7f80c0832b70: <multiple use>
+    0x7f80c0832950: <multiple use>
+    0x7f80c2013530: <multiple use>
+    0x7f80c0832b70: <multiple use>
+  0x7f80c0832730: ch,glue = CopyToReg 0x7f80c0832b70, 0x7f80c0832950, 0x7f80c2013530, 0x7f80c0832b70:1 [ORD=17] [ID=32]
+
+    0x7f80c0832730: <multiple use>
+    0x7f80c0832510: i64 = TargetGlobalAddress<i32 (i32, i32, i32, i32)* @leak> 0 [ORD=17] [ID=14]
+
+    0x7f80c2012530: <multiple use>
+    0x7f80c2012200: <multiple use>
+    0x7f80c0832fb0: <multiple use>
+    0x7f80c0832950: <multiple use>
+    0x7f80c2013a80: Untyped = RegisterMask [ID=15]
+
+    0x7f80c0832730: <multiple use>
+  0x7f80c0832a60: ch,glue = X86ISD::CALL 0x7f80c0832730, 0x7f80c0832510, 0x7f80c2012530, 0x7f80c2012200, 0x7f80c0832fb0, 0x7f80c0832950, 0x7f80c2013a80, 0x7f80c0832730:1 [ORD=17] [ID=33]
+
+    0x7f80c0832a60: <multiple use>
+    0x7f80c2012750: <multiple use>
+    0x7f80c2012750: <multiple use>
+    0x7f80c0832a60: <multiple use>
+  0x7f80c0832840: ch,glue = callseq_end 0x7f80c0832a60, 0x7f80c2012750, 0x7f80c2012750, 0x7f80c0832a60:1 [ORD=17] [ID=34]
+
+    0x7f80c0832840: <multiple use>
+    0x7f80c0832620: <multiple use>
+    0x7f80c0832840: <multiple use>
+  0x7f80c0832400: i32,ch,glue = CopyFromReg 0x7f80c0832840, 0x7f80c0832620, 0x7f80c0832840:1 [ORD=17] [ID=35]
+
+      0x7f80c0832400: <multiple use>
+      0x7f80c0832400: <multiple use>
+      0x7f80c0832c80: i64 = FrameIndex<5> [ID=17]
+
+      0x7f80c2012ec0: <multiple use>
+    0x7f80c0832ea0: ch = store 0x7f80c0832400:1, 0x7f80c0832400, 0x7f80c0832c80, 0x7f80c2012ec0<ST4[%res]> [ORD=18] [ID=36]
+
+    0x7f80c0832620: <multiple use>
+    0x7f80c0832400: <multiple use>
+  0x7f80c2012310: ch,glue = CopyToReg 0x7f80c0832ea0, 0x7f80c0832620, 0x7f80c0832400 [ORD=20] [ID=37]
+
+    0x7f80c2012310: <multiple use>
+    0x7f80c08332e0: i16 = TargetConstant<0> [ID=18]
+
+    0x7f80c0832620: <multiple use>
+    0x7f80c2012310: <multiple use>
+  0x7f80c2013db0: ch = X86ISD::RET_FLAG 0x7f80c2012310, 0x7f80c08332e0, 0x7f80c0832620, 0x7f80c2012310:1 [ORD=20] [ID=38]
+
+
+Optimized legalized selection DAG: BB#0 'main:entry'
+SelectionDAG has 39 nodes:
+  0x7f80c2012640: i32 = Constant<0> [ID=1]
+
+  0x7f80c2012ec0: i64 = undef [ID=3]
+
+  0x7f80c2013530: i32 = Constant<1> [ID=4]
+
+  0x7f80c2013860: i64 = FrameIndex<1> [ID=5]
+
+  0x7f80c2013640: i64 = FrameIndex<2> [ID=6]
+
+  0x7f80c2013970: i64 = FrameIndex<3> [ID=7]
+
+  0x7f80c2012750: i64 = TargetConstant<0> [ID=9]
+
+  0x7f80c2012530: i32 = Register %EDI [ID=10]
+
+  0x7f80c2012200: i32 = Register %ESI [ID=11]
+
+  0x7f80c0832fb0: i32 = Register %EDX [ID=12]
+
+  0x7f80c0832950: i32 = Register %ECX [ID=13]
+
+  0x7f80c0832620: i32 = Register %EAX [ID=16]
+
+            0x7f80c05078a0: ch = EntryToken [ID=0]
+
+            0x7f80c2012640: <multiple use>
+            0x7f80c2012860: i64 = FrameIndex<0> [ID=2]
+
+            0x7f80c2012ec0: <multiple use>
+          0x7f80c2013200: ch = store 0x7f80c05078a0, 0x7f80c2012640, 0x7f80c2012860, 0x7f80c2012ec0<ST4[%retval]> [ORD=8] [ID=19]
+
+          0x7f80c2013530: <multiple use>
+          0x7f80c2013860: <multiple use>
+          0x7f80c2012ec0: <multiple use>
+        0x7f80c2013310: ch = store 0x7f80c2013200, 0x7f80c2013530, 0x7f80c2013860, 0x7f80c2012ec0<ST4[%i1]> [ORD=9] [ID=20]
+
+        0x7f80c2012640: <multiple use>
+        0x7f80c2013640: <multiple use>
+        0x7f80c2012ec0: <multiple use>
+      0x7f80c0832d90: ch = store 0x7f80c2013310, 0x7f80c2012640, 0x7f80c2013640, 0x7f80c2012ec0<ST4[%i2]> [ORD=10] [ID=21]
+
+      0x7f80c2012640: <multiple use>
+      0x7f80c2013970: <multiple use>
+      0x7f80c2012ec0: <multiple use>
+    0x7f80c2013ca0: ch = store 0x7f80c0832d90, 0x7f80c2012640, 0x7f80c2013970, 0x7f80c2012ec0<ST4[%i3]> [ORD=11] [ID=22]
+
+    0x7f80c2013530: <multiple use>
+    0x7f80c2013b90: i64 = FrameIndex<4> [ID=8]
+
+    0x7f80c2012ec0: <multiple use>
+  0x7f80c2013750: ch = store 0x7f80c2013ca0, 0x7f80c2013530, 0x7f80c2013b90, 0x7f80c2012ec0<ST4[%i4]> [ORD=12] [ID=23]
+
+    0x7f80c2013750: <multiple use>
+    0x7f80c2013970: <multiple use>
+    0x7f80c2012ec0: <multiple use>
+  0x7f80c2012db0: i32,ch = load 0x7f80c2013750, 0x7f80c2013970, 0x7f80c2012ec0<LD4[%i3]> [ORD=15] [ID=24]
+
+    0x7f80c2013750: <multiple use>
+    0x7f80c2013640: <multiple use>
+    0x7f80c2012ec0: <multiple use>
+  0x7f80c20130e0: i32,ch = load 0x7f80c2013750, 0x7f80c2013640, 0x7f80c2012ec0<LD4[%i2]> [ORD=14] [ID=25]
+
+    0x7f80c2013750: <multiple use>
+    0x7f80c2013860: <multiple use>
+    0x7f80c2012ec0: <multiple use>
+  0x7f80c2013420: i32,ch = load 0x7f80c2013750, 0x7f80c2013860, 0x7f80c2012ec0<LD4[%i1]> [ORD=13] [ID=26]
+
+        0x7f80c2013420: <multiple use>
+        0x7f80c20130e0: <multiple use>
+        0x7f80c2012db0: <multiple use>
+        0x7f80c2013750: <multiple use>
+      0x7f80c2012a80: ch = TokenFactor 0x7f80c2013420:1, 0x7f80c20130e0:1, 0x7f80c2012db0:1, 0x7f80c2013750 [ORD=17] [ID=27]
+
+      0x7f80c2012750: <multiple use>
+    0x7f80c2012970: ch,glue = callseq_start 0x7f80c2012a80, 0x7f80c2012750 [ORD=17] [ID=28]
+
+    0x7f80c2012530: <multiple use>
+    0x7f80c2013420: <multiple use>
+  0x7f80c2012420: ch,glue = CopyToReg 0x7f80c2012970, 0x7f80c2012530, 0x7f80c2013420 [ORD=17] [ID=29]
+
+    0x7f80c2012420: <multiple use>
+    0x7f80c2012200: <multiple use>
+    0x7f80c20130e0: <multiple use>
+    0x7f80c2012420: <multiple use>
+  0x7f80c08331d0: ch,glue = CopyToReg 0x7f80c2012420, 0x7f80c2012200, 0x7f80c20130e0, 0x7f80c2012420:1 [ORD=17] [ID=30]
+
+    0x7f80c08331d0: <multiple use>
+    0x7f80c0832fb0: <multiple use>
+    0x7f80c2012db0: <multiple use>
+    0x7f80c08331d0: <multiple use>
+  0x7f80c0832b70: ch,glue = CopyToReg 0x7f80c08331d0, 0x7f80c0832fb0, 0x7f80c2012db0, 0x7f80c08331d0:1 [ORD=17] [ID=31]
+
+    0x7f80c0832b70: <multiple use>
+    0x7f80c0832950: <multiple use>
+    0x7f80c2013530: <multiple use>
+    0x7f80c0832b70: <multiple use>
+  0x7f80c0832730: ch,glue = CopyToReg 0x7f80c0832b70, 0x7f80c0832950, 0x7f80c2013530, 0x7f80c0832b70:1 [ORD=17] [ID=32]
+
+    0x7f80c0832730: <multiple use>
+    0x7f80c0832510: i64 = TargetGlobalAddress<i32 (i32, i32, i32, i32)* @leak> 0 [ORD=17] [ID=14]
+
+    0x7f80c2012530: <multiple use>
+    0x7f80c2012200: <multiple use>
+    0x7f80c0832fb0: <multiple use>
+    0x7f80c0832950: <multiple use>
+    0x7f80c2013a80: Untyped = RegisterMask [ID=15]
+
+    0x7f80c0832730: <multiple use>
+  0x7f80c0832a60: ch,glue = X86ISD::CALL 0x7f80c0832730, 0x7f80c0832510, 0x7f80c2012530, 0x7f80c2012200, 0x7f80c0832fb0, 0x7f80c0832950, 0x7f80c2013a80, 0x7f80c0832730:1 [ORD=17] [ID=33]
+
+    0x7f80c0832a60: <multiple use>
+    0x7f80c2012750: <multiple use>
+    0x7f80c2012750: <multiple use>
+    0x7f80c0832a60: <multiple use>
+  0x7f80c0832840: ch,glue = callseq_end 0x7f80c0832a60, 0x7f80c2012750, 0x7f80c2012750, 0x7f80c0832a60:1 [ORD=17] [ID=34]
+
+    0x7f80c0832840: <multiple use>
+    0x7f80c0832620: <multiple use>
+    0x7f80c0832840: <multiple use>
+  0x7f80c0832400: i32,ch,glue = CopyFromReg 0x7f80c0832840, 0x7f80c0832620, 0x7f80c0832840:1 [ORD=17] [ID=35]
+
+      0x7f80c0832400: <multiple use>
+      0x7f80c0832400: <multiple use>
+      0x7f80c0832c80: i64 = FrameIndex<5> [ID=17]
+
+      0x7f80c2012ec0: <multiple use>
+    0x7f80c0832ea0: ch = store 0x7f80c0832400:1, 0x7f80c0832400, 0x7f80c0832c80, 0x7f80c2012ec0<ST4[%res]> [ORD=18] [ID=36]
+
+    0x7f80c0832620: <multiple use>
+    0x7f80c0832400: <multiple use>
+  0x7f80c2012310: ch,glue = CopyToReg 0x7f80c0832ea0, 0x7f80c0832620, 0x7f80c0832400 [ORD=20] [ID=37]
+
+    0x7f80c2012310: <multiple use>
+    0x7f80c08332e0: i16 = TargetConstant<0> [ID=18]
+
+    0x7f80c0832620: <multiple use>
+    0x7f80c2012310: <multiple use>
+  0x7f80c2013db0: ch = X86ISD::RET_FLAG 0x7f80c2012310, 0x7f80c08332e0, 0x7f80c0832620, 0x7f80c2012310:1 [ORD=20] [ID=38]
+
+
+===== Instruction selection begins: BB#0 'entry'
+ISEL: Starting pattern match on root node: 0x7f80c2013db0: ch = X86ISD::RET_FLAG 0x7f80c2012310, 0x7f80c08332e0, 0x7f80c0832620, 0x7f80c2012310:1 [ORD=20] [ID=38]
+
+  Initial Opcode index to 111664
+  Skipped scope entry (due to false predicate) at index 111672, continuing at 111681
+  Morphed node: 0x7f80c2013db0: ch = RETQ 0x7f80c0832620, 0x7f80c2012310, 0x7f80c2012310:1 [ORD=20]
+
+ISEL: Match complete!
+ISEL: Starting pattern match on root node: 0x7f80c0832ea0: ch = store 0x7f80c0832400:1, 0x7f80c0832400, 0x7f80c0832c80, 0x7f80c2012ec0<ST4[%res]> [ORD=18] [ID=36]
+
+  Initial Opcode index to 5
+  Skipped scope entry (due to false predicate) at index 13, continuing at 77
+  Skipped scope entry (due to false predicate) at index 78, continuing at 142
+  Skipped scope entry (due to false predicate) at index 143, continuing at 207
+  Skipped scope entry (due to false predicate) at index 208, continuing at 253
+  Skipped scope entry (due to false predicate) at index 254, continuing at 299
+  Skipped scope entry (due to false predicate) at index 300, continuing at 345
+  Match failed at index 349
+  Continuing at 369
+  Match failed at index 370
+  Continuing at 393
+  Match failed at index 394
+  Continuing at 437
+  Match failed at index 438
+  Continuing at 461
+  Match failed at index 462
+  Continuing at 485
+  Match failed at index 486
+  Continuing at 509
+  Continuing at 510
+  Match failed at index 514
+  Continuing at 11101
+  Match failed at index 11106
+  Continuing at 11482
+  Match failed at index 11486
+  Continuing at 12239
+  Match failed at index 12240
+  Continuing at 12277
+  Match failed at index 12278
+  Continuing at 12306
+  Match failed at index 12307
+  Continuing at 12335
+  Match failed at index 12339
+  Continuing at 12450
+  Match failed at index 12454
+  Continuing at 12835
+  Skipped scope entry (due to false predicate) at index 12840, continuing at 12926
+  Skipped scope entry (due to false predicate) at index 12927, continuing at 13040
+  Skipped scope entry (due to false predicate) at index 13041, continuing at 13113
+  Skipped scope entry (due to false predicate) at index 13114, continuing at 13161
+  Skipped scope entry (due to false predicate) at index 13162, continuing at 13185
+  Morphed node: 0x7f80c0832ea0: ch = MOV32mr 0x7f80c2012ca0, 0x7f80c2012fd0, 0x7f80c08332e0, 0x7f80c2012b90, 0x7f80c08330c0, 0x7f80c0832400, 0x7f80c0832400:1<Mem:ST4[%res]> [ORD=18]
+
+ISEL: Match complete!
+ISEL: Starting pattern match on root node: 0x7f80c0832840: ch,glue = callseq_end 0x7f80c0832a60, 0x7f80c2012750, 0x7f80c2012750, 0x7f80c0832a60:1 [ORD=17] [ID=34]
+
+  Initial Opcode index to 111269
+  Skipped scope entry (due to false predicate) at index 111287, continuing at 111299
+  Morphed node: 0x7f80c0832840: i64,ch,glue = ADJCALLSTACKUP64 0x7f80c2012750, 0x7f80c2012750, 0x7f80c0832a60, 0x7f80c0832a60:1 [ORD=17]
+
+ISEL: Match complete!
+ISEL: Starting pattern match on root node: 0x7f80c0832a60: ch,glue = X86ISD::CALL 0x7f80c0832730, 0x7f80c0832510, 0x7f80c2012530, 0x7f80c2012200, 0x7f80c0832fb0, 0x7f80c0832950, 0x7f80c2013a80, 0x7f80c0832730:1 [ORD=17] [ID=33]
+
+  Initial Opcode index to 84124
+  Match failed at index 84130
+  Continuing at 84216
+  OpcodeSwitch from 84222 to 84226
+  TypeSwitch[i64] from 84226 to 84229
+  Morphed node: 0x7f80c0832a60: ch,glue = CALL64pcrel32 0x7f80c0832510, 0x7f80c2012530, 0x7f80c2012200, 0x7f80c0832fb0, 0x7f80c0832950, 0x7f80c2013a80, 0x7f80c0832730, 0x7f80c0832730:1 [ORD=17]
+
+ISEL: Match complete!
+ISEL: Starting pattern match on root node: 0x7f80c2012970: ch,glue = callseq_start 0x7f80c2012a80, 0x7f80c2012750 [ORD=17] [ID=28]
+
+  Initial Opcode index to 113499
+  Skipped scope entry (due to false predicate) at index 113509, continuing at 113520
+  Morphed node: 0x7f80c2012970: i64,ch,glue = ADJCALLSTACKDOWN64 0x7f80c2012750, 0x7f80c2012a80 [ORD=17]
+
+ISEL: Match complete!
+ISEL: Starting pattern match on root node: 0x7f80c2013420: i32,ch = load 0x7f80c2013750, 0x7f80c2013860, 0x7f80c2012ec0<LD4[%i1]> [ORD=13] [ID=26]
+
+  Initial Opcode index to 100179
+  Match failed at index 100188
+  Continuing at 100206
+  Match failed at index 100209
+  Continuing at 100227
+  Morphed node: 0x7f80c2013420: i32,ch = MOV32rm 0x7f80c0832c80, 0x7f80c2012fd0, 0x7f80c08332e0, 0x7f80c2012b90, 0x7f80c08330c0, 0x7f80c2013750<Mem:LD4[%i1]> [ORD=13]
+
+ISEL: Match complete!
+ISEL: Starting pattern match on root node: 0x7f80c20130e0: i32,ch = load 0x7f80c2013750, 0x7f80c2013640, 0x7f80c2012ec0<LD4[%i2]> [ORD=14] [ID=25]
+
+  Initial Opcode index to 100179
+  Match failed at index 100188
+  Continuing at 100206
+  Match failed at index 100209
+  Continuing at 100227
+  Morphed node: 0x7f80c20130e0: i32,ch = MOV32rm 0x7f80c2013ec0, 0x7f80c2012fd0, 0x7f80c08332e0, 0x7f80c2012b90, 0x7f80c08330c0, 0x7f80c2013750<Mem:LD4[%i2]> [ORD=14]
+
+ISEL: Match complete!
+ISEL: Starting pattern match on root node: 0x7f80c2012db0: i32,ch = load 0x7f80c2013750, 0x7f80c2013970, 0x7f80c2012ec0<LD4[%i3]> [ORD=15] [ID=24]
+
+  Initial Opcode index to 100179
+  Match failed at index 100188
+  Continuing at 100206
+  Match failed at index 100209
+  Continuing at 100227
+  Morphed node: 0x7f80c2012db0: i32,ch = MOV32rm 0x7f80c2013fd0, 0x7f80c2012fd0, 0x7f80c08332e0, 0x7f80c2012b90, 0x7f80c08330c0, 0x7f80c2013750<Mem:LD4[%i3]> [ORD=15]
+
+ISEL: Match complete!
+ISEL: Starting pattern match on root node: 0x7f80c2013750: ch = store 0x7f80c2013ca0, 0x7f80c2013530, 0x7f80c2013b90, 0x7f80c2012ec0<ST4[%i4]> [ORD=12] [ID=23]
+
+  Initial Opcode index to 5
+  Skipped scope entry (due to false predicate) at index 13, continuing at 77
+  Skipped scope entry (due to false predicate) at index 78, continuing at 142
+  Skipped scope entry (due to false predicate) at index 143, continuing at 207
+  Skipped scope entry (due to false predicate) at index 208, continuing at 253
+  Skipped scope entry (due to false predicate) at index 254, continuing at 299
+  Skipped scope entry (due to false predicate) at index 300, continuing at 345
+  Match failed at index 349
+  Continuing at 369
+  Match failed at index 370
+  Continuing at 393
+  Match failed at index 394
+  Continuing at 437
+  Match failed at index 438
+  Continuing at 461
+  Match failed at index 462
+  Continuing at 485
+  Match failed at index 486
+  Continuing at 509
+  Continuing at 510
+  Match failed at index 514
+  Continuing at 11101
+  Match failed at index 11106
+  Continuing at 11482
+  Match failed at index 11486
+  Continuing at 12239
+  Match failed at index 12240
+  Continuing at 12277
+  Match failed at index 12280
+  Continuing at 12306
+  Match failed at index 12307
+  Continuing at 12335
+  TypeSwitch[i32] from 12342 to 12425
+  Morphed node: 0x7f80c2013750: ch = MOV32mi 0x7f80c20140e0, 0x7f80c2012fd0, 0x7f80c08332e0, 0x7f80c2012b90, 0x7f80c08330c0, 0x7f80c083b000, 0x7f80c2013ca0<Mem:ST4[%i4]> [ORD=12]
+
+ISEL: Match complete!
+ISEL: Starting pattern match on root node: 0x7f80c2013ca0: ch = store 0x7f80c0832d90, 0x7f80c2012640, 0x7f80c2013970, 0x7f80c2012ec0<ST4[%i3]> [ORD=11] [ID=22]
+
+  Initial Opcode index to 5
+  Skipped scope entry (due to false predicate) at index 13, continuing at 77
+  Skipped scope entry (due to false predicate) at index 78, continuing at 142
+  Skipped scope entry (due to false predicate) at index 143, continuing at 207
+  Skipped scope entry (due to false predicate) at index 208, continuing at 253
+  Skipped scope entry (due to false predicate) at index 254, continuing at 299
+  Skipped scope entry (due to false predicate) at index 300, continuing at 345
+  Match failed at index 349
+  Continuing at 369
+  Match failed at index 370
+  Continuing at 393
+  Match failed at index 394
+  Continuing at 437
+  Match failed at index 438
+  Continuing at 461
+  Match failed at index 462
+  Continuing at 485
+  Match failed at index 486
+  Continuing at 509
+  Continuing at 510
+  Match failed at index 514
+  Continuing at 11101
+  Match failed at index 11106
+  Continuing at 11482
+  Match failed at index 11486
+  Continuing at 12239
+  Match failed at index 12240
+  Continuing at 12277
+  Match failed at index 12278
+  Continuing at 12306
+  Match failed at index 12309
+  Continuing at 12335
+  TypeSwitch[i32] from 12342 to 12425
+  Morphed node: 0x7f80c2013ca0: ch = MOV32mi 0x7f80c2013fd0, 0x7f80c2012fd0, 0x7f80c08332e0, 0x7f80c2012b90, 0x7f80c08330c0, 0x7f80c2012b90, 0x7f80c0832d90<Mem:ST4[%i3]> [ORD=11]
+
+ISEL: Match complete!
+ISEL: Starting pattern match on root node: 0x7f80c0832d90: ch = store 0x7f80c2013310, 0x7f80c2012640, 0x7f80c2013640, 0x7f80c2012ec0<ST4[%i2]> [ORD=10] [ID=21]
+
+  Initial Opcode index to 5
+  Skipped scope entry (due to false predicate) at index 13, continuing at 77
+  Skipped scope entry (due to false predicate) at index 78, continuing at 142
+  Skipped scope entry (due to false predicate) at index 143, continuing at 207
+  Skipped scope entry (due to false predicate) at index 208, continuing at 253
+  Skipped scope entry (due to false predicate) at index 254, continuing at 299
+  Skipped scope entry (due to false predicate) at index 300, continuing at 345
+  Match failed at index 349
+  Continuing at 369
+  Match failed at index 370
+  Continuing at 393
+  Match failed at index 394
+  Continuing at 437
+  Match failed at index 438
+  Continuing at 461
+  Match failed at index 462
+  Continuing at 485
+  Match failed at index 486
+  Continuing at 509
+  Continuing at 510
+  Match failed at index 514
+  Continuing at 11101
+  Match failed at index 11106
+  Continuing at 11482
+  Match failed at index 11486
+  Continuing at 12239
+  Match failed at index 12240
+  Continuing at 12277
+  Match failed at index 12278
+  Continuing at 12306
+  Match failed at index 12309
+  Continuing at 12335
+  TypeSwitch[i32] from 12342 to 12425
+  Morphed node: 0x7f80c0832d90: ch = MOV32mi 0x7f80c2013ec0, 0x7f80c2012fd0, 0x7f80c08332e0, 0x7f80c2012b90, 0x7f80c08330c0, 0x7f80c2012b90, 0x7f80c2013310<Mem:ST4[%i2]> [ORD=10]
+
+ISEL: Match complete!
+ISEL: Starting pattern match on root node: 0x7f80c2013310: ch = store 0x7f80c2013200, 0x7f80c2013530, 0x7f80c2013860, 0x7f80c2012ec0<ST4[%i1]> [ORD=9] [ID=20]
+
+  Initial Opcode index to 5
+  Skipped scope entry (due to false predicate) at index 13, continuing at 77
+  Skipped scope entry (due to false predicate) at index 78, continuing at 142
+  Skipped scope entry (due to false predicate) at index 143, continuing at 207
+  Skipped scope entry (due to false predicate) at index 208, continuing at 253
+  Skipped scope entry (due to false predicate) at index 254, continuing at 299
+  Skipped scope entry (due to false predicate) at index 300, continuing at 345
+  Match failed at index 349
+  Continuing at 369
+  Match failed at index 370
+  Continuing at 393
+  Match failed at index 394
+  Continuing at 437
+  Match failed at index 438
+  Continuing at 461
+  Match failed at index 462
+  Continuing at 485
+  Match failed at index 486
+  Continuing at 509
+  Continuing at 510
+  Match failed at index 514
+  Continuing at 11101
+  Match failed at index 11106
+  Continuing at 11482
+  Match failed at index 11486
+  Continuing at 12239
+  Match failed at index 12240
+  Continuing at 12277
+  Match failed at index 12280
+  Continuing at 12306
+  Match failed at index 12307
+  Continuing at 12335
+  TypeSwitch[i32] from 12342 to 12425
+  Morphed node: 0x7f80c2013310: ch = MOV32mi 0x7f80c0832c80, 0x7f80c2012fd0, 0x7f80c08332e0, 0x7f80c2012b90, 0x7f80c08330c0, 0x7f80c083b000, 0x7f80c2013200<Mem:ST4[%i1]> [ORD=9]
+
+ISEL: Match complete!
+ISEL: Starting pattern match on root node: 0x7f80c2013200: ch = store 0x7f80c05078a0, 0x7f80c2012640, 0x7f80c2012860, 0x7f80c2012ec0<ST4[%retval]> [ORD=8] [ID=19]
+
+  Initial Opcode index to 5
+  Skipped scope entry (due to false predicate) at index 13, continuing at 77
+  Skipped scope entry (due to false predicate) at index 78, continuing at 142
+  Skipped scope entry (due to false predicate) at index 143, continuing at 207
+  Skipped scope entry (due to false predicate) at index 208, continuing at 253
+  Skipped scope entry (due to false predicate) at index 254, continuing at 299
+  Skipped scope entry (due to false predicate) at index 300, continuing at 345
+  Match failed at index 349
+  Continuing at 369
+  Match failed at index 370
+  Continuing at 393
+  Match failed at index 394
+  Continuing at 437
+  Match failed at index 438
+  Continuing at 461
+  Match failed at index 462
+  Continuing at 485
+  Match failed at index 486
+  Continuing at 509
+  Continuing at 510
+  Match failed at index 514
+  Continuing at 11101
+  Match failed at index 11106
+  Continuing at 11482
+  Match failed at index 11486
+  Continuing at 12239
+  Match failed at index 12240
+  Continuing at 12277
+  Match failed at index 12278
+  Continuing at 12306
+  Match failed at index 12309
+  Continuing at 12335
+  TypeSwitch[i32] from 12342 to 12425
+  Morphed node: 0x7f80c2013200: ch = MOV32mi 0x7f80c2013860, 0x7f80c2012fd0, 0x7f80c08332e0, 0x7f80c2012b90, 0x7f80c08330c0, 0x7f80c2012b90, 0x7f80c05078a0<Mem:ST4[%retval]> [ORD=8]
+
+ISEL: Match complete!
+ISEL: Starting pattern match on root node: 0x7f80c2013530: i32 = Constant<1> [ID=4]
+
+  Initial Opcode index to 99902
+  Skipped scope entry (due to false predicate) at index 99904, continuing at 99932
+  Match failed at index 99934
+  Continuing at 99963
+  Match failed at index 99964
+  Continuing at 100045
+  Match failed at index 100048
+  Continuing at 100071
+  Match failed at index 100072
+  Continuing at 100106
+  TypeSwitch[i32] from 100108 to 100163
+  Morphed node: 0x7f80c2013530: i32 = MOV32ri 0x7f80c083b000
+
+ISEL: Match complete!
+===== Instruction selection ends:
+Selected selection DAG: BB#0 'main:entry'
+SelectionDAG has 41 nodes:
+  0x7f80c2012750: i64 = TargetConstant<0>
+
+  0x7f80c2012530: i32 = Register %EDI
+
+  0x7f80c2012200: i32 = Register %ESI
+
+  0x7f80c0832fb0: i32 = Register %EDX
+
+  0x7f80c0832950: i32 = Register %ECX
+
+  0x7f80c0832620: i32 = Register %EAX
+
+    0x7f80c20140e0: i64 = TargetFrameIndex<4>
+
+    0x7f80c2012fd0: <multiple use>
+    0x7f80c08332e0: <multiple use>
+    0x7f80c2012b90: <multiple use>
+    0x7f80c08330c0: <multiple use>
+    0x7f80c083b000: <multiple use>
+      0x7f80c2013fd0: <multiple use>
+      0x7f80c2012fd0: <multiple use>
+      0x7f80c08332e0: <multiple use>
+      0x7f80c2012b90: <multiple use>
+      0x7f80c08330c0: <multiple use>
+      0x7f80c2012b90: <multiple use>
+        0x7f80c2013ec0: <multiple use>
+        0x7f80c2012fd0: <multiple use>
+        0x7f80c08332e0: <multiple use>
+        0x7f80c2012b90: <multiple use>
+        0x7f80c08330c0: <multiple use>
+        0x7f80c2012b90: <multiple use>
+          0x7f80c0832c80: <multiple use>
+          0x7f80c2012fd0: <multiple use>
+          0x7f80c08332e0: <multiple use>
+          0x7f80c2012b90: <multiple use>
+          0x7f80c08330c0: <multiple use>
+          0x7f80c083b000: <multiple use>
+            0x7f80c2013860: i64 = TargetFrameIndex<0>
+
+            0x7f80c2012fd0: <multiple use>
+            0x7f80c08332e0: <multiple use>
+            0x7f80c2012b90: <multiple use>
+            0x7f80c08330c0: <multiple use>
+            0x7f80c2012b90: <multiple use>
+            0x7f80c05078a0: ch = EntryToken
+
+          0x7f80c2013200: ch = MOV32mi 0x7f80c2013860, 0x7f80c2012fd0, 0x7f80c08332e0, 0x7f80c2012b90, 0x7f80c08330c0, 0x7f80c2012b90, 0x7f80c05078a0<Mem:ST4[%retval]> [ORD=8]
+
+        0x7f80c2013310: ch = MOV32mi 0x7f80c0832c80, 0x7f80c2012fd0, 0x7f80c08332e0, 0x7f80c2012b90, 0x7f80c08330c0, 0x7f80c083b000, 0x7f80c2013200<Mem:ST4[%i1]> [ORD=9]
+
+      0x7f80c0832d90: ch = MOV32mi 0x7f80c2013ec0, 0x7f80c2012fd0, 0x7f80c08332e0, 0x7f80c2012b90, 0x7f80c08330c0, 0x7f80c2012b90, 0x7f80c2013310<Mem:ST4[%i2]> [ORD=10]
+
+    0x7f80c2013ca0: ch = MOV32mi 0x7f80c2013fd0, 0x7f80c2012fd0, 0x7f80c08332e0, 0x7f80c2012b90, 0x7f80c08330c0, 0x7f80c2012b90, 0x7f80c0832d90<Mem:ST4[%i3]> [ORD=11]
+
+  0x7f80c2013750: ch = MOV32mi 0x7f80c20140e0, 0x7f80c2012fd0, 0x7f80c08332e0, 0x7f80c2012b90, 0x7f80c08330c0, 0x7f80c083b000, 0x7f80c2013ca0<Mem:ST4[%i4]> [ORD=12]
+
+    0x7f80c2013fd0: <multiple use>
+    0x7f80c2012fd0: <multiple use>
+    0x7f80c08332e0: <multiple use>
+    0x7f80c2012b90: <multiple use>
+    0x7f80c08330c0: <multiple use>
+    0x7f80c2013750: <multiple use>
+  0x7f80c2012db0: i32,ch = MOV32rm 0x7f80c2013fd0, 0x7f80c2012fd0, 0x7f80c08332e0, 0x7f80c2012b90, 0x7f80c08330c0, 0x7f80c2013750<Mem:LD4[%i3]> [ORD=15]
+
+    0x7f80c2013ec0: <multiple use>
+    0x7f80c2012fd0: <multiple use>
+    0x7f80c08332e0: <multiple use>
+    0x7f80c2012b90: <multiple use>
+    0x7f80c08330c0: <multiple use>
+    0x7f80c2013750: <multiple use>
+  0x7f80c20130e0: i32,ch = MOV32rm 0x7f80c2013ec0, 0x7f80c2012fd0, 0x7f80c08332e0, 0x7f80c2012b90, 0x7f80c08330c0, 0x7f80c2013750<Mem:LD4[%i2]> [ORD=14]
+
+    0x7f80c0832c80: <multiple use>
+    0x7f80c2012fd0: <multiple use>
+    0x7f80c08332e0: <multiple use>
+    0x7f80c2012b90: <multiple use>
+    0x7f80c08330c0: <multiple use>
+    0x7f80c2013750: <multiple use>
+  0x7f80c2013420: i32,ch = MOV32rm 0x7f80c0832c80, 0x7f80c2012fd0, 0x7f80c08332e0, 0x7f80c2012b90, 0x7f80c08330c0, 0x7f80c2013750<Mem:LD4[%i1]> [ORD=13]
+
+      0x7f80c2012750: <multiple use>
+        0x7f80c2013420: <multiple use>
+        0x7f80c20130e0: <multiple use>
+        0x7f80c2012db0: <multiple use>
+        0x7f80c2013750: <multiple use>
+      0x7f80c2012a80: ch = TokenFactor 0x7f80c2013420:1, 0x7f80c20130e0:1, 0x7f80c2012db0:1, 0x7f80c2013750 [ORD=17]
+
+    0x7f80c2012970: i64,ch,glue = ADJCALLSTACKDOWN64 0x7f80c2012750, 0x7f80c2012a80 [ORD=17]
+
+    0x7f80c2012530: <multiple use>
+    0x7f80c2013420: <multiple use>
+  0x7f80c2012420: ch,glue = CopyToReg 0x7f80c2012970:1, 0x7f80c2012530, 0x7f80c2013420 [ORD=17]
+
+    0x7f80c2012420: <multiple use>
+    0x7f80c2012200: <multiple use>
+    0x7f80c20130e0: <multiple use>
+    0x7f80c2012420: <multiple use>
+  0x7f80c08331d0: ch,glue = CopyToReg 0x7f80c2012420, 0x7f80c2012200, 0x7f80c20130e0, 0x7f80c2012420:1 [ORD=17]
+
+    0x7f80c08331d0: <multiple use>
+    0x7f80c0832fb0: <multiple use>
+    0x7f80c2012db0: <multiple use>
+    0x7f80c08331d0: <multiple use>
+  0x7f80c0832b70: ch,glue = CopyToReg 0x7f80c08331d0, 0x7f80c0832fb0, 0x7f80c2012db0, 0x7f80c08331d0:1 [ORD=17]
+
+    0x7f80c0832b70: <multiple use>
+    0x7f80c0832950: <multiple use>
+      0x7f80c083b000: <multiple use>
+    0x7f80c2013530: i32 = MOV32ri 0x7f80c083b000
+
+    0x7f80c0832b70: <multiple use>
+  0x7f80c0832730: ch,glue = CopyToReg 0x7f80c0832b70, 0x7f80c0832950, 0x7f80c2013530, 0x7f80c0832b70:1 [ORD=17]
+
+    0x7f80c0832510: i64 = TargetGlobalAddress<i32 (i32, i32, i32, i32)* @leak> 0 [ORD=17]
+
+    0x7f80c2012530: <multiple use>
+    0x7f80c2012200: <multiple use>
+    0x7f80c0832fb0: <multiple use>
+    0x7f80c0832950: <multiple use>
+    0x7f80c2013a80: Untyped = RegisterMask
+
+    0x7f80c0832730: <multiple use>
+    0x7f80c0832730: <multiple use>
+  0x7f80c0832a60: ch,glue = CALL64pcrel32 0x7f80c0832510, 0x7f80c2012530, 0x7f80c2012200, 0x7f80c0832fb0, 0x7f80c0832950, 0x7f80c2013a80, 0x7f80c0832730, 0x7f80c0832730:1 [ORD=17]
+
+    0x7f80c2012750: <multiple use>
+    0x7f80c2012750: <multiple use>
+    0x7f80c0832a60: <multiple use>
+    0x7f80c0832a60: <multiple use>
+  0x7f80c0832840: i64,ch,glue = ADJCALLSTACKUP64 0x7f80c2012750, 0x7f80c2012750, 0x7f80c0832a60, 0x7f80c0832a60:1 [ORD=17]
+
+    0x7f80c0832840: <multiple use>
+    0x7f80c0832620: <multiple use>
+    0x7f80c0832840: <multiple use>
+  0x7f80c0832400: i32,ch,glue = CopyFromReg 0x7f80c0832840:1, 0x7f80c0832620, 0x7f80c0832840:2 [ORD=17]
+
+      0x7f80c2012ca0: i64 = TargetFrameIndex<5>
+
+      0x7f80c2012fd0: <multiple use>
+      0x7f80c08332e0: <multiple use>
+      0x7f80c2012b90: <multiple use>
+      0x7f80c08330c0: <multiple use>
+      0x7f80c0832400: <multiple use>
+      0x7f80c0832400: <multiple use>
+    0x7f80c0832ea0: ch = MOV32mr 0x7f80c2012ca0, 0x7f80c2012fd0, 0x7f80c08332e0, 0x7f80c2012b90, 0x7f80c08330c0, 0x7f80c0832400, 0x7f80c0832400:1<Mem:ST4[%res]> [ORD=18]
+
+    0x7f80c0832620: <multiple use>
+    0x7f80c0832400: <multiple use>
+  0x7f80c2012310: ch,glue = CopyToReg 0x7f80c0832ea0, 0x7f80c0832620, 0x7f80c0832400 [ORD=20]
+
+  0x7f80c08332e0: i64 = Register %noreg
+
+  0x7f80c2012fd0: i8 = TargetConstant<1>
+
+  0x7f80c2012b90: i32 = TargetConstant<0>
+
+  0x7f80c08330c0: i32 = Register %noreg
+
+  0x7f80c0832c80: i64 = TargetFrameIndex<1>
+
+  0x7f80c2013ec0: i64 = TargetFrameIndex<2>
+
+  0x7f80c2013fd0: i64 = TargetFrameIndex<3>
+
+  0x7f80c083b000: i32 = TargetConstant<1>
+
+    0x7f80c0832620: <multiple use>
+    0x7f80c2012310: <multiple use>
+    0x7f80c2012310: <multiple use>
+  0x7f80c2013db0: ch = RETQ 0x7f80c0832620, 0x7f80c2012310, 0x7f80c2012310:1 [ORD=20]
+
+
+Total amount of phi nodes to update: 0
+*** MachineFunction at end of ISel ***
+# Machine code for function main: SSA
+Frame Objects:
+  fi#0: size=4, align=4, at location [SP+8]
+  fi#1: size=4, align=4, at location [SP+8]
+  fi#2: size=4, align=4, at location [SP+8]
+  fi#3: size=4, align=4, at location [SP+8]
+  fi#4: size=4, align=4, at location [SP+8]
+  fi#5: size=4, align=4, at location [SP+8]
+
+BB#0: derived from LLVM BB %entry
+	MOV32mi <fi#0>, 1, %noreg, 0, %noreg, 0; mem:ST4[%retval]
+	MOV32mi <fi#1>, 1, %noreg, 0, %noreg, 1; mem:ST4[%i1]
+	MOV32mi <fi#2>, 1, %noreg, 0, %noreg, 0; mem:ST4[%i2]
+	MOV32mi <fi#3>, 1, %noreg, 0, %noreg, 0; mem:ST4[%i3]
+	MOV32mi <fi#4>, 1, %noreg, 0, %noreg, 1; mem:ST4[%i4]
+	%vreg0<def> = MOV32rm <fi#1>, 1, %noreg, 0, %noreg; mem:LD4[%i1] GR32:%vreg0
+	%vreg1<def> = MOV32rm <fi#2>, 1, %noreg, 0, %noreg; mem:LD4[%i2] GR32:%vreg1
+	%vreg2<def> = MOV32rm <fi#3>, 1, %noreg, 0, %noreg; mem:LD4[%i3] GR32:%vreg2
+	ADJCALLSTACKDOWN64 0, %RSP<imp-def,dead>, %EFLAGS<imp-def,dead>, %RSP<imp-use>
+	%vreg3<def> = MOV32ri 1; GR32:%vreg3
+	%EDI<def> = COPY %vreg0; GR32:%vreg0
+	%ESI<def> = COPY %vreg1; GR32:%vreg1
+	%EDX<def> = COPY %vreg2; GR32:%vreg2
+	%ECX<def> = COPY %vreg3; GR32:%vreg3
+	CALL64pcrel32 <ga:@leak>, <regmask>, %RSP<imp-use>, %EDI<imp-use>, %ESI<imp-use>, %EDX<imp-use>, %ECX<imp-use>, %RSP<imp-def>, %EAX<imp-def>
+	ADJCALLSTACKUP64 0, 0, %RSP<imp-def,dead>, %EFLAGS<imp-def,dead>, %RSP<imp-use>
+	%vreg4<def> = COPY %EAX; GR32:%vreg4
+	MOV32mr <fi#5>, 1, %noreg, 0, %noreg, %vreg4; mem:ST4[%res] GR32:%vreg4
+	%EAX<def> = COPY %vreg4; GR32:%vreg4
+	RETQ %EAX
+
+# End machine code for function main.
+

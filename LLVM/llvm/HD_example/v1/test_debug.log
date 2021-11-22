@@ -1,0 +1,554 @@
+Computing live-in reg-units in ABI blocks.
+0B	BB#0 DIL#0 SIL#0 DH#0 DL#0 CH#0 CL#0
+Created 6 new intervals.
+********** INTERVALS **********
+CH [0B,16r:0)  0@0B-phi
+CL [0B,16r:0)  0@0B-phi
+DH [0B,32r:0)  0@0B-phi
+DIL [0B,64r:0)  0@0B-phi
+DL [0B,32r:0)  0@0B-phi
+SIL [0B,48r:0)  0@0B-phi
+%vreg0 [64r,80r:0)  0@64r
+%vreg1 [48r,96r:0)  0@48r
+%vreg2 [32r,112r:0)  0@32r
+%vreg3 [16r,128r:0)  0@16r
+%vreg4 [144r,160r:0)  0@144r
+%vreg5 [160r,176r:0)[176r,192r:1)  0@160r 1@176r
+%vreg6 [208r,224r:0)  0@208r
+%vreg7 [224r,240r:0)[240r,272r:1)  0@224r 1@240r
+%vreg8 [272r,288r:0)[288r,320r:1)  0@272r 1@288r
+RegMasks:
+********** MACHINEINSTRS **********
+# Machine code for function leak: Post SSA
+Frame Objects:
+  fi#0: size=4, align=4, at location [SP+8]
+  fi#1: size=4, align=4, at location [SP+8]
+  fi#2: size=4, align=4, at location [SP+8]
+  fi#3: size=4, align=4, at location [SP+8]
+  fi#4: size=4, align=4, at location [SP+8]
+  fi#5: size=4, align=4, at location [SP+8]
+  fi#6: size=4, align=4, at location [SP+8]
+Function Live Ins: %EDI in %vreg0, %ESI in %vreg1, %EDX in %vreg2, %ECX in %vreg3
+
+0B	BB#0: derived from LLVM BB %entry
+	    Live Ins: %EDI %ESI %EDX %ECX
+16B		%vreg3<def> = COPY %ECX; GR32:%vreg3
+32B		%vreg2<def> = COPY %EDX; GR32:%vreg2
+48B		%vreg1<def> = COPY %ESI; GR32:%vreg1
+64B		%vreg0<def> = COPY %EDI; GR32:%vreg0
+80B		MOV32mr <fi#0>, 1, %noreg, 0, %noreg, %vreg0; mem:ST4[%i1.addr] GR32:%vreg0
+96B		MOV32mr <fi#1>, 1, %noreg, 0, %noreg, %vreg1; mem:ST4[%i2.addr] GR32:%vreg1
+112B		MOV32mr <fi#2>, 1, %noreg, 0, %noreg, %vreg2; mem:ST4[%key.addr] GR32:%vreg2
+128B		MOV32mr <fi#3>, 1, %noreg, 0, %noreg, %vreg3; mem:ST4[%i3.addr] GR32:%vreg3
+144B		%vreg4<def> = MOV32rm <fi#0>, 1, %noreg, 0, %noreg; mem:LD4[%i1.addr] GR32:%vreg4
+160B		%vreg5<def> = COPY %vreg4; GR32:%vreg5,%vreg4
+176B		%vreg5<def,tied1> = XOR32rm %vreg5<tied0>, <fi#1>, 1, %noreg, 0, %noreg, %EFLAGS<imp-def,dead>; mem:LD4[%i2.addr] GR32:%vreg5
+192B		MOV32mr <fi#4>, 1, %noreg, 0, %noreg, %vreg5; mem:ST4[%n1] GR32:%vreg5
+208B		%vreg6<def> = MOV32rm <fi#2>, 1, %noreg, 0, %noreg; mem:LD4[%key.addr] GR32:%vreg6
+224B		%vreg7<def> = COPY %vreg6; GR32:%vreg7,%vreg6
+240B		%vreg7<def,tied1> = AND32rm %vreg7<tied0>, <fi#3>, 1, %noreg, 0, %noreg, %EFLAGS<imp-def,dead>; mem:LD4[%i3.addr] GR32:%vreg7
+256B		MOV32mr <fi#5>, 1, %noreg, 0, %noreg, %vreg7; mem:ST4[%n2] GR32:%vreg7
+272B		%vreg8<def> = COPY %vreg7; GR32:%vreg8,%vreg7
+288B		%vreg8<def,tied1> = OR32rm %vreg8<tied0>, <fi#4>, 1, %noreg, 0, %noreg, %EFLAGS<imp-def,dead>; mem:LD4[%n1] GR32:%vreg8
+304B		MOV32mr <fi#6>, 1, %noreg, 0, %noreg, %vreg8; mem:ST4[%n3] GR32:%vreg8
+320B		%EAX<def> = COPY %vreg8; GR32:%vreg8
+336B		RETQ %EAX<kill>
+
+# End machine code for function leak.
+
+********** SIMPLE REGISTER COALESCING **********
+********** Function: leak
+********** JOINING INTERVALS ***********
+entry:
+16B	%vreg3<def> = COPY %ECX; GR32:%vreg3
+	Considering merging %vreg3 with %ECX
+	Can only merge into reserved registers.
+32B	%vreg2<def> = COPY %EDX; GR32:%vreg2
+	Considering merging %vreg2 with %EDX
+	Can only merge into reserved registers.
+48B	%vreg1<def> = COPY %ESI; GR32:%vreg1
+	Considering merging %vreg1 with %ESI
+	Can only merge into reserved registers.
+64B	%vreg0<def> = COPY %EDI; GR32:%vreg0
+	Considering merging %vreg0 with %EDI
+	Can only merge into reserved registers.
+320B	%EAX<def> = COPY %vreg8; GR32:%vreg8
+	Considering merging %vreg8 with %EAX
+	Can only merge into reserved registers.
+160B	%vreg5<def> = COPY %vreg4; GR32:%vreg5,%vreg4
+	Considering merging to GR32 with %vreg4 in %vreg5
+		RHS = %vreg4 [144r,160r:0)  0@144r
+		LHS = %vreg5 [160r,176r:0)[176r,192r:1)  0@160r 1@176r
+		merge %vreg5:0@160r into %vreg4:0@144r --> @144r
+		erased:	160r	%vreg5<def> = COPY %vreg4; GR32:%vreg5,%vreg4
+AllocationOrder(GR32) = [ %EAX %ECX %EDX %ESI %EDI %R8D %R9D %R10D %R11D %EBX %R14D %R15D %R12D %R13D ]
+		updated: 144B	%vreg5<def> = MOV32rm <fi#0>, 1, %noreg, 0, %noreg; mem:LD4[%i1.addr] GR32:%vreg5
+	Success: %vreg4 -> %vreg5
+	Result = %vreg5 [144r,176r:0)[176r,192r:1)  0@144r 1@176r
+224B	%vreg7<def> = COPY %vreg6; GR32:%vreg7,%vreg6
+	Considering merging to GR32 with %vreg6 in %vreg7
+		RHS = %vreg6 [208r,224r:0)  0@208r
+		LHS = %vreg7 [224r,240r:0)[240r,272r:1)  0@224r 1@240r
+		merge %vreg7:0@224r into %vreg6:0@208r --> @208r
+		erased:	224r	%vreg7<def> = COPY %vreg6; GR32:%vreg7,%vreg6
+		updated: 208B	%vreg7<def> = MOV32rm <fi#2>, 1, %noreg, 0, %noreg; mem:LD4[%key.addr] GR32:%vreg7
+	Success: %vreg6 -> %vreg7
+	Result = %vreg7 [208r,240r:0)[240r,272r:1)  0@208r 1@240r
+272B	%vreg8<def> = COPY %vreg7; GR32:%vreg8,%vreg7
+	Considering merging to GR32 with %vreg7 in %vreg8
+		RHS = %vreg7 [208r,240r:0)[240r,272r:1)  0@208r 1@240r
+		LHS = %vreg8 [272r,288r:0)[288r,320r:1)  0@272r 1@288r
+		merge %vreg8:0@272r into %vreg7:1@240r --> @240r
+		erased:	272r	%vreg8<def> = COPY %vreg7; GR32:%vreg8,%vreg7
+		updated: 208B	%vreg8<def> = MOV32rm <fi#2>, 1, %noreg, 0, %noreg; mem:LD4[%key.addr] GR32:%vreg8
+		updated: 240B	%vreg8<def,tied1> = AND32rm %vreg8<tied0>, <fi#3>, 1, %noreg, 0, %noreg, %EFLAGS<imp-def,dead>; mem:LD4[%i3.addr] GR32:%vreg8
+		updated: 256B	MOV32mr <fi#5>, 1, %noreg, 0, %noreg, %vreg8; mem:ST4[%n2] GR32:%vreg8
+	Success: %vreg7 -> %vreg8
+	Result = %vreg8 [208r,240r:2)[240r,288r:0)[288r,320r:1)  0@240r 1@288r 2@208r
+Trying to inflate 0 regs.
+********** INTERVALS **********
+CH [0B,16r:0)  0@0B-phi
+CL [0B,16r:0)  0@0B-phi
+DH [0B,32r:0)  0@0B-phi
+DIL [0B,64r:0)  0@0B-phi
+DL [0B,32r:0)  0@0B-phi
+SIL [0B,48r:0)  0@0B-phi
+%vreg0 [64r,80r:0)  0@64r
+%vreg1 [48r,96r:0)  0@48r
+%vreg2 [32r,112r:0)  0@32r
+%vreg3 [16r,128r:0)  0@16r
+%vreg5 [144r,176r:0)[176r,192r:1)  0@144r 1@176r
+%vreg8 [208r,240r:2)[240r,288r:0)[288r,320r:1)  0@240r 1@288r 2@208r
+RegMasks:
+********** MACHINEINSTRS **********
+# Machine code for function leak: Post SSA
+Frame Objects:
+  fi#0: size=4, align=4, at location [SP+8]
+  fi#1: size=4, align=4, at location [SP+8]
+  fi#2: size=4, align=4, at location [SP+8]
+  fi#3: size=4, align=4, at location [SP+8]
+  fi#4: size=4, align=4, at location [SP+8]
+  fi#5: size=4, align=4, at location [SP+8]
+  fi#6: size=4, align=4, at location [SP+8]
+Function Live Ins: %EDI in %vreg0, %ESI in %vreg1, %EDX in %vreg2, %ECX in %vreg3
+
+0B	BB#0: derived from LLVM BB %entry
+	    Live Ins: %EDI %ESI %EDX %ECX
+16B		%vreg3<def> = COPY %ECX; GR32:%vreg3
+32B		%vreg2<def> = COPY %EDX; GR32:%vreg2
+48B		%vreg1<def> = COPY %ESI; GR32:%vreg1
+64B		%vreg0<def> = COPY %EDI; GR32:%vreg0
+80B		MOV32mr <fi#0>, 1, %noreg, 0, %noreg, %vreg0; mem:ST4[%i1.addr] GR32:%vreg0
+96B		MOV32mr <fi#1>, 1, %noreg, 0, %noreg, %vreg1; mem:ST4[%i2.addr] GR32:%vreg1
+112B		MOV32mr <fi#2>, 1, %noreg, 0, %noreg, %vreg2; mem:ST4[%key.addr] GR32:%vreg2
+128B		MOV32mr <fi#3>, 1, %noreg, 0, %noreg, %vreg3; mem:ST4[%i3.addr] GR32:%vreg3
+144B		%vreg5<def> = MOV32rm <fi#0>, 1, %noreg, 0, %noreg; mem:LD4[%i1.addr] GR32:%vreg5
+176B		%vreg5<def,tied1> = XOR32rm %vreg5<tied0>, <fi#1>, 1, %noreg, 0, %noreg, %EFLAGS<imp-def,dead>; mem:LD4[%i2.addr] GR32:%vreg5
+192B		MOV32mr <fi#4>, 1, %noreg, 0, %noreg, %vreg5; mem:ST4[%n1] GR32:%vreg5
+208B		%vreg8<def> = MOV32rm <fi#2>, 1, %noreg, 0, %noreg; mem:LD4[%key.addr] GR32:%vreg8
+240B		%vreg8<def,tied1> = AND32rm %vreg8<tied0>, <fi#3>, 1, %noreg, 0, %noreg, %EFLAGS<imp-def,dead>; mem:LD4[%i3.addr] GR32:%vreg8
+256B		MOV32mr <fi#5>, 1, %noreg, 0, %noreg, %vreg8; mem:ST4[%n2] GR32:%vreg8
+288B		%vreg8<def,tied1> = OR32rm %vreg8<tied0>, <fi#4>, 1, %noreg, 0, %noreg, %EFLAGS<imp-def,dead>; mem:LD4[%n1] GR32:%vreg8
+304B		MOV32mr <fi#6>, 1, %noreg, 0, %noreg, %vreg8; mem:ST4[%n3] GR32:%vreg8
+320B		%EAX<def> = COPY %vreg8; GR32:%vreg8
+336B		RETQ %EAX<kill>
+
+# End machine code for function leak.
+
+AllocationOrder(GR32) = [ %EAX %ECX %EDX %ESI %EDI %R8D %R9D %R10D %R11D %EBX %R14D %R15D %R12D %R13D ]
+AllocationOrder(GR16) = [ %AX %CX %DX %SI %DI %R8W %R9W %R10W %R11W %BX %R14W %R15W %R12W %R13W ]
+AllocationOrder(GR8) = [ %AL %CL %DL %SIL %DIL %R8B %R9B %R10B %R11B %BL %R14B %R15B %R12B %R13B ]
+AllocationOrder(GR8_ABCD_H) = [ %AH %CH %DH %BH ] (sub-class)
+AllocationOrder(GR8_ABCD_L) = [ %AL %CL %DL %BL ] (sub-class)
+AllocationOrder(SEGMENT_REG) = [ ]
+AllocationOrder(RFP32) = [ %FP0 %FP1 %FP2 %FP3 %FP4 %FP5 %FP6 ]
+AllocationOrder(GR8_NOREX) = [ %AL %CL %DL %BL ]
+AllocationOrder(VK1) = [ %K0 %K1 %K2 %K3 %K4 %K5 %K6 %K7 ]
+AllocationOrder(DEBUG_REG) = [ %DR0 %DR1 %DR2 %DR3 %DR4 %DR5 %DR6 %DR7 ]
+AllocationOrder(VR64) = [ %MM0 %MM1 %MM2 %MM3 %MM4 %MM5 %MM6 %MM7 ]
+AllocationOrder(GR64) = [ %RAX %RCX %RDX %RSI %RDI %R8 %R9 %R10 %R11 %RBX %R14 %R15 %R12 %R13 ]
+AllocationOrder(GR64_NOREX_and_GR64_TC) = [ %RAX %RCX %RDX %RSI %RDI ] (sub-class)
+AllocationOrder(GR64_TCW64) = [ %RAX %RCX %RDX %R8 %R9 %R11 ] (sub-class)
+AllocationOrder(FR32) = [ %XMM0 %XMM1 %XMM2 %XMM3 %XMM4 %XMM5 %XMM6 %XMM7 %XMM8 %XMM9 %XMM10 %XMM11 %XMM12 %XMM13 %XMM14 %XMM15 ]
+AllocationOrder(CONTROL_REG) = [ %CR0 %CR1 %CR2 %CR3 %CR4 %CR5 %CR6 %CR7 %CR8 %CR9 %CR10 %CR11 %CR12 %CR13 %CR14 %CR15 ]
+AllocationOrder(GR64_NOREX) = [ %RAX %RCX %RDX %RSI %RDI %RBX ] (sub-class)
+AllocationOrder(GR8) = [ %AL %CL %DL %SIL %DIL %R8B %R9B %R10B %R11B %BL %R14B %R15B %R12B %R13B ]
+AllocationOrder(GR64_TC) = [ %RAX %RCX %RDX %RSI %RDI %R8 %R9 %R11 ] (sub-class)
+AllocationOrder(GR8) = [ %AL %CL %DL %SIL %DIL %R8B %R9B %R10B %R11B %BL %R14B %R15B %R12B %R13B ]
+AllocationOrder(GR64_NOREX) = [ %RAX %RCX %RDX %RSI %RDI %RBX ] (sub-class)
+AllocationOrder(GR8) = [ %AL %CL %DL %SIL %DIL %R8B %R9B %R10B %R11B %BL %R14B %R15B %R12B %R13B ]
+AllocationOrder(GR8) = [ %AL %CL %DL %SIL %DIL %R8B %R9B %R10B %R11B %BL %R14B %R15B %R12B %R13B ]
+AllocationOrder(FR32X) = [ %XMM0 %XMM1 %XMM2 %XMM3 %XMM4 %XMM5 %XMM6 %XMM7 %XMM8 %XMM9 %XMM10 %XMM11 %XMM12 %XMM13 %XMM14 %XMM15 ]
+AllocationOrder(GR64) = [ %RAX %RCX %RDX %RSI %RDI %R8 %R9 %R10 %R11 %RBX %R14 %R15 %R12 %R13 ]
+********** GREEDY REGISTER ALLOCATION **********
+********** Function: leak
+********** INTERVALS **********
+CH [0B,16r:0)  0@0B-phi
+CL [0B,16r:0)  0@0B-phi
+DH [0B,32r:0)  0@0B-phi
+DIL [0B,64r:0)  0@0B-phi
+DL [0B,32r:0)  0@0B-phi
+SIL [0B,48r:0)  0@0B-phi
+%vreg0 [64r,80r:0)  0@64r
+%vreg1 [48r,96r:0)  0@48r
+%vreg2 [32r,112r:0)  0@32r
+%vreg3 [16r,128r:0)  0@16r
+%vreg5 [144r,176r:0)[176r,192r:1)  0@144r 1@176r
+%vreg8 [208r,240r:2)[240r,288r:0)[288r,320r:1)  0@240r 1@288r 2@208r
+RegMasks:
+********** MACHINEINSTRS **********
+# Machine code for function leak: Post SSA
+Frame Objects:
+  fi#0: size=4, align=4, at location [SP+8]
+  fi#1: size=4, align=4, at location [SP+8]
+  fi#2: size=4, align=4, at location [SP+8]
+  fi#3: size=4, align=4, at location [SP+8]
+  fi#4: size=4, align=4, at location [SP+8]
+  fi#5: size=4, align=4, at location [SP+8]
+  fi#6: size=4, align=4, at location [SP+8]
+Function Live Ins: %EDI in %vreg0, %ESI in %vreg1, %EDX in %vreg2, %ECX in %vreg3
+
+0B	BB#0: derived from LLVM BB %entry
+	    Live Ins: %EDI %ESI %EDX %ECX
+16B		%vreg3<def> = COPY %ECX; GR32:%vreg3
+32B		%vreg2<def> = COPY %EDX; GR32:%vreg2
+48B		%vreg1<def> = COPY %ESI; GR32:%vreg1
+64B		%vreg0<def> = COPY %EDI; GR32:%vreg0
+80B		MOV32mr <fi#0>, 1, %noreg, 0, %noreg, %vreg0; mem:ST4[%i1.addr] GR32:%vreg0
+96B		MOV32mr <fi#1>, 1, %noreg, 0, %noreg, %vreg1; mem:ST4[%i2.addr] GR32:%vreg1
+112B		MOV32mr <fi#2>, 1, %noreg, 0, %noreg, %vreg2; mem:ST4[%key.addr] GR32:%vreg2
+128B		MOV32mr <fi#3>, 1, %noreg, 0, %noreg, %vreg3; mem:ST4[%i3.addr] GR32:%vreg3
+144B		%vreg5<def> = MOV32rm <fi#0>, 1, %noreg, 0, %noreg; mem:LD4[%i1.addr] GR32:%vreg5
+176B		%vreg5<def,tied1> = XOR32rm %vreg5<tied0>, <fi#1>, 1, %noreg, 0, %noreg, %EFLAGS<imp-def,dead>; mem:LD4[%i2.addr] GR32:%vreg5
+192B		MOV32mr <fi#4>, 1, %noreg, 0, %noreg, %vreg5; mem:ST4[%n1] GR32:%vreg5
+208B		%vreg8<def> = MOV32rm <fi#2>, 1, %noreg, 0, %noreg; mem:LD4[%key.addr] GR32:%vreg8
+240B		%vreg8<def,tied1> = AND32rm %vreg8<tied0>, <fi#3>, 1, %noreg, 0, %noreg, %EFLAGS<imp-def,dead>; mem:LD4[%i3.addr] GR32:%vreg8
+256B		MOV32mr <fi#5>, 1, %noreg, 0, %noreg, %vreg8; mem:ST4[%n2] GR32:%vreg8
+288B		%vreg8<def,tied1> = OR32rm %vreg8<tied0>, <fi#4>, 1, %noreg, 0, %noreg, %EFLAGS<imp-def,dead>; mem:LD4[%n1] GR32:%vreg8
+304B		MOV32mr <fi#6>, 1, %noreg, 0, %noreg, %vreg8; mem:ST4[%n3] GR32:%vreg8
+320B		%EAX<def> = COPY %vreg8; GR32:%vreg8
+336B		RETQ %EAX<kill>
+
+# End machine code for function leak.
+
+
+selectOrSplit GR32:%vreg3 [16r,128r:0)  0@16r w=3.945312e-03
+AllocationOrder(GR32) = [ %EAX %ECX %EDX %ESI %EDI %R8D %R9D %R10D %R11D %EBX %R14D %R15D %R12D %R13D ]
+hints: %ECX
+assigning %vreg3 to %ECX: CH [16r,128r:0)  0@16r CL [16r,128r:0)  0@16r
+
+selectOrSplit GR32:%vreg2 [32r,112r:0)  0@32r w=4.208333e-03
+hints: %EDX
+assigning %vreg2 to %EDX: DH [32r,112r:0)  0@32r DL [32r,112r:0)  0@32r
+
+selectOrSplit GR32:%vreg1 [48r,96r:0)  0@48r w=4.508928e-03
+hints: %ESI
+assigning %vreg1 to %ESI: SIL [48r,96r:0)  0@48r
+
+selectOrSplit GR32:%vreg0 [64r,80r:0)  0@64r w=inf
+hints: %EDI
+assigning %vreg0 to %EDI: DIL [64r,80r:0)  0@64r
+
+selectOrSplit GR32:%vreg8 [208r,240r:2)[240r,288r:0)[288r,320r:1)  0@240r 1@288r 2@208r w=1.578125e-02
+hints: %EAX
+assigning %vreg8 to %EAX: AH [208r,240r:2)[240r,288r:0)[288r,320r:1)  0@240r 1@288r 2@208r AL [208r,240r:2)[240r,288r:0)[288r,320r:1)  0@240r 1@288r 2@208r
+
+selectOrSplit GR32:%vreg5 [144r,176r:0)[176r,192r:1)  0@144r 1@176r w=inf
+assigning %vreg5 to %EAX: AH [144r,176r:0)[176r,192r:1)  0@144r 1@176r AL [144r,176r:0)[176r,192r:1)  0@144r 1@176r
+********** REWRITE VIRTUAL REGISTERS **********
+********** Function: leak
+********** REGISTER MAP **********
+[%vreg0 -> %EDI] GR32
+[%vreg1 -> %ESI] GR32
+[%vreg2 -> %EDX] GR32
+[%vreg3 -> %ECX] GR32
+[%vreg5 -> %EAX] GR32
+[%vreg8 -> %EAX] GR32
+
+0B	BB#0: derived from LLVM BB %entry
+	    Live Ins: %EDI %ESI %EDX %ECX
+16B		%vreg3<def> = COPY %ECX; GR32:%vreg3
+32B		%vreg2<def> = COPY %EDX; GR32:%vreg2
+48B		%vreg1<def> = COPY %ESI; GR32:%vreg1
+64B		%vreg0<def> = COPY %EDI; GR32:%vreg0
+80B		MOV32mr <fi#0>, 1, %noreg, 0, %noreg, %vreg0<kill>; mem:ST4[%i1.addr] GR32:%vreg0
+96B		MOV32mr <fi#1>, 1, %noreg, 0, %noreg, %vreg1<kill>; mem:ST4[%i2.addr] GR32:%vreg1
+112B		MOV32mr <fi#2>, 1, %noreg, 0, %noreg, %vreg2<kill>; mem:ST4[%key.addr] GR32:%vreg2
+128B		MOV32mr <fi#3>, 1, %noreg, 0, %noreg, %vreg3<kill>; mem:ST4[%i3.addr] GR32:%vreg3
+144B		%vreg5<def> = MOV32rm <fi#0>, 1, %noreg, 0, %noreg; mem:LD4[%i1.addr] GR32:%vreg5
+176B		%vreg5<def,tied1> = XOR32rm %vreg5<kill,tied0>, <fi#1>, 1, %noreg, 0, %noreg, %EFLAGS<imp-def,dead>; mem:LD4[%i2.addr] GR32:%vreg5
+192B		MOV32mr <fi#4>, 1, %noreg, 0, %noreg, %vreg5<kill>; mem:ST4[%n1] GR32:%vreg5
+208B		%vreg8<def> = MOV32rm <fi#2>, 1, %noreg, 0, %noreg; mem:LD4[%key.addr] GR32:%vreg8
+240B		%vreg8<def,tied1> = AND32rm %vreg8<kill,tied0>, <fi#3>, 1, %noreg, 0, %noreg, %EFLAGS<imp-def,dead>; mem:LD4[%i3.addr] GR32:%vreg8
+256B		MOV32mr <fi#5>, 1, %noreg, 0, %noreg, %vreg8; mem:ST4[%n2] GR32:%vreg8
+288B		%vreg8<def,tied1> = OR32rm %vreg8<kill,tied0>, <fi#4>, 1, %noreg, 0, %noreg, %EFLAGS<imp-def,dead>; mem:LD4[%n1] GR32:%vreg8
+304B		MOV32mr <fi#6>, 1, %noreg, 0, %noreg, %vreg8; mem:ST4[%n3] GR32:%vreg8
+320B		%EAX<def> = COPY %vreg8<kill>; GR32:%vreg8
+336B		RETQ %EAX
+> %ECX<def> = COPY %ECX
+Deleting identity copy.
+> %EDX<def> = COPY %EDX
+Deleting identity copy.
+> %ESI<def> = COPY %ESI
+Deleting identity copy.
+> %EDI<def> = COPY %EDI
+Deleting identity copy.
+> MOV32mr <fi#0>, 1, %noreg, 0, %noreg, %EDI<kill>; mem:ST4[%i1.addr]
+> MOV32mr <fi#1>, 1, %noreg, 0, %noreg, %ESI<kill>; mem:ST4[%i2.addr]
+> MOV32mr <fi#2>, 1, %noreg, 0, %noreg, %EDX<kill>; mem:ST4[%key.addr]
+> MOV32mr <fi#3>, 1, %noreg, 0, %noreg, %ECX<kill>; mem:ST4[%i3.addr]
+> %EAX<def> = MOV32rm <fi#0>, 1, %noreg, 0, %noreg; mem:LD4[%i1.addr]
+> %EAX<def,tied1> = XOR32rm %EAX<kill,tied0>, <fi#1>, 1, %noreg, 0, %noreg, %EFLAGS<imp-def,dead>; mem:LD4[%i2.addr]
+> MOV32mr <fi#4>, 1, %noreg, 0, %noreg, %EAX<kill>; mem:ST4[%n1]
+> %EAX<def> = MOV32rm <fi#2>, 1, %noreg, 0, %noreg; mem:LD4[%key.addr]
+> %EAX<def,tied1> = AND32rm %EAX<kill,tied0>, <fi#3>, 1, %noreg, 0, %noreg, %EFLAGS<imp-def,dead>; mem:LD4[%i3.addr]
+> MOV32mr <fi#5>, 1, %noreg, 0, %noreg, %EAX; mem:ST4[%n2]
+> %EAX<def,tied1> = OR32rm %EAX<kill,tied0>, <fi#4>, 1, %noreg, 0, %noreg, %EFLAGS<imp-def,dead>; mem:LD4[%n1]
+> MOV32mr <fi#6>, 1, %noreg, 0, %noreg, %EAX; mem:ST4[%n3]
+> %EAX<def> = COPY %EAX<kill>
+Deleting identity copy.
+> RETQ %EAX
+Computing live-in reg-units in ABI blocks.
+Created 0 new intervals.
+********** INTERVALS **********
+%vreg0 [96r,176r:0)  0@96r
+%vreg1 [112r,192r:0)  0@112r
+%vreg2 [128r,208r:0)  0@128r
+%vreg3 [160r,224r:0)  0@160r
+%vreg4 [272r,304r:0)  0@272r
+RegMasks: 240r
+********** MACHINEINSTRS **********
+# Machine code for function main: Post SSA
+Frame Objects:
+  fi#0: size=4, align=4, at location [SP+8]
+  fi#1: size=4, align=4, at location [SP+8]
+  fi#2: size=4, align=4, at location [SP+8]
+  fi#3: size=4, align=4, at location [SP+8]
+  fi#4: size=4, align=4, at location [SP+8]
+  fi#5: size=4, align=4, at location [SP+8]
+
+0B	BB#0: derived from LLVM BB %entry
+16B		MOV32mi <fi#0>, 1, %noreg, 0, %noreg, 0; mem:ST4[%retval]
+32B		MOV32mi <fi#1>, 1, %noreg, 0, %noreg, 1; mem:ST4[%i1]
+48B		MOV32mi <fi#2>, 1, %noreg, 0, %noreg, 0; mem:ST4[%i2]
+64B		MOV32mi <fi#3>, 1, %noreg, 0, %noreg, 0; mem:ST4[%i3]
+80B		MOV32mi <fi#4>, 1, %noreg, 0, %noreg, 1; mem:ST4[%i4]
+96B		%vreg0<def> = MOV32rm <fi#1>, 1, %noreg, 0, %noreg; mem:LD4[%i1] GR32:%vreg0
+112B		%vreg1<def> = MOV32rm <fi#2>, 1, %noreg, 0, %noreg; mem:LD4[%i2] GR32:%vreg1
+128B		%vreg2<def> = MOV32rm <fi#3>, 1, %noreg, 0, %noreg; mem:LD4[%i3] GR32:%vreg2
+144B		ADJCALLSTACKDOWN64 0, %RSP<imp-def>, %EFLAGS<imp-def,dead>, %RSP<imp-use>
+160B		%vreg3<def> = MOV32ri 1; GR32:%vreg3
+176B		%EDI<def> = COPY %vreg0; GR32:%vreg0
+192B		%ESI<def> = COPY %vreg1; GR32:%vreg1
+208B		%EDX<def> = COPY %vreg2; GR32:%vreg2
+224B		%ECX<def> = COPY %vreg3; GR32:%vreg3
+240B		CALL64pcrel32 <ga:@leak>, <regmask>, %RSP<imp-use>, %EDI<imp-use,kill>, %ESI<imp-use,kill>, %EDX<imp-use,kill>, %ECX<imp-use,kill>, %RSP<imp-def>, %EAX<imp-def>
+256B		ADJCALLSTACKUP64 0, 0, %RSP<imp-def>, %EFLAGS<imp-def,dead>, %RSP<imp-use>
+272B		%vreg4<def> = COPY %EAX<kill>; GR32:%vreg4
+288B		MOV32mr <fi#5>, 1, %noreg, 0, %noreg, %vreg4; mem:ST4[%res] GR32:%vreg4
+304B		%EAX<def> = COPY %vreg4; GR32:%vreg4
+320B		RETQ %EAX<kill>
+
+# End machine code for function main.
+
+********** SIMPLE REGISTER COALESCING **********
+********** Function: main
+********** JOINING INTERVALS ***********
+entry:
+176B	%EDI<def> = COPY %vreg0; GR32:%vreg0
+	Considering merging %vreg0 with %EDI
+	Can only merge into reserved registers.
+192B	%ESI<def> = COPY %vreg1; GR32:%vreg1
+	Considering merging %vreg1 with %ESI
+	Can only merge into reserved registers.
+208B	%EDX<def> = COPY %vreg2; GR32:%vreg2
+	Considering merging %vreg2 with %EDX
+	Can only merge into reserved registers.
+224B	%ECX<def> = COPY %vreg3; GR32:%vreg3
+	Considering merging %vreg3 with %ECX
+	Can only merge into reserved registers.
+Remat: %ECX<def> = MOV32ri 1
+Shrink: %vreg3 [160r,224r:0)  0@160r
+All defs dead: 160r	%vreg3<def,dead> = MOV32ri 1; GR32:%vreg3
+Shrunk: %vreg3 [160r,160d:0)  0@160r
+Deleting dead def 160r	%vreg3<def,dead> = MOV32ri 1; GR32:%vreg3
+272B	%vreg4<def> = COPY %EAX<kill>; GR32:%vreg4
+	Considering merging %vreg4 with %EAX
+	Can only merge into reserved registers.
+304B	%EAX<def> = COPY %vreg4; GR32:%vreg4
+	Considering merging %vreg4 with %EAX
+	Can only merge into reserved registers.
+304B	%EAX<def> = COPY %vreg4; GR32:%vreg4
+	Considering merging %vreg4 with %EAX
+	Can only merge into reserved registers.
+Trying to inflate 0 regs.
+********** INTERVALS **********
+%vreg0 [96r,176r:0)  0@96r
+%vreg1 [112r,192r:0)  0@112r
+%vreg2 [128r,208r:0)  0@128r
+%vreg4 [272r,304r:0)  0@272r
+RegMasks: 240r
+********** MACHINEINSTRS **********
+# Machine code for function main: Post SSA
+Frame Objects:
+  fi#0: size=4, align=4, at location [SP+8]
+  fi#1: size=4, align=4, at location [SP+8]
+  fi#2: size=4, align=4, at location [SP+8]
+  fi#3: size=4, align=4, at location [SP+8]
+  fi#4: size=4, align=4, at location [SP+8]
+  fi#5: size=4, align=4, at location [SP+8]
+
+0B	BB#0: derived from LLVM BB %entry
+16B		MOV32mi <fi#0>, 1, %noreg, 0, %noreg, 0; mem:ST4[%retval]
+32B		MOV32mi <fi#1>, 1, %noreg, 0, %noreg, 1; mem:ST4[%i1]
+48B		MOV32mi <fi#2>, 1, %noreg, 0, %noreg, 0; mem:ST4[%i2]
+64B		MOV32mi <fi#3>, 1, %noreg, 0, %noreg, 0; mem:ST4[%i3]
+80B		MOV32mi <fi#4>, 1, %noreg, 0, %noreg, 1; mem:ST4[%i4]
+96B		%vreg0<def> = MOV32rm <fi#1>, 1, %noreg, 0, %noreg; mem:LD4[%i1] GR32:%vreg0
+112B		%vreg1<def> = MOV32rm <fi#2>, 1, %noreg, 0, %noreg; mem:LD4[%i2] GR32:%vreg1
+128B		%vreg2<def> = MOV32rm <fi#3>, 1, %noreg, 0, %noreg; mem:LD4[%i3] GR32:%vreg2
+144B		ADJCALLSTACKDOWN64 0, %RSP<imp-def>, %EFLAGS<imp-def,dead>, %RSP<imp-use>
+176B		%EDI<def> = COPY %vreg0; GR32:%vreg0
+192B		%ESI<def> = COPY %vreg1; GR32:%vreg1
+208B		%EDX<def> = COPY %vreg2; GR32:%vreg2
+224B		%ECX<def> = MOV32ri 1
+240B		CALL64pcrel32 <ga:@leak>, <regmask>, %RSP<imp-use>, %EDI<imp-use,kill>, %ESI<imp-use,kill>, %EDX<imp-use,kill>, %ECX<imp-use,kill>, %RSP<imp-def>, %EAX<imp-def>
+256B		ADJCALLSTACKUP64 0, 0, %RSP<imp-def>, %EFLAGS<imp-def,dead>, %RSP<imp-use>
+272B		%vreg4<def> = COPY %EAX<kill>; GR32:%vreg4
+288B		MOV32mr <fi#5>, 1, %noreg, 0, %noreg, %vreg4; mem:ST4[%res] GR32:%vreg4
+304B		%EAX<def> = COPY %vreg4; GR32:%vreg4
+320B		RETQ %EAX<kill>
+
+# End machine code for function main.
+
+handleMove 208B -> 232B: %EDX<def> = COPY %vreg2; GR32:%vreg2
+     DH:	[232r,240r:0)  0@232r
+        -->	[232r,240r:0)  0@232r
+     DL:	[232r,240r:0)  0@232r
+        -->	[232r,240r:0)  0@232r
+     %vreg2:	[128r,208r:0)  0@128r
+        -->	[128r,232r:0)  0@128r
+handleMove 192B -> 228B: %ESI<def> = COPY %vreg1; GR32:%vreg1
+     SIL:	[228r,240r:0)  0@228r
+        -->	[228r,240r:0)  0@228r
+     %vreg1:	[112r,192r:0)  0@112r
+        -->	[112r,228r:0)  0@112r
+handleMove 176B -> 232B: %EDI<def> = COPY %vreg0; GR32:%vreg0
+     DIL:	[232r,256r:0)  0@232r
+        -->	[232r,256r:0)  0@232r
+     %vreg0:	[96r,176r:0)  0@96r
+        -->	[96r,232r:0)  0@96r
+AllocationOrder(SEGMENT_REG) = [ ]
+********** GREEDY REGISTER ALLOCATION **********
+********** Function: main
+********** INTERVALS **********
+DH [248r,256r:0)  0@248r
+DIL [232r,256r:0)  0@232r
+DL [248r,256r:0)  0@248r
+SIL [240r,256r:0)  0@240r
+%vreg0 [96r,232r:0)  0@96r
+%vreg1 [112r,240r:0)  0@112r
+%vreg2 [128r,248r:0)  0@128r
+%vreg4 [272r,304r:0)  0@272r
+RegMasks: 256r
+********** MACHINEINSTRS **********
+# Machine code for function main: Post SSA
+Frame Objects:
+  fi#0: size=4, align=4, at location [SP+8]
+  fi#1: size=4, align=4, at location [SP+8]
+  fi#2: size=4, align=4, at location [SP+8]
+  fi#3: size=4, align=4, at location [SP+8]
+  fi#4: size=4, align=4, at location [SP+8]
+  fi#5: size=4, align=4, at location [SP+8]
+
+0B	BB#0: derived from LLVM BB %entry
+16B		MOV32mi <fi#0>, 1, %noreg, 0, %noreg, 0; mem:ST4[%retval]
+32B		MOV32mi <fi#1>, 1, %noreg, 0, %noreg, 1; mem:ST4[%i1]
+48B		MOV32mi <fi#2>, 1, %noreg, 0, %noreg, 0; mem:ST4[%i2]
+64B		MOV32mi <fi#3>, 1, %noreg, 0, %noreg, 0; mem:ST4[%i3]
+80B		MOV32mi <fi#4>, 1, %noreg, 0, %noreg, 1; mem:ST4[%i4]
+96B		%vreg0<def> = MOV32rm <fi#1>, 1, %noreg, 0, %noreg; mem:LD4[%i1] GR32:%vreg0
+112B		%vreg1<def> = MOV32rm <fi#2>, 1, %noreg, 0, %noreg; mem:LD4[%i2] GR32:%vreg1
+128B		%vreg2<def> = MOV32rm <fi#3>, 1, %noreg, 0, %noreg; mem:LD4[%i3] GR32:%vreg2
+144B		ADJCALLSTACKDOWN64 0, %RSP<imp-def>, %EFLAGS<imp-def,dead>, %RSP<imp-use>
+224B		%ECX<def> = MOV32ri 1
+232B		%EDI<def> = COPY %vreg0; GR32:%vreg0
+240B		%ESI<def> = COPY %vreg1; GR32:%vreg1
+248B		%EDX<def> = COPY %vreg2; GR32:%vreg2
+256B		CALL64pcrel32 <ga:@leak>, <regmask>, %RSP<imp-use>, %EDI<imp-use>, %ESI<imp-use>, %EDX<imp-use>, %ECX<imp-use,kill>, %RSP<imp-def>, %EAX<imp-def>
+264B		ADJCALLSTACKUP64 0, 0, %RSP<imp-def>, %EFLAGS<imp-def,dead>, %RSP<imp-use>
+272B		%vreg4<def> = COPY %EAX<kill>; GR32:%vreg4
+288B		MOV32mr <fi#5>, 1, %noreg, 0, %noreg, %vreg4; mem:ST4[%res] GR32:%vreg4
+304B		%EAX<def> = COPY %vreg4; GR32:%vreg4
+320B		RETQ %EAX<kill>
+
+# End machine code for function main.
+
+
+selectOrSplit GR32:%vreg0 [96r,232r:0)  0@96r w=3.768657e-03
+hints: %EDI
+assigning %vreg0 to %EDI: DIL [96r,232r:0)  0@96r
+
+selectOrSplit GR32:%vreg1 [112r,240r:0)  0@112r w=3.825758e-03
+hints: %ESI
+assigning %vreg1 to %ESI: SIL [112r,240r:0)  0@112r
+
+selectOrSplit GR32:%vreg2 [128r,248r:0)  0@128r w=3.884615e-03
+hints: %EDX
+assigning %vreg2 to %EDX: DH [128r,248r:0)  0@128r DL [128r,248r:0)  0@128r
+
+selectOrSplit GR32:%vreg4 [272r,304r:0)  0@272r w=7.013889e-03
+hints: %EAX
+assigning %vreg4 to %EAX: AH [272r,304r:0)  0@272r AL [272r,304r:0)  0@272r
+********** REWRITE VIRTUAL REGISTERS **********
+********** Function: main
+********** REGISTER MAP **********
+[%vreg0 -> %EDI] GR32
+[%vreg1 -> %ESI] GR32
+[%vreg2 -> %EDX] GR32
+[%vreg4 -> %EAX] GR32
+
+0B	BB#0: derived from LLVM BB %entry
+16B		MOV32mi <fi#0>, 1, %noreg, 0, %noreg, 0; mem:ST4[%retval]
+32B		MOV32mi <fi#1>, 1, %noreg, 0, %noreg, 1; mem:ST4[%i1]
+48B		MOV32mi <fi#2>, 1, %noreg, 0, %noreg, 0; mem:ST4[%i2]
+64B		MOV32mi <fi#3>, 1, %noreg, 0, %noreg, 0; mem:ST4[%i3]
+80B		MOV32mi <fi#4>, 1, %noreg, 0, %noreg, 1; mem:ST4[%i4]
+96B		%vreg0<def> = MOV32rm <fi#1>, 1, %noreg, 0, %noreg; mem:LD4[%i1] GR32:%vreg0
+112B		%vreg1<def> = MOV32rm <fi#2>, 1, %noreg, 0, %noreg; mem:LD4[%i2] GR32:%vreg1
+128B		%vreg2<def> = MOV32rm <fi#3>, 1, %noreg, 0, %noreg; mem:LD4[%i3] GR32:%vreg2
+144B		ADJCALLSTACKDOWN64 0, %RSP<imp-def>, %EFLAGS<imp-def,dead>, %RSP<imp-use>
+224B		%ECX<def> = MOV32ri 1
+232B		%EDI<def> = COPY %vreg0<kill>; GR32:%vreg0
+240B		%ESI<def> = COPY %vreg1<kill>; GR32:%vreg1
+248B		%EDX<def> = COPY %vreg2<kill>; GR32:%vreg2
+256B		CALL64pcrel32 <ga:@leak>, <regmask>, %RSP<imp-use>, %EDI<imp-use>, %ESI<imp-use>, %EDX<imp-use>, %ECX<imp-use,kill>, %RSP<imp-def>, %EAX<imp-def>
+264B		ADJCALLSTACKUP64 0, 0, %RSP<imp-def>, %EFLAGS<imp-def,dead>, %RSP<imp-use>
+272B		%vreg4<def> = COPY %EAX; GR32:%vreg4
+288B		MOV32mr <fi#5>, 1, %noreg, 0, %noreg, %vreg4; mem:ST4[%res] GR32:%vreg4
+304B		%EAX<def> = COPY %vreg4<kill>; GR32:%vreg4
+320B		RETQ %EAX
+> MOV32mi <fi#0>, 1, %noreg, 0, %noreg, 0; mem:ST4[%retval]
+> MOV32mi <fi#1>, 1, %noreg, 0, %noreg, 1; mem:ST4[%i1]
+> MOV32mi <fi#2>, 1, %noreg, 0, %noreg, 0; mem:ST4[%i2]
+> MOV32mi <fi#3>, 1, %noreg, 0, %noreg, 0; mem:ST4[%i3]
+> MOV32mi <fi#4>, 1, %noreg, 0, %noreg, 1; mem:ST4[%i4]
+> %EDI<def> = MOV32rm <fi#1>, 1, %noreg, 0, %noreg; mem:LD4[%i1]
+> %ESI<def> = MOV32rm <fi#2>, 1, %noreg, 0, %noreg; mem:LD4[%i2]
+> %EDX<def> = MOV32rm <fi#3>, 1, %noreg, 0, %noreg; mem:LD4[%i3]
+> ADJCALLSTACKDOWN64 0, %RSP<imp-def>, %EFLAGS<imp-def,dead>, %RSP<imp-use>
+> %ECX<def> = MOV32ri 1
+> %EDI<def> = COPY %EDI<kill>
+Deleting identity copy.
+> %ESI<def> = COPY %ESI<kill>
+Deleting identity copy.
+> %EDX<def> = COPY %EDX<kill>
+Deleting identity copy.
+> CALL64pcrel32 <ga:@leak>, <regmask>, %RSP<imp-use>, %EDI<imp-use>, %ESI<imp-use>, %EDX<imp-use>, %ECX<imp-use,kill>, %RSP<imp-def>, %EAX<imp-def>
+> ADJCALLSTACKUP64 0, 0, %RSP<imp-def>, %EFLAGS<imp-def,dead>, %RSP<imp-use>
+> %EAX<def> = COPY %EAX
+Deleting identity copy.
+> MOV32mr <fi#5>, 1, %noreg, 0, %noreg, %EAX; mem:ST4[%res]
+> %EAX<def> = COPY %EAX<kill>
+Deleting identity copy.
+> RETQ %EAX
