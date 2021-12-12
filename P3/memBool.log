@@ -1,0 +1,22 @@
+BEGIN
+[%vreg0 -> %EDI] GR32
+[%vreg1 -> %ESI] GR32
+[%vreg4 -> %EDX] GR32
+[%vreg9 -> %EAX] GR32
+END
+ST4[%R.addr] %vreg0
+ST4[%x.addr] %vreg1
+ST4[%rx.addr] %vreg4
+ST4[%X] %vreg4
+ST4[%T1] %vreg4
+ST4[%T2] %vreg4
+ST4[%T3] %vreg4
+LD4[%R.addr] %vreg9
+ST4[%R2] %vreg9
+ST4[%A1] %vreg9
+ST4[%A2] %vreg9
+ST4[%A3] %vreg9
+Deleting identity copy.
+Deleting identity copy.
+Deleting identity copy.
+Deleting identity copy.

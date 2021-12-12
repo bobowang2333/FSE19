@@ -1,0 +1,50 @@
+********** MACHINEINSTRS **********
+ST4[%R.addr] %vreg0
+ST4[%x.addr] %vreg1
+ST4[%rx.addr] %vreg2
+ST4[%X] %vreg3
+ST4[%T1] %vreg4
+ST4[%T2] %vreg5
+ST4[%T3] %vreg6
+LD4[%R.addr] %vreg7
+ST4[%R2] %vreg8
+ST4[%A1] %vreg9
+ST4[%A2] %vreg10
+ST4[%A3] %vreg11
+********** SIMPLE REGISTER COALESCING **********
+********** Function: _Z7computejjj
+ST4[%rx.addr] %vreg3
+ST4[%X] %vreg4
+ST4[%rx.addr] %vreg4
+ST4[%T2] %vreg4
+ST4[%T3] %vreg4
+LD4[%R.addr] %vreg8
+LD4[%R.addr] %vreg9
+ST4[%R2] %vreg9
+ST4[%A2] %vreg9
+ST4[%A3] %vreg9
+********** MACHINEINSTRS **********
+ST4[%R.addr] %vreg0
+ST4[%x.addr] %vreg1
+ST4[%rx.addr] %vreg4
+ST4[%X] %vreg4
+ST4[%T1] %vreg4
+ST4[%T2] %vreg4
+ST4[%T3] %vreg4
+LD4[%R.addr] %vreg9
+ST4[%R2] %vreg9
+ST4[%A1] %vreg9
+ST4[%A2] %vreg9
+ST4[%A3] %vreg9
+ST4[%R.addr] %vreg0
+ST4[%x.addr] %vreg1
+ST4[%rx.addr] %vreg4
+ST4[%X] %vreg4
+ST4[%T1] %vreg4
+ST4[%T2] %vreg4
+ST4[%T3] %vreg4
+LD4[%R.addr] %vreg9
+ST4[%R2] %vreg9
+ST4[%A1] %vreg9
+ST4[%A2] %vreg9
+ST4[%A3] %vreg9

@@ -1,0 +1,34 @@
+BEGIN
+[%vreg0 -> %EDI] GR32
+[%vreg1 -> %ESI] GR32
+[%vreg4 -> %EDX] GR32
+[%vreg9 -> %EAX] GR32
+END
+
+
+
+MOV ST4[%R.addr] %vreg0 
+MOV ST4[%x.addr] %vreg1 
+MOV ST4[%rx.addr] %vreg4 
+%vreg4<def,tied1> =  XOR LD4[%x.addr] %vreg4 
+MOV ST4[%X] %vreg4 
+%vreg4<def,tied1> =  XOR LD4[%R.addr] %vreg4 
+MOV ST4[%T1] %vreg4 
+%vreg4<def,tied1> =  XOR LD4[%R.addr] %vreg4 
+MOV ST4[%T2] %vreg4 
+%vreg4<def,tied1> =  XOR LD4[%X] %vreg4 
+MOV ST4[%T3] %vreg4 
+%vreg9<def> =  MOV LD4[%R.addr] %vreg9 
+%vreg9<def,tied1> =  XOR LD4[%rx.addr] %vreg9 
+MOV ST4[%R2] %vreg9 
+%vreg9<def,tied1> =  XOR LD4[%X] %vreg9 
+MOV ST4[%A1] %vreg9 
+%vreg9<def,tied1> =  XOR LD4[%R2] %vreg9 
+MOV ST4[%A2] %vreg9 
+%vreg9<def,tied1> =  XOR LD4[%T3] %vreg9 
+MOV ST4[%A3] %vreg9 
+
+Deleting identity copy.
+Deleting identity copy.
+Deleting identity copy.
+Deleting identity copy.

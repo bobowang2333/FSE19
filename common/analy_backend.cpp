@@ -5,12 +5,13 @@
 #include <vector>
 #include <iterator>
 #include <algorithm>
-#include <tuple>
 #include <string>
 
 using namespace std;
 map<string, string> vreg_preg;
-vector<string> file_line;
+map<string, string> var_vreg;
+vector<string> var;
+vector<string> vreg;
 void readBEGIN(string f_name)
 {
     ifstream fin(f_name);
@@ -36,14 +37,26 @@ void readBEGIN(string f_name)
                 ++it_after;
                 unsigned b = (*it_before).size();
                 unsigned a = (*it_after).size();
+                /* [%vreg0 -> %EDI] need to transfer [%vreg0 to %vreg0 and transfer %EDI] to %EDI */
                 vreg_preg.insert(pair<string, string>(((*it_before).substr(1, -1)), ((*it_after).substr(0, a-1))));
             }
         }
         if(end_flag)
         {
-            fin.close();
-            break;
+            vector<string>::iterator it_var, it_vreg;
+            it_var = tokens.begin();
+            it_vreg = ++tokens.begin();
+            unsigned v_s = (*it_var).size();
+            if(!(*it_var).compare("Deleting"))
+                break;
+            else
+            {
+                var.push_back((*it_var).substr(4, v_s-5));
+                vreg.push_back((*it_vreg));
+                //var_vreg.insert(pair<string, string>(((*it_var).substr(4, v_s-5)), *it_vreg));
+            }
         }
+        /* based on the mark "BEGIN" and "END", assign different flags to them */
         if(!s.compare("BEGIN"))
             begin_flag = true;
         if(!s.compare("END"))
@@ -51,151 +64,88 @@ void readBEGIN(string f_name)
     }
 }
 
-string getShortName(string nameWithDef)
+/* given a vreg, output all the corresponding variable names in string vector */
+vector<int> find_multiple (vector<string> vreg, string tofind)
 {
-    string delimiter = "<";
-    string token = nameWithDef.substr(0, nameWithDef.find(delimiter));
-    return token;
-}
-
-// remove the form of LD1[] or ST[] but still with %
-string removeSL(string nameWithSL)
-{
-    unsigned len = nameWithSL.size();
-    return nameWithSL.substr(4, len-5);
-    
-}
-
-bool checkStr (string s, string toCheck)
-{
-    istringstream iss(s);
-    vector<string> tokens;
-    copy(istream_iterator<string>(iss), istream_iterator<string>(), back_inserter(tokens));
-    iss.str("");
-    iss.clear();
-    if(find(tokens.begin(), tokens.end(), toCheck) != tokens.end())
-        return true;
-    else 
-        return false;
-}
-
-vector<string> lineToVector(string s)
-{
-    istringstream iss(s);
-    vector<string> tokens;
-    copy(istream_iterator<string>(iss), istream_iterator<string>(), back_inserter(tokens));
-    iss.str("");
-    iss.clear();
-    return tokens;
-}
-
-void checkXor(string f_read_name, string f_write_name)
-{
-    ifstream fin(f_read_name);
-    ofstream fout;
-    fout.open(f_write_name);
-    string s;
-    bool end_flag = false;
-    bool xor_flag = false; // indicate if it's the second consistent XOR
-    tuple<string, string> xor_first_pair;
-    while(getline(fin, s))
+    vector<string>::iterator i = find(vreg.begin(), vreg.end(), tofind);
+    vector<int> result;
+    while(i != vreg.end())
     {
-        file_line.push_back(s);
-        vector<string> tokens = lineToVector(s);
-        if(end_flag)
-        {
-            vector<string>::iterator s_it = find(file_line.begin(), file_line.end(), s);
-            string last_s = *(--s_it);
-            xor_flag = checkStr(last_s, "XOR");
-            // first XOR statement
-            if(checkStr(s, "XOR") && (!xor_flag))
-            {
-                //test
-                cout << "come into the first xor" << "\n";
-                string left = getShortName(tokens[0]);
-                string right1 = tokens[3];
-                string right2 = tokens[4];
-                vector<string>::iterator it = file_line.end();
-                --it; //current xor line
-                --it; // one operand in the right side
-                vector<string> beforeXOR1 = lineToVector(*it);
-                --it; // another operand in the right side
-                vector<string> beforeXOR2 = lineToVector(*it);
-                string addr1, addr2;
-                if(!getShortName(beforeXOR1[0]).compare(right1))
-                {
-                    addr1 = removeSL(beforeXOR1[3]); //right1's address
-                    addr2 = removeSL(beforeXOR2[3]); //right2's address
-                }else{
-                    addr1 = removeSL(beforeXOR2[3]); //right1's address
-                    addr2 = removeSL(beforeXOR1[3]); //right2's address
-                }
-                // left result share the register with the right operand 1 else not
-                // share(2) means the share info only contains two elements
-                string share_form1;
-                if(!left.compare(right1))
-                {
-                    share_form1 = "share(2) " + addr1 + ' ' + addr2; 
-                    xor_first_pair = make_tuple(addr1, addr2);
-                }else{
-                    share_form1 = "share(2) " + addr2 + ' ' + addr1;
-                    xor_first_pair = make_tuple(addr2, addr1);
-                }
-                cout << share_form1 << "\n";
-                fout << share_form1;
-                fout << "\n";
-            }
-            // last line is also a "XOR"
-            if(checkStr(s, "XOR") && (xor_flag))
-            {
-                //test
-                cout << "come into the second xor" << "\n";
-                string left = getShortName(tokens[0]);
-                //test
-                cout << left << endl;
-                string right1 = tokens[3];
-                string right2 = tokens[4];
-                //test
-                cout << right1 << ' ' << right2 << endl;
-                string toCompare;
-                //share: left and right1
-                if(!left.compare(right1))
-                    toCompare = right2;
-                else
-                    toCompare = right1;
-                vector<string>::iterator it = s_it; //current line
-                vector<string> beforeXOR1 = lineToVector(*(it));
-                //test
-                cout << *it << endl;
-                // find the element's loading address
-                // out iteration condition: "MOV" and string match
-                while(!((!getShortName(beforeXOR1[0]).compare(toCompare)) && (checkStr((*it), "MOV"))))
-                {
-                    cout << "find the corresponding it" << "\n";
-                    --it;
-                    //test
-                    cout << *it << endl;
-                    beforeXOR1 = lineToVector(*it);
-                }
-                string addr3 = removeSL(beforeXOR1[3]);
-                string share_form2;
-                share_form2 = "share(3) " + addr3 + ' ' + get<0>(xor_first_pair) + ' ' + get<1>(xor_first_pair);
-                cout << share_form2 << "\n";
-                fout << share_form2;
-                fout << "\n";
-            }
-        }
-        if(!s.compare("END"))
-            end_flag = true;
+        result.push_back((i - vreg.begin()));
+        i = find(i+1, vreg.end(), tofind);
     }
-    fin.close();
-    fout.close();
+    return result;
 }
 
-int main(void)
+bool comp(int i, int j)
 {
-    string read = "memOperand.log";
-    string write = "shareVariable.txt";
-    checkXor(read, write);
+    return (i < j);
+}
+
+vector<string> convert(vector<int> index)
+{
+    sort(index.begin(), index.end(), comp);
+    vector<string> res;
+    for(vector<int>::iterator it = index.begin(); it != index.end(); it++)
+    {
+        std::string tmp = var[*it];
+        vector<int>::iterator it_after = it;
+        it_after++;
+        if((it_after != index.end()) && (!(var[*it_after]).compare(tmp)))
+            continue;
+        // remove the same variable name in the "var" array adjacently
+        //if(find(res.begin(), res.end(), tmp) != res.end())
+          //  continue;
+        else
+            res.push_back(tmp);
+    }
+    return res;
+}
+
+int main(int argc, char *argv[])
+{
+    if(argc < 3)
+        cout << "please input the backend file and name of the output!" << endl;
+    //string f_name = "memOperand.log";
+    string f_name = argv[1];
+    readBEGIN(f_name);
+    map<string, string>::iterator iter1, iter2;
+    vector<int> res1, res2;
+    vector<string> var_outFile;
+    vector<string> checked;
+    //ofstream output_file("share_variable.txt");
+    ofstream output_file(argv[2]);
+    
+   for(iter1 = vreg_preg.begin(); iter1 != vreg_preg.end(); iter1++)
+    {
+        string vreg1 = iter1->first;
+        string preg1 = iter1->second;
+
+        if(find(checked.begin(), checked.end(), preg1) != checked.end())
+            continue;
+        else{
+            iter2 = iter1;
+            ++iter2;
+            res1 = find_multiple(vreg, vreg1);
+            checked.push_back(preg1);
+            cout << "checked: " << preg1 << endl;
+            for( ; iter2 != vreg_preg.end(); iter2++)
+            {
+                if(!preg1.compare(iter2->second))
+                {   
+                string vreg2 = iter2->first;
+                res2 = find_multiple(vreg, vreg2);
+                res1.insert(res1.end(), res2.begin(), res2.end());
+                continue;
+                }
+            }
+            vector<string> order_Var;
+            order_Var = convert(res1);
+            ostream_iterator<string> output_iterator(output_file, " ");
+            copy(order_Var.begin(), order_Var.end(), output_iterator);
+            output_file << "\n";
+        }
+    }
+   output_file.close();
     return 0;
 }
